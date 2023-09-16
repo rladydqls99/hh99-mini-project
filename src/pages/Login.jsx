@@ -97,7 +97,7 @@ function Login() {
           value={password}
           onChange={pwOnChangeHandler}
         />
-        <ButtonStyle back-color={"#4E61FF"}>로그인하기</ButtonStyle>
+        <ButtonStyle back-color={"#4E61FF"}>로그인 하기</ButtonStyle>
         <ButtonStyle
           onClick={() => {
             navigate("/signup");
