@@ -1,7 +1,8 @@
 import React from "react";
+import { ContainerDiv } from "../styled/styledComponent";
 
 function Mypage() {
-  return <div>Mypage</div>;
+  return <ContainerDiv>Mypage</ContainerDiv>;
 }
 
 export default Mypage;

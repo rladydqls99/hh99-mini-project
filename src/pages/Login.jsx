@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getCookie, setCookie } from "../cookies/cookies";
+import {
+  ContainerDiv,
+  FlexForm,
+  InputContent,
+  ButtonStyle,
+} from "../styled/styledComponent";
 
 function Login() {
   useEffect(() => {
@@ -76,35 +82,32 @@ function Login() {
   };
 
   return (
-    <div>
-      <form onSubmit={onLoginSubmitHandler}>
+    <ContainerDiv>
+      <FlexForm onSubmit={onLoginSubmitHandler}>
         <h1>로그인</h1>
-        아이디
-        <input
+        <InputContent
           type="text"
           placeholder="아이디"
           value={id}
           onChange={idOnChangeHandler}
         />
-        비밀번호
-        <input
+        <InputContent
           type="password"
           placeholder="비밀번호"
           value={password}
           onChange={pwOnChangeHandler}
         />
-        <div>
-          <button
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            회원가입 하기
-          </button>
-          <button>로그인하기</button>
-        </div>
-      </form>
-    </div>
+        <ButtonStyle back-color={"#4E61FF"}>로그인하기</ButtonStyle>
+        <ButtonStyle
+          onClick={() => {
+            navigate("/signup");
+          }}
+          back-color={"lightgrey"}
+        >
+          회원가입 하기
+        </ButtonStyle>
+      </FlexForm>
+    </ContainerDiv>
   );
 }
 

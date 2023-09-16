@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+  ContainerDiv,
+  FlexForm,
+  InputContent,
+  ButtonStyle,
+} from "../styled/styledComponent";
 
 function SignUp() {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
 
   const idOnChangeHandler = (e) => {
     setId(e.target.value);
@@ -15,11 +22,15 @@ function SignUp() {
     setPassword(e.target.value);
   };
 
+  const setPwOnChangeHandler = (e) => {
+    setCheckPassword(e.target.value);
+  };
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    if (!id || !password) {
-      alert("아이디와 비밀번호를 모두 입력해주세요.");
+    if (password !== checkPassword) {
+      alert("비밀번호와 비밀번호 확인 값이 다릅니다");
       return;
     }
 
@@ -31,7 +42,7 @@ function SignUp() {
 
       console.log("회원가입 성공", response.data);
       alert("회원가입 완료");
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log("회원가입 실패", error);
       alert(error.response.data.message);
@@ -40,36 +51,38 @@ function SignUp() {
 
   return (
     <>
-      <div>
-        <h1>회원가입</h1>
-
-        <form onSubmit={onSubmitHandler}>
-          아이디
-          <input
+      <ContainerDiv>
+        <FlexForm onSubmit={onSubmitHandler}>
+          <h1>회원가입</h1>
+          <InputContent
             type="text"
             placeholder="아이디"
             value={id}
             onChange={idOnChangeHandler}
           />
-          비밀번호
-          <input
+          <InputContent
             type="password"
             placeholder="비밀번호"
             value={password}
             onChange={pwOnChangeHandler}
           />
-          <div>
-            <button>회원가입 하기</button>
-            <button
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              로그인하기
-            </button>
-          </div>
-        </form>
-      </div>
+          <InputContent
+            type="password"
+            placeholder="비밀번호 확인"
+            value={checkPassword}
+            onChange={setPwOnChangeHandler}
+          />
+          <ButtonStyle back-color={"#4E61FF"}>회원가입 하기</ButtonStyle>
+          <ButtonStyle
+            onClick={() => {
+              navigate("/login");
+            }}
+            back-color={"lightgrey"}
+          >
+            로그인 하기
+          </ButtonStyle>
+        </FlexForm>
+      </ContainerDiv>
     </>
   );
 }

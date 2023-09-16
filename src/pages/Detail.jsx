@@ -1,7 +1,8 @@
 import React from "react";
+import { ContainerDiv } from "../styled/styledComponent";
 
 function Detail() {
-  return <div>Detail</div>;
+  return <ContainerDiv>Detail</ContainerDiv>;
 }
 
 export default Detail;
