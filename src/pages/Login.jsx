@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { getCookie, setCookie } from "../cookies/cookies";
 import {
   ContainerDiv,
@@ -19,11 +19,11 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const idOnChangeHandler = (e) => {
-    setId(e.target.value);
+  const emailOnChangeHandler = (e) => {
+    setEmail(e.target.value);
   };
 
   const pwOnChangeHandler = (e) => {
@@ -32,14 +32,11 @@ function Login() {
 
   const getData = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_MOCK_URL}user`,
-        {
-          headers: {
-            Authorization: `Bearer ${getCookie("token")}`,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:4000/login", {
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      });
       console.log(response.data.message);
     } catch (error) {
       console.error(error);
@@ -50,11 +47,25 @@ function Login() {
   const onLoginSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (!email.length || !password.length) {
+      alert("이메일과 비밀번호 모두 입력해주세요");
+      setEmail("");
+      setPassword("");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      alert("이메일을 올바르게 입력해주세요.");
+      setEmail("");
+      setPassword("");
+      return;
+    }
+
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_MOCK_URL}login`,
-        { id, password }
-      );
+      const response = await axios.post("http://localhost:4000/login", {
+        email,
+        password,
+      });
       console.log(response.statusText, response);
 
       if (response.status === 201) {
@@ -70,10 +81,10 @@ function Login() {
         getData();
       }
 
-      setId("");
+      setEmail("");
       setPassword("");
 
-      alert(`${id}님 환영합니다!`);
+      alert("로그인 되었습니다.");
       navigate("/");
     } catch (error) {
       console.log("로그인 실패", error);
@@ -87,9 +98,9 @@ function Login() {
         <h1>로그인</h1>
         <InputContent
           type="text"
-          placeholder="아이디"
-          value={id}
-          onChange={idOnChangeHandler}
+          placeholder="이메일"
+          value={email}
+          onChange={emailOnChangeHandler}
         />
         <InputContent
           type="password"

@@ -10,35 +10,59 @@ import {
 
 function SignUp() {
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
 
-  const idOnChangeHandler = (e) => {
-    setId(e.target.value);
+  const nickNameOnChangeHandler = (e) => {
+    setNickname(e.target.value);
   };
-
+  const emailOnChangeHandler = (e) => {
+    setEmail(e.target.value);
+  };
   const pwOnChangeHandler = (e) => {
     setPassword(e.target.value);
   };
-
   const setPwOnChangeHandler = (e) => {
     setCheckPassword(e.target.value);
   };
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (!nickname.length || !email.length || !password.length) {
+      alert("닉네임, 이메일, 비밀번호 모두 입력해주세요");
+      setNickname("");
+      setEmail("");
+      setPassword("");
+      setCheckPassword("");
+      return;
+    }
+
     if (password !== checkPassword) {
       alert("비밀번호와 비밀번호 확인 값이 다릅니다");
+      setNickname("");
+      setEmail("");
+      setPassword("");
+      setCheckPassword("");
+      return;
+    }
+
+    if (email.includes("@") !== true) {
+      alert("이메일을 알 맞게 입력해주세요.");
+      setNickname("");
+      setEmail("");
+      setPassword("");
+      setCheckPassword("");
       return;
     }
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_MOCK_URL}register`,
-        { id, password }
-      );
+      const response = await axios.post("http://localhost:4000/signup", {
+        nickname,
+        email,
+        password,
+      });
 
       console.log("회원가입 성공", response.data);
       alert("회원가입 완료");
@@ -56,9 +80,15 @@ function SignUp() {
           <h1>회원가입</h1>
           <InputContent
             type="text"
-            placeholder="아이디"
-            value={id}
-            onChange={idOnChangeHandler}
+            placeholder="닉네임"
+            value={nickname}
+            onChange={nickNameOnChangeHandler}
+          />
+          <InputContent
+            type="text"
+            placeholder="이메일"
+            value={email}
+            onChange={emailOnChangeHandler}
           />
           <InputContent
             type="password"
