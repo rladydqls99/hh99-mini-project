@@ -1,15 +1,86 @@
 {
-  "users": [
+  "company": [
     {
-      "id": 1,
-      "nickname": "nick",
-      "email": "nick123@naver.com",
-      "password": "nick123"
+      "companyName": "samsung",
+      "location": "seoul",
+      "id": 1
     },
     {
-      "email": "seoyeong123@naver.com",
-      "password": "seoyeong123",
+      "companyName": "toss",
+      "location": "daejeon",
       "id": 2
+    },
+    {
+      "companyName": "samsung",
+      "location": "daegu",
+      "id": 3
+    },
+    {
+      "companyName": "samsung",
+      "location": "seoul",
+      "id": 4
+    },
+    {
+      "companyName": "toss",
+      "location": "daejeon",
+      "id": 5
+    },
+    {
+      "companyName": "samsung",
+      "location": "daegu",
+      "id": 6
+    },
+    {
+      "companyName": "samsung",
+      "location": "seoul",
+      "id": 7
+    },
+    {
+      "companyName": "toss",
+      "location": "daejeon",
+      "id": 8
+    },
+    {
+      "companyName": "samsung",
+      "location": "daegu",
+      "id": 9
+    },
+    {
+      "companyName": "samsung",
+      "location": "seoul",
+      "id": 10
+    },
+    {
+      "companyName": "toss",
+      "location": "daejeon",
+      "id": 11
+    },
+    {
+      "companyName": "samsung",
+      "location": "daegu",
+      "id": 12
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "comment": "복지 좋음"
+    },
+    {
+      "id": 1,
+      "comment": "연봉 높음"
+    },
+    {
+      "id": 2,
+      "comment": "사장님 착함"
+    },
+    {
+      "id": 2,
+      "comment": "야근 많음"
+    },
+    {
+      "id": 2,
+      "comment": "밥 맛있음"
     }
   ]
 }
