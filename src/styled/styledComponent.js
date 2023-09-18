@@ -49,3 +49,19 @@ export const ButtonStyle = styled.button`
     width: 380pxs;
   }
 `;
+
+export const IconBox = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  border: 1px solid grey;
+  margin: 50px auto 100px auto;
+`;
+
+export const ContentBox = styled.div`
+  width: 1170px;
+  height: 100px;
+  border-bottom: 1px solid grey;
+  margin-top: 10px;
+  font-size: 30px;
+`;

@@ -41,8 +41,6 @@ function SignUp() {
 
     if (password !== checkPassword) {
       alert("비밀번호와 비밀번호 확인 값이 다릅니다");
-      setNickname("");
-      setEmail("");
       setPassword("");
       setCheckPassword("");
       return;
@@ -50,15 +48,13 @@ function SignUp() {
 
     if (email.includes("@") !== true) {
       alert("이메일을 알 맞게 입력해주세요.");
-      setNickname("");
       setEmail("");
-      setPassword("");
-      setCheckPassword("");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/signup", {
+      const response = await axios.post("http://localhost:4000/users", {
+        // !signup으로 바꾸기
         nickname,
         email,
         password,

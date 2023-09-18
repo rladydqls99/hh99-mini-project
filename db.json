@@ -1,22 +1,15 @@
 {
-  "signup": [
+  "users": [
     {
+      "id": 1,
       "nickname": "nick",
-      "email": "nick@naver.com",
-      "password": "nick",
-      "id": 3
-    }
-  ],
-  "login": [
-    {
-      "email": "second12@naver.com",
-      "password": "second12",
-      "id": 6
+      "email": "nick123@naver.com",
+      "password": "nick123"
     },
     {
-      "email": "nick@naver.com",
-      "password": "nick",
-      "id": 7
+      "email": "seoyeong123@naver.com",
+      "password": "seoyeong123",
+      "id": 2
     }
   ]
 }

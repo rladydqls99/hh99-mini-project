@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeCookie } from "../cookies/cookies";
 import { ContainerDiv } from "../styled/styledComponent";
@@ -9,7 +8,6 @@ function Main() {
   const navigate = useNavigate();
 
   const [login, setLogin] = useState(false);
-  const [mainContent, setMainContent] = useState([]);
 
   const onToggleHandler = () => {
     if (login) {
@@ -21,15 +19,6 @@ function Main() {
       navigate("/");
     }
   };
-
-  const mainData = async () => {
-    const { data } = await axios.get("http://localhost:4000/");
-    setMainContent(data);
-  };
-
-  useEffect(() => {
-    mainData();
-  }, []);
 
   const onMypageHandler = () => {
     navigate("/mypage");
