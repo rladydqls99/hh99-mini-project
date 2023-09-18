@@ -53,7 +53,7 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/users", {
+      const response = await axios.post("http://localhost:4000/signup", {
         // !signup으로 바꾸기
         nickname,
         email,

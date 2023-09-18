@@ -32,14 +32,11 @@ function Login() {
 
   const getData = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/user`,
-        {
-          headers: {
-            Authorization: `Bearer ${getCookie("token")}`,
-          },
-        }
-      );
+      const response = await axios.get(`http://localhost:4000/login`, {
+        headers: {
+          Authorization: `Bearer ${getCookie("token")}`,
+        },
+      });
       console.log(response.data.message);
     } catch (error) {
       console.error(error);
