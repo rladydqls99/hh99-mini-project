@@ -4,6 +4,8 @@ const Container = styled.div`
   padding: 0 32px;
   background-color: #f9f9fb;
   border-radius: 0 0 12px 12px;
+  max-width: 1170px;
+  margin: 30px auto 30px auto;
 `;
 
 const StyledCommentsDiv = styled.div`
