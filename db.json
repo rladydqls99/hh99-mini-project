@@ -82,5 +82,36 @@
       "id": 2,
       "comment": "밥 맛있음"
     }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "email": "rladydqls99@naver.com",
+      "password": 1234
+    },
+    {
+      "email": "rladydqls99@naver.com",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "email": "rladydqls92@naver.com",
+      "password": "asdasd",
+      "id": 3
+    }
+  ],
+  "signup": [
+    {
+      "nickname": "nick",
+      "id": 1,
+      "email": "rladydqls99@naver.com",
+      "password": 1234
+    },
+    {
+      "nickname": "rasd",
+      "email": "rlaydld@asd.com",
+      "password": "1234",
+      "id": 2
+    }
   ]
 }
