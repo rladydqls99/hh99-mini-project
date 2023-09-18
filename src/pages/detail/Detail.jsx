@@ -45,7 +45,7 @@ function Detail() {
       </div>
       <Container>
         <StyledCommentsDiv>
-          <h1>댓글</h1>
+          <h1>댓글!!!!!!!</h1>
           <button>댓글 더보기</button>
         </StyledCommentsDiv>
         {data &&
