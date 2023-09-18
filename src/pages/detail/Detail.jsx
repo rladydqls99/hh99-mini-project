@@ -39,10 +39,10 @@ function Detail() {
 
   return (
     <>
-      <div>
+      <Container>
         <h1>{state.companyName}</h1>
         <h3>{state.location}</h3>
-      </div>
+      </Container>
       <Container>
         <StyledCommentsDiv>
           <h1>댓글!!!!!!!</h1>

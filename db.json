@@ -3,84 +3,59 @@
     {
       "companyName": "samsung",
       "location": "seoul",
-      "id": 1
+      "id": 1,
+      "detailid": 1234
     },
     {
       "companyName": "toss",
       "location": "daejeon",
-      "id": 2
+      "id": 2,
+      "detailid": 1236
     },
     {
       "companyName": "samsung",
       "location": "daegu",
-      "id": 3
+      "id": 3,
+      "detailid": 1235
     },
     {
       "companyName": "samsung",
       "location": "seoul",
-      "id": 4
+      "id": 4,
+      "detailid": 1236
     },
     {
       "companyName": "toss",
       "location": "daejeon",
-      "id": 5
-    },
-    {
-      "companyName": "samsung",
-      "location": "daegu",
-      "id": 6
-    },
-    {
-      "companyName": "samsung",
-      "location": "seoul",
-      "id": 7
-    },
-    {
-      "companyName": "toss",
-      "location": "daejeon",
-      "id": 8
-    },
-    {
-      "companyName": "samsung",
-      "location": "daegu",
-      "id": 9
-    },
-    {
-      "companyName": "samsung",
-      "location": "seoul",
-      "id": 10
-    },
-    {
-      "companyName": "toss",
-      "location": "daejeon",
-      "id": 11
-    },
-    {
-      "companyName": "samsung",
-      "location": "daegu",
-      "id": 12
+      "id": 5,
+      "detailid": 1237
     }
   ],
   "comments": [
     {
       "id": 1,
-      "comment": "복지 좋음"
-    },
-    {
-      "id": 1,
-      "comment": "연봉 높음"
+      "comment": "복지 좋음",
+      "detailid": 1234
     },
     {
       "id": 2,
-      "comment": "사장님 착함"
+      "comment": "연봉 높음",
+      "detailid": 1234
     },
     {
-      "id": 2,
-      "comment": "야근 많음"
+      "id": 3,
+      "comment": "사장님 착함",
+      "detailid": 1234
     },
     {
-      "id": 2,
-      "comment": "밥 맛있음"
+      "id": 4,
+      "comment": "야근 많음",
+      "detailid": 1235
+    },
+    {
+      "id": 5,
+      "comment": "밥 맛있음",
+      "detailid": 1235
     }
   ],
   "login": [

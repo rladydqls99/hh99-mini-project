@@ -8,7 +8,7 @@ const getCompany = async () => {
     );
     return response.data;
   } catch (error) {
-    console.log("error 발생", error);
+    console.log("error 발생했습니다.", error);
   }
 };
 
