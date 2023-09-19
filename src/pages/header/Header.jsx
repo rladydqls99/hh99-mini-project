@@ -8,10 +8,9 @@ function Header() {
     <>
       <StyledNav>
         <StyledUl>
-          <li>기업랭킹</li>
-          <li>뉴스</li>
-          <li>기업 비교</li>
+          <li>JobPlanet</li>
           <li className="mypage">마이페이지</li>
+          <button>로그아웃</button>
         </StyledUl>
       </StyledNav>
       <Outlet />
