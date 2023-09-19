@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setCookie } from "../cookies/cookies";
+import { getCookie, setCookie } from "../cookies/cookies";
 
 const postLogin = async ({ email, password }) => {
   try {
@@ -7,9 +7,11 @@ const postLogin = async ({ email, password }) => {
       email,
       password,
     });
+    console.log(response.data.token);
 
     if (response.status === 200) {
-      setCookie("token", response.data.token, {
+      const [_, token] = response.data.token.split("");
+      setCookie("token", token, {
         path: "/",
         secure: true,
         maxAge: 3000,
