@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie, setCookie } from "../cookies/cookies";
+import { setCookie } from "../cookies/cookies";
 
 const postLogin = async ({ email, password }) => {
   try {
@@ -8,12 +8,15 @@ const postLogin = async ({ email, password }) => {
       password,
     });
 
+    const [_, token] = response.data.token.split(" ");
     if (response.status === 200) {
-      setCookie("token", response.data.token, {
+      setCookie("token", token, {
         path: "/",
         secure: true,
         maxAge: 3000,
       });
+
+      alert("로그인 되었습니다.");
 
       alert("로그인 되었습니다.");
     }

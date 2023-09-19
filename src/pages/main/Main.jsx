@@ -11,7 +11,6 @@ import {
   OuterContainer,
   LogoImage,
   Icon,
-  InputBox,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { Magnifier } from "../../icons/icon";
