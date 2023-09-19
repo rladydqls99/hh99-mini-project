@@ -52,20 +52,16 @@ function SignUp() {
   const mutation = useMutation(postSignup, {
     onSuccess: () => {
       queryClient.invalidateQueries("signup");
-      console.log("성공하셨습니다.");
+      console.log("mutation 성공하셨습니다.");
       navigate("/login");
     },
+    onError: () => {
+      queryClient.invalidateQueries("signup");
+      console.log("mutation 실패하셨습니다.");
+    },
   });
-
-  // const { isLoading, isError, data } = useQuery("signup", postSignup);
-  // console.log(data);
-
-  // if (isLoading) {
-  //   return <h1>로딩 중입니다.</h1>;
-  // }
-  // if (isError) {
-  //   return <h1>에러가 발생했습니다.</h1>;
-  // }
+  // mutation(=변형) 데이터를 생성/업데이트/삭제 할 때 사용
+  // onSucess는 mutation이 성공하고 결과를 전달할 때 실행
 
   return (
     <>
