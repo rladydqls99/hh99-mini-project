@@ -22,7 +22,7 @@ const postLogin = async ({ email, password }) => {
     }
   } catch (error) {
     console.error("로그인 실패", error);
-    // alert("이메일 혹은 비밀번호를 확인하세요.");
+    alert("이메일 혹은 비밀번호를 확인하세요.");
   }
 };
 
