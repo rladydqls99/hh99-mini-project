@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { deleteComments, getComments } from "../../api/comments";
 import { Container, StyledCommentsDiv, StyledComment } from "./styles";
+import { ModalSetUp, ModalFlex } from "./Modal";
 
 function Detail() {
   const { state } = useLocation();
@@ -37,6 +38,34 @@ function Detail() {
     }
   };
 
+  const Modal = () => {
+    return (
+      <>
+        <div>닉네임</div>
+        <div>이메일</div>
+      </>
+    );
+  };
+
+  // 각 댓글의 모달 열림 상태를 관리하는 배열
+  const [modalOpenStates, setModalOpenStates] = useState(
+    data?.map(() => false) || []
+  );
+
+  // 모달 열기 함수
+  const openModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = true;
+    setModalOpenStates(newModalOpenStates);
+  };
+
+  // 모달 닫기 함수
+  const closeModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = false;
+    setModalOpenStates(newModalOpenStates);
+  };
+
   return (
     <>
       <Container>
@@ -53,9 +82,20 @@ function Detail() {
             .filter((comment) => {
               return comment.detailid === parseInt(params.id);
             })
-            .map((comment) => {
+            .map((comment, index) => {
               return (
                 <StyledComment key={comment.id}>
+                  <div>
+                    <button onClick={() => openModal(index)}>프로필</button>
+                    {modalOpenStates[index] && (
+                      <ModalFlex>
+                        <ModalSetUp>
+                          <Modal />
+                          <button onClick={() => closeModal(index)}>X</button>
+                        </ModalSetUp>
+                      </ModalFlex>
+                    )}
+                  </div>
                   <h3>comment Id: {comment.id}</h3>
                   <h4>댓글: {comment.comment}</h4>
                   <button

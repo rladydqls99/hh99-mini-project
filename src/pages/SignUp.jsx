@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { postSignup, createUser } from "../api/signup";
 import {
   ContainerDiv,
   FlexForm,
   InputContent,
   ButtonStyle,
 } from "../styled/styledComponent";
+import { useMutation, useQueryClient } from "react-query";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -30,44 +31,41 @@ function SignUp() {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    if (!nickname.length || !email.length || !password.length) {
+    if (!nickname || !email || !password) {
       alert("닉네임, 이메일, 비밀번호 모두 입력해주세요");
-      setNickname("");
-      setEmail("");
-      setPassword("");
-      setCheckPassword("");
       return;
     }
 
     if (password !== checkPassword) {
       alert("비밀번호와 비밀번호 확인 값이 다릅니다");
-      setPassword("");
-      setCheckPassword("");
       return;
     }
 
-    if (email.includes("@") !== true) {
-      alert("이메일을 알 맞게 입력해주세요.");
-      setEmail("");
+    if (!email.includes("@")) {
+      alert("이메일을 알맞게 입력해주세요.");
       return;
     }
-
-    try {
-      const response = await axios.post("http://localhost:4000/signup", {
-        // !signup으로 바꾸기
-        nickname,
-        email,
-        password,
-      });
-
-      console.log("회원가입 성공", response.data);
-      alert("회원가입 완료");
-      navigate("/login");
-    } catch (error) {
-      console.log("회원가입 실패", error);
-      alert(error.response.data.message);
-    }
+    mutation.mutate({ nickname, email, password });
   };
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(postSignup, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("signup");
+      console.log("성공하셨습니다.");
+      navigate("/login");
+    },
+  });
+
+  // const { isLoading, isError, data } = useQuery("signup", postSignup);
+  // console.log(data);
+
+  // if (isLoading) {
+  //   return <h1>로딩 중입니다.</h1>;
+  // }
+  // if (isError) {
+  //   return <h1>에러가 발생했습니다.</h1>;
+  // }
 
   return (
     <>
@@ -98,7 +96,10 @@ function SignUp() {
             value={checkPassword}
             onChange={setPwOnChangeHandler}
           />
-          <ButtonStyle back-color={"#4E61FF"}>회원가입 하기</ButtonStyle>
+
+          <ButtonStyle back-color={"#4E61FF"} type="submit">
+            회원가입 하기
+          </ButtonStyle>
           <ButtonStyle
             onClick={() => {
               navigate("/login");
