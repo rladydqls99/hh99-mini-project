@@ -25,10 +25,14 @@ const deleteComments = async (comentsID) => {
 
 // comment 수정
 const patchComments = async ({ commentsID, updateComments }) => {
-  await axios.patch(
-    `${process.env.REACT_APP_SERVER_URL}/comments/${commentsID}`,
-    updateComments
-  );
+  try {
+    await axios.patch(
+      `${process.env.REACT_APP_SERVER_URL}/comments/${commentsID}`,
+      { comment: updateComments }
+    );
+  } catch (error) {
+    console.log("error 발생", error);
+  }
 };
 
 export { getComments, deleteComments, patchComments };
