@@ -8,7 +8,7 @@ import { useMutation, useQueryClient } from "react-query";
 
 function Login() {
   useEffect(() => {
-    const token = getCookie();
+    const token = getCookie("token");
     if (token) {
       navigate("/");
     }
@@ -47,7 +47,6 @@ function Login() {
     onSuccess: () => {
       queryClient.invalidateQueries("login");
       console.log("mutation 성공하셨습니다.");
-      // navigate("/");
     },
     onError: () => {
       queryClient.invalidateQueries("login");
