@@ -34,12 +34,12 @@
   "comments": [
     {
       "id": 1,
-      "comment": "복지 좋음",
+      "comment": "asdasdasd",
       "detailid": 1234
     },
     {
       "id": 3,
-      "comment": "사장님 착함",
+      "comment": "사장님 착함asdasd",
       "detailid": 1234
     },
     {
@@ -68,94 +68,6 @@
       "email": "rladydqls92@naver.com",
       "password": "asdasd",
       "id": 3
-    },
-    {
-      "email": {
-        "email": "seo12@",
-        "password": "naver"
-      },
-      "id": 4
-    },
-    {
-      "email": {
-        "email": "seo12@asd.com",
-        "password": "naverafsdsd"
-      },
-      "id": 5
-    },
-    {
-      "email": {
-        "email": "seo12@asd.com",
-        "password": "naverafsdsd"
-      },
-      "id": 6
-    },
-    {
-      "email": {
-        "email": "fsd@",
-        "password": "fsd"
-      },
-      "id": 7
-    },
-    {
-      "email": "fsd@",
-      "password": "fsd",
-      "id": 8
-    },
-    {
-      "email": "fsd@",
-      "password": "fsd",
-      "id": 9
-    },
-    {
-      "email": "fsd@naver.com",
-      "password": "fsdsf",
-      "id": 10
-    },
-    {
-      "email": "ds@",
-      "password": "sfdf",
-      "id": 11
-    },
-    {
-      "email": "rladydqls99@naver.com",
-      "password": "1234",
-      "id": 12
-    },
-    {
-      "email": "rladydqls99@naver.com",
-      "password": "1234",
-      "id": 13
-    },
-    {
-      "email": "rladydqls99@naver.com",
-      "password": "1234",
-      "id": 14
-    },
-    {
-      "email": "rladydqls99@naver.com",
-      "password": "1234",
-      "id": 15
-    },
-    {
-      "email": "afd@",
-      "password": "1233",
-      "id": 16
-    },
-    {
-      "email": "afd@",
-      "password": "1233",
-      "id": 17
-    },
-    {
-      "email": "afd@",
-      "password": "1233",
-      "id": 18
-    },
-    {
-      "email": "sfd@",
-      "password": "1234",
-      "id": 19
     }
   ],
   "signup": [
