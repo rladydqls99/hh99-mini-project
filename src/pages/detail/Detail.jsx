@@ -4,7 +4,8 @@ import { useLocation, useParams } from "react-router-dom";
 import { deleteComments, getComments, patchComments } from "../../api/comments";
 import { Container, StyledCommentsDiv, StyledComment } from "./styles";
 import { ModalSetUp, ModalFlex } from "./Modal";
-import Comment from "./Comment"; // 새로운 Comment 컴포넌트를 임포트합니다.
+import Comment from "./Comment";
+import { useState } from "react";
 
 function Detail() {
   // 전역으로 사용할 것들
@@ -45,6 +46,36 @@ function Detail() {
   };
   // ----------------------------------------------------------------
 
+  // 프로필 모달 관리
+  const Modal = () => {
+    return (
+      <>
+        <div>닉네임</div>
+        <div>이메일</div>
+      </>
+    );
+  };
+
+  // 각 댓글의 모달 열림 상태를 관리하는 배열
+  const [modalOpenStates, setModalOpenStates] = useState(
+    data?.map(() => false) || []
+  );
+
+  // 모달 열기 함수
+  const openModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = true;
+    setModalOpenStates(newModalOpenStates);
+  };
+
+  // 모달 닫기 함수
+  const closeModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = false;
+    setModalOpenStates(newModalOpenStates);
+  };
+  // ------------------------------------------------------
+
   return (
     <>
       <Container>
@@ -55,16 +86,27 @@ function Detail() {
         <StyledCommentsDiv>
           <h1>댓글!!!!!!!</h1>
           <button>댓글 더보기</button>
+          <div>
+            <textarea type="text" placeholder="댓글을 입력해주세요" />
+          </div>
         </StyledCommentsDiv>
         {data &&
           data
             .filter((comment) => {
               return comment.detailid === parseInt(params.id);
             })
-            .map((comment) => (
+            .map((comment, index) => (
               <StyledComment key={comment.id}>
                 <div>
-                  <button>프로필</button>
+                  <button onClick={() => openModal(index)}>프로필</button>
+                  {modalOpenStates[index] && (
+                    <ModalFlex>
+                      <ModalSetUp>
+                        <Modal />
+                        <button onClick={() => closeModal(index)}>X</button>
+                      </ModalSetUp>
+                    </ModalFlex>
+                  )}
                   <h3>comment Id: {comment.id}</h3>
                 </div>
                 {/* 각 댓글을 Comment 컴포넌트로 대체 */}
