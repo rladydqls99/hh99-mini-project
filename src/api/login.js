@@ -8,8 +8,9 @@ const postLogin = async ({ email, password }) => {
       password,
     });
 
+    const [_, token] = response.data.token.split(" ");
     if (response.status === 200) {
-      setCookie("token", response.data.token, {
+      setCookie("token", token, {
         path: "/",
         secure: true,
         maxAge: 3000,
@@ -19,7 +20,7 @@ const postLogin = async ({ email, password }) => {
     }
   } catch (error) {
     console.error("로그인 실패", error);
-    // alert("이메일 혹은 비밀번호를 확인하세요.");
+    alert("이메일 혹은 비밀번호를 확인하세요.");
   }
 };
 
