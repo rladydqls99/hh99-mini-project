@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const StyledNav = styled.nav`
-  margin-bottom: 30px;
+export const StyledNav = styled.nav`
+  margin-bottom: 0px;
   z-index: 999;
   top: 0;
   right: auto;
@@ -10,14 +10,13 @@ const StyledNav = styled.nav`
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: none;
+  position: fixed;
 `;
 
-const StyledUl = styled.ul`
+export const StyledUl = styled.ul`
   display: flex;
-  margin: 1rem 0;
   background: #fff;
-
   border-radius: 0.28571429rem;
   min-height: 2.42em;
 
@@ -32,5 +31,3 @@ const StyledUl = styled.ul`
     margin-left: auto;
   }
 `;
-
-export { StyledNav, StyledUl };

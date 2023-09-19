@@ -4,6 +4,7 @@ import axios from "axios";
 const getCompany = async () => {
   try {
     const response = await axios.get("http://localhost:4000/company");
+
     return response.data;
   } catch (error) {
     console.log("error 발생했습니다.", error);
