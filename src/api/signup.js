@@ -7,7 +7,6 @@ const postSignup = async ({ nickname, email, password }) => {
       email,
       password,
     });
-    console.log(nickname);
 
     console.log("회원가입 성공", response);
   } catch (error) {
