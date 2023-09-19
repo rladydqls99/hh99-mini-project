@@ -33,7 +33,7 @@ function Login() {
   };
 
   const requestLogin = async (e) => {
-    e.preventDefault(); // 폼 제출 이벤트 기본 동작 막기
+    e.preventDefault();
 
     if (!email.length || !password.length) {
       alert("이메일과 비밀번호 모두 입력해주세요");

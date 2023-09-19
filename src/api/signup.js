@@ -2,7 +2,7 @@ import axios from "axios";
 
 const postSignup = async ({ nickname, email, password }) => {
   try {
-    const response = await axios.post("http://localhost:4000/signup", {
+    const response = await axios.post("http://3.36.132.42:8080/api/signup", {
       nickname,
       email,
       password,
