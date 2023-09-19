@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import {
   StyledDiv,
   StyledInput,
-  StyledUl,
   Container,
   StyledBox,
   SideDiv,
@@ -44,21 +43,14 @@ function Main() {
   return (
     <>
       <StyledDiv>
-        <StyledInput
-          value={searchCompany}
-          onChange={searchOnChange}
-          placeholder="기업 정보를 검색해보세요."
-        ></StyledInput>
-        <Icon>
-          <Magnifier />
-        </Icon>
+        <StyledInput>
+          <Icon>
+            <Magnifier />
+          </Icon>
+          <input type="text" placeholder="검색어를 입력하세요" />
+        </StyledInput>
+        <Icon></Icon>
       </StyledDiv>
-      <div>
-        <StyledUl>
-          <li>직종</li>
-          <li>근무지역</li>
-        </StyledUl>
-      </div>
       <OuterContainer>
         <Container>
           {data?.map((company) => {

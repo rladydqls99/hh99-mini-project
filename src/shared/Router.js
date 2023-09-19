@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "../pages/main/Main";
 import Header from "../pages/header/Header";
 import Detail from "../pages/detail/Detail";
-import SignUp from "../pages/SignUp";
-import Login from "../pages/Login";
+import SignUp from "../pages/authentication/SignUp";
+import Login from "../pages/authentication/Login";
 import Mypage from "../pages/Mypage";
 
 const Router = () => {

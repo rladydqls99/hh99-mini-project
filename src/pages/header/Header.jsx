@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { StyledNav, StyledUl } from "./styles";
 
 function Header() {
+  // removeCookie
   return (
     <>
       <StyledNav>

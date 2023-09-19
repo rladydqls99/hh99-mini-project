@@ -3,9 +3,7 @@ import axios from "axios";
 // comments 리스트 가져오기
 const getComments = async () => {
   try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_SERVER_URL}/comments`
-    );
+    const response = await axios.get("http://3.36.132.42:8080/api/comment");
     return response.data;
   } catch (error) {
     console.log("error 발생", error);

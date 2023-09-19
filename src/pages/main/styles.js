@@ -4,39 +4,28 @@ export const StyledDiv = styled.div`
   display: flex;
   justify-content: center; /*수평 가운데 정렬*/
   align-items: center; /* 수직 가운데 정렬 */
-  border-bottom: 1px solid gray;
+
   padding-bottom: 30px;
   gap: 10px;
 `;
 
-export const StyledInput = styled.input`
+export const StyledInput = styled.div`
   border: 1px solid blue;
   border-radius: 5px;
   font-size: 20px;
   margin-top: 100px;
-  padding-inline-start: 30px;
-  position: relative;
-  width: 70%;
+  padding-inline-start: 10px;
+  width: 60%;
   height: 40px;
-`;
-
-export const StyledUl = styled.ul`
   display: flex;
-  background: #fff;
-  border-radius: 0.28571429rem;
-  min-height: 2.42em;
-  max-width: 1170px;
-  margin: 30px auto 30px auto;
+  align-items: center;
+  position: relative; /* 추가: 아이콘 위치 설정을 위해 상대 위치(relative)로 변경 */
 
-  li {
-    flex: 0 0 auto;
-    list-style: none;
-    padding: 0.71em 1.14285714em;
-
-    cursor: pointer;
-  }
-  .mypage {
-    margin-left: auto;
+  input {
+    border: none;
+    width: 90%;
+    height: 70%;
+    outline: none;
   }
 `;
 
@@ -97,6 +86,7 @@ export const SideDiv = styled.div`
 `;
 
 export const Icon = styled.div`
-  position: absotlute;
-  margin-top: 90px;
+  position: absolute;
+  top: 9px; /* 원하는 위치로 조정 */
+  left: 92%; /* 원하는 위치로 조정 */
 `;

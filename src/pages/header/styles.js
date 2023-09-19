@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledNav = styled.nav`
   margin-bottom: 0px;
-  z-index: 999;
+  z-index: 1;
   top: 0;
   right: auto;
   bottom: auto;
@@ -12,11 +12,14 @@ export const StyledNav = styled.nav`
   border: none;
   border-bottom: none;
   position: fixed;
+  height: 70px;
+
+  border-bottom: 1px solid gray;
+  background-color: #fff;
 `;
 
 export const StyledUl = styled.ul`
   display: flex;
-  background: #fff;
   border-radius: 0.28571429rem;
   min-height: 2.42em;
 
@@ -29,5 +32,8 @@ export const StyledUl = styled.ul`
   }
   .mypage {
     margin-left: auto;
+  }
+  button {
+    margin-right: 40px;
   }
 `;
