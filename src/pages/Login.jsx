@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { getCookie, setCookie } from "../cookies/cookies";
+import { getCookie } from "../cookies/cookies";
 import { postLogin } from "../api/login";
 
 import {
@@ -10,6 +9,7 @@ import {
   InputContent,
   ButtonStyle,
 } from "../styled/styledComponent";
+import { useMutation, useQueryClient } from "react-query";
 
 function Login() {
   useEffect(() => {
@@ -44,30 +44,21 @@ function Login() {
       alert("이메일을 올바르게 입력해주세요.");
       return;
     }
-    try {
-      const response = await axios.post("http://localhost:4000/login", {
-        email,
-        password,
-      });
-
-      if (response.status === 201) {
-        setCookie("token", response.data.token, {
-          path: "/",
-          secure: true,
-          maxAge: 3000,
-        });
-
-        setEmail("");
-        setPassword("");
-
-        alert("로그인 되었습니다.");
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("로그인 실패", error);
-      alert("이메일 혹은 비밀번호를 확인하세요.");
-    }
+    mutation.mutate({ email, password });
   };
+
+  const queryClient = useQueryClient();
+  const mutation = useMutation(postLogin, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("login");
+      console.log("mutation 성공하셨습니다.");
+      navigate("/");
+    },
+    onError: () => {
+      queryClient.invalidateQueries("login");
+      console.log("mutation 실패하셨습니다.");
+    },
+  });
 
   return (
     <ContainerDiv>

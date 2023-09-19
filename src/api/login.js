@@ -1,10 +1,7 @@
 import axios from "axios";
 import { setCookie } from "../cookies/cookies";
-import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate;
-
-const postLogin = async (email, password, setEmail, setPassword) => {
+const postLogin = async ({ email, password }) => {
   try {
     const response = await axios.post("http://localhost:4000/login", {
       email,
@@ -18,15 +15,11 @@ const postLogin = async (email, password, setEmail, setPassword) => {
         maxAge: 3000,
       });
 
-      setEmail("");
-      setPassword("");
-
       alert("로그인 되었습니다.");
-      navigate("/");
     }
   } catch (error) {
     console.error("로그인 실패", error);
-    alert("이메일 혹은 비밀번호를 확인하세요.");
+    // alert("이메일 혹은 비밀번호를 확인하세요.");
   }
 };
 
