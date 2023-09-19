@@ -3,7 +3,7 @@ import { setCookie } from "../cookies/cookies";
 
 const postLogin = async ({ email, password }) => {
   try {
-    const response = await axios.post("http://localhost:4000/login", {
+    const response = await axios.post("http://3.36.132.42:8080/api/login", {
       email,
       password,
     });
