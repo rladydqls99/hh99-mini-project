@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { postSignup, createUser } from "../api/signup";
-import {
-  ContainerDiv,
-  FlexForm,
-  InputContent,
-  ButtonStyle,
-} from "../styled/styledComponent";
+import { postSignup } from "../../api/signup";
+import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 
 function SignUp() {

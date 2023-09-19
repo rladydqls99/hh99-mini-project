@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie } from "../cookies/cookies";
-import { postLogin } from "../api/login";
+import { getCookie } from "../../cookies/cookies";
+import { postLogin } from "../../api/login";
 
-import {
-  ContainerDiv,
-  FlexForm,
-  InputContent,
-  ButtonStyle,
-} from "../styled/styledComponent";
+import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 
 function Login() {
