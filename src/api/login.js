@@ -1,22 +1,15 @@
 import axios from "axios";
-import { setCookie } from "../cookies/cookies";
+import { getCookie, setCookie } from "../cookies/cookies";
 
 const postLogin = async ({ email, password }) => {
   try {
-    const response = await axios.post(
-      "http://3.36.132.42:8080/api/login",
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await axios.post("http://3.36.132.42:8080/api/login", {
+      email,
+      password,
+    });
 
     if (response.status === 200) {
-      const [_, token] = response.data.token.split(" ");
-      setCookie("token", token, {
+      setCookie("token", response.data.token, {
         path: "/",
         secure: true,
         maxAge: 3000,
