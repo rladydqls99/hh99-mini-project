@@ -51,11 +51,11 @@ function Detail() {
       console.log("patch mutation error", error);
     },
   });
-  // ----------------------------------------------------------------
 
   const patchCommentsHandler = (commentsID, updateComments) => {
     patchMutation.mutate({ commentsID, updateComments });
   };
+  // ----------------------------------------------------------------
 
   // 댓글 삭제하기
   const deleteMutation = useMutation(deleteComments, {
@@ -75,31 +75,27 @@ function Detail() {
   // ----------------------------------------------------------------
 
   // 프로필 모달 관리
-  const Modal = ({ commentId }) => {
+  const Modal = ({ commentId, memberId }) => {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
-    const { userid } = useParams();
-    console.log(userid);
 
     useEffect(() => {
       const fetchData = async () => {
         try {
           const { data } = await axios.get(
-            `http://3.36.132.42:8080/mypage/${userid}`
+            `http://3.36.132.42:8080/mypage/${memberId}`
           );
+          console.log(data.email);
+          console.log(data.nickname);
 
-          const userInfo = data.find((user) => user.id === commentId);
-
-          if (userInfo) {
-            setNickname(userInfo.nickname);
-            setEmail(userInfo.email);
-          }
+          setNickname(data.nickname);
+          setEmail(data.email);
         } catch (error) {
           console.error(error);
         }
       };
       fetchData();
-    }, [commentId, userid]);
+    }, [commentId, memberId]);
 
     return (
       <>
@@ -137,7 +133,7 @@ function Detail() {
       </Container>
       <Container>
         <StyledCommentsDiv>
-          <h1>댓글!!!!!!!</h1>
+          <h1>댓글</h1>
           <div>
             <textarea
               value={comments}
@@ -162,7 +158,10 @@ function Detail() {
                   {modalOpenStates[index] && (
                     <ModalFlex>
                       <ModalSetUp>
-                        <Modal commentId={comment.id} />
+                        <Modal
+                          commentId={comment.id}
+                          memberId={comment.memberId}
+                        />
                         <button onClick={() => closeModal(index)}>X</button>
                       </ModalSetUp>
                     </ModalFlex>
