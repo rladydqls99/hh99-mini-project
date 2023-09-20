@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   deleteComments,
   getComments,
@@ -8,9 +8,9 @@ import {
   addComments,
 } from "../../api/comments";
 import { Container, StyledCommentsDiv, StyledComment } from "./styles";
-import { ModalSetUp, ModalFlex } from "./Modal";
+import { ModalSetUp, ModalFlex } from "./modalstyle";
 import Comment from "./Comment";
-import { useState } from "react";
+import axios from "axios";
 
 function Detail() {
   // 전역으로 사용할 것들
@@ -37,6 +37,7 @@ function Detail() {
 
   const addCommentsHandler = (detailId, newComments) => {
     addMutation.mutate({ detailId, newComments });
+
     setComments("");
   };
   // ----------------------------------------------------------------
@@ -74,11 +75,32 @@ function Detail() {
   // ----------------------------------------------------------------
 
   // 프로필 모달 관리
-  const Modal = (commentID) => {
+  const Modal = ({ commentId, memberId }) => {
+    const [nickname, setNickname] = useState("");
+    const [email, setEmail] = useState("");
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const { data } = await axios.get(
+            `http://3.36.132.42:8080/mypage/${memberId}`
+          );
+          console.log(data.email);
+          console.log(data.nickname);
+
+          setNickname(data.nickname);
+          setEmail(data.email);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+    }, [commentId, memberId]);
+
     return (
       <>
-        <div>닉네임</div>
-        <div>이메일</div>
+        <div>닉네임: {nickname}</div>
+        <div>이메일: {email}</div>
       </>
     );
   };
@@ -111,7 +133,7 @@ function Detail() {
       </Container>
       <Container>
         <StyledCommentsDiv>
-          <h1>댓글!!!!!!!</h1>
+          <h1>댓글</h1>
           <div>
             <textarea
               value={comments}
@@ -136,7 +158,10 @@ function Detail() {
                   {modalOpenStates[index] && (
                     <ModalFlex>
                       <ModalSetUp>
-                        <Modal commentID={comment.id} />
+                        <Modal
+                          commentId={comment.id}
+                          memberId={comment.memberId}
+                        />
                         <button onClick={() => closeModal(index)}>X</button>
                       </ModalSetUp>
                     </ModalFlex>

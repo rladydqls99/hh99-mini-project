@@ -13,6 +13,7 @@ function Header() {
     if (!login) {
       setLogin(false);
       removeCookie("token");
+
       navigate("/login");
     } else {
       navigate("/login");

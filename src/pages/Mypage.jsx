@@ -1,15 +1,15 @@
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
-// import { ContainerDiv, IconBox, ContentBox } from "./autentication/styles";
+// import { ContainerDiv, IconBox, ContentBox } from "../styled/styledComponent";
 
-// function Mypage() {
-//   const [myContent, setMyContent] = useState([]);
-//   const myData = async () => {
-//     const { data } = await axios.get("http://localhost:4000/users");
-//     setMyContent(data);
-//   };
+// // function Mypage() {
+// //   const [myContent, setMyContent] = useState([]);
+// //   const myData = async () => {
+// //     const { data } = await axios.get("http://localhost:4000/users");
+// //     setMyContent(data);
+// //   };
 
-//   useEffect(() => {
+// //   useEffect(() => {
 //     myData();
 //   }, []);
 

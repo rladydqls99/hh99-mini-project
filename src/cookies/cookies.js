@@ -13,3 +13,5 @@ export const getCookie = (name) => {
 export const removeCookie = (name) => {
   return cookies.remove(name);
 };
+
+// name: 쿠키 이름, value: 쿠키에 저장할 값, option: 쿠키에 대한 추가 옵션 설정(expires, path, domain)
