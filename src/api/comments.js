@@ -1,12 +1,10 @@
 import axios from "axios";
+import { getCookie } from "../cookies/cookies";
 
 // comments 리스트 가져오기
-const getComments = async (companyid) => {
-  console.log(typeof companyid);
-  const url = `http://3.36.132.42:8080/api/company/1234/comment`;
-  console.log(url);
+const getComments = async () => {
   try {
-    const response = await axios.get(url);
+    const response = await axios.get(`http://3.36.132.42:8080/api/comment`);
     return response.data;
   } catch (error) {
     console.log("error 발생", error);
@@ -14,10 +12,20 @@ const getComments = async (companyid) => {
 };
 
 // 댓글 추가하기
-const addComments = async ({ newComment, detailId }) => {
-  console.log(detailId);
+const addComments = async (props) => {
+  const detailId = props.detailId;
+  const newComment = props.newComments;
+  console.log(typeof newComment);
   try {
-    await axios.post(`http://3.36.132.42:8080/comment/${detailId}`, newComment);
+    await axios.post(`http://3.36.132.42:8080/api/comment`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        detailid: parseInt(detailId),
+        comment: newComment,
+      },
+    });
   } catch (error) {
     console.log("comments 추가 중 에러 발생", error);
   }

@@ -35,7 +35,7 @@ function Main() {
   const navigate = useNavigate();
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
-      state: { companyName, location, companyId },
+      state: { companyName, location },
     });
   };
 

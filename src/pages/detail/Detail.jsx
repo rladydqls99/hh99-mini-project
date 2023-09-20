@@ -19,20 +19,6 @@ function Detail() {
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
 
-  // 댓글 불러오기
-  const getCommentMutation = useMutation(getComments, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("comments");
-    },
-    onError: (error) => {
-      console.log("getComment mutation error", error);
-    },
-  });
-
-  useEffect(() => {
-    getCommentMutation.mutate(params.id);
-  }, []);
-
   // 댓글 추가하기
   const [comments, setComments] = useState("");
 
@@ -49,8 +35,8 @@ function Detail() {
     },
   });
 
-  const addCommentsHandler = (detailId, comments) => {
-    addMutation.mutate({ detailId, comments });
+  const addCommentsHandler = (detailId, newComments) => {
+    addMutation.mutate({ detailId, newComments });
   };
   // ----------------------------------------------------------------
 
