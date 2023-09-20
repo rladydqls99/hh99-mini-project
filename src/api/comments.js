@@ -33,6 +33,7 @@ const addComments = async (props) => {
     alert("댓글이 추가되었습니다.");
   } catch (error) {
     console.log("comments 추가 중 에러 발생", error);
+    alert("로그인이 필요한 서비스입니다.");
   }
 };
 
