@@ -18,8 +18,8 @@ const Router = () => {
             <Route path="login" element={<Login />} />
             <Route path="/" element={<Main />}></Route>
             <Route path="/detail/:id" element={<Detail />}></Route>
+            <Route path="mypage" element={<Mypage />} />
           </Route>
-          <Route path="mypage" element={<Mypage />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

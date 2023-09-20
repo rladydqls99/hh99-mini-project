@@ -8,9 +8,8 @@ const postLogin = async ({ email, password }) => {
       password,
     });
 
-    const [_, token] = response.data.token.split(" ");
     if (response.status === 200) {
-      setCookie("token", token, {
+      setCookie("token", response.data.token, {
         path: "/",
         secure: true,
         maxAge: 3000,

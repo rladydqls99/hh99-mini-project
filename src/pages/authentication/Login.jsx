@@ -47,6 +47,7 @@ function Login() {
     onSuccess: () => {
       queryClient.invalidateQueries("login");
       console.log("mutation 성공하셨습니다.");
+      navigate("/");
     },
     onError: () => {
       queryClient.invalidateQueries("login");

@@ -10,7 +10,6 @@ import {
   OuterContainer,
   LogoImage,
   Icon,
-  InputBox,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { Magnifier } from "../../icons/icon";
@@ -36,7 +35,7 @@ function Main() {
   const navigate = useNavigate();
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
-      state: { companyName, location },
+      state: { companyName, location, companyId },
     });
   };
 
@@ -57,11 +56,7 @@ function Main() {
             return (
               <StyledBox
                 onClick={() =>
-                  goDetail(
-                    company.detailid,
-                    company.companyName,
-                    company.location
-                  )
+                  goDetail(company.id, company.companyName, company.location)
                 }
                 key={company.id}
               >
