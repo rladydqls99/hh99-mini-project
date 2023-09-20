@@ -145,6 +145,7 @@ function Detail() {
                 </div>
                 {/* 각 댓글을 Comment 컴포넌트로 대체 */}
                 <Comment
+                  nickname={comment.nickname}
                   comment={comment.comment}
                   onEdit={(editedComment) =>
                     patchCommentsHandler(comment.id, editedComment)
