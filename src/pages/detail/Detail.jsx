@@ -37,6 +37,8 @@ function Detail() {
 
   const addCommentsHandler = (detailId, newComments) => {
     addMutation.mutate({ detailId, newComments });
+
+    setComments("");
   };
   // ----------------------------------------------------------------
 
