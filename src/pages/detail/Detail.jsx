@@ -50,11 +50,11 @@ function Detail() {
       console.log("patch mutation error", error);
     },
   });
-  // ----------------------------------------------------------------
 
   const patchCommentsHandler = (commentsID, updateComments) => {
     patchMutation.mutate({ commentsID, updateComments });
   };
+  // ----------------------------------------------------------------
 
   // 댓글 삭제하기
   const deleteMutation = useMutation(deleteComments, {
