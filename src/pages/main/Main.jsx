@@ -36,7 +36,7 @@ function Main() {
 
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
-      state: { companyName, location },
+      state: { companyName, location, companyId },
     });
   };
 
@@ -58,11 +58,7 @@ function Main() {
             return (
               <StyledBox
                 onClick={() =>
-                  goDetail(
-                    company.detailid,
-                    company.companyName,
-                    company.location
-                  )
+                  goDetail(company.id, company.companyName, company.location)
                 }
                 key={company.id}
               >

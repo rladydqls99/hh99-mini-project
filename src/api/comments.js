@@ -1,15 +1,25 @@
 import axios from "axios";
 
 // comments 리스트 가져오기
-const getComments = async () => {
+const getComments = async (companyid) => {
+  console.log(typeof companyid);
+  const url = `http://3.36.132.42:8080/api/company/${companyid}/comment`;
+  console.log(url);
   try {
-    const response = await axios.get(
-      // "http://3.36.132.42:8080/api/comment"
-      "http://localhost:4000/comments"
-    );
+    const response = await axios.get(url);
     return response.data;
   } catch (error) {
     console.log("error 발생", error);
+  }
+};
+
+// 댓글 추가하기
+const addComments = async ({ newComment, detailId }) => {
+  console.log(detailId);
+  try {
+    await axios.post(`http://3.36.132.42:8080/comment/${detailId}`, newComment);
+  } catch (error) {
+    console.log("comments 추가 중 에러 발생", error);
   }
 };
 
@@ -36,4 +46,4 @@ const patchComments = async ({ commentsID, updateComments }) => {
   }
 };
 
-export { getComments, deleteComments, patchComments };
+export { getComments, deleteComments, patchComments, addComments };
