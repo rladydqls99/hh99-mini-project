@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useParams } from "react-router-dom";
-import { deleteComments, getComments, patchComments } from "../../api/comments";
+import {
+  deleteComments,
+  getComments,
+  patchComments,
+  addComments,
+} from "../../api/comments";
 import { Container, StyledCommentsDiv, StyledComment } from "./styles";
 import { ModalSetUp, ModalFlex } from "./Modal";
 import Comment from "./Comment";
@@ -13,6 +18,41 @@ function Detail() {
   const params = useParams();
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
+
+  // 댓글 불러오기
+  const getCommentMutation = useMutation(getComments, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("comments");
+    },
+    onError: (error) => {
+      console.log("getComment mutation error", error);
+    },
+  });
+
+  useEffect(() => {
+    getCommentMutation.mutate(params.id);
+  }, []);
+
+  // 댓글 추가하기
+  const [comments, setComments] = useState("");
+
+  const onChangeComments = (e) => {
+    setComments(e.target.value);
+  };
+
+  const addMutation = useMutation(addComments, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("comments");
+    },
+    onError: (error) => {
+      console.log("add mutation error", error);
+    },
+  });
+
+  const addCommentsHandler = (detailId, comments) => {
+    addMutation.mutate({ detailId, comments });
+  };
+  // ----------------------------------------------------------------
 
   // 댓글 수정하기
   const patchMutation = useMutation(patchComments, {
@@ -85,9 +125,16 @@ function Detail() {
       <Container>
         <StyledCommentsDiv>
           <h1>댓글!!!!!!!</h1>
-          <button>댓글 더보기</button>
           <div>
-            <textarea type="text" placeholder="댓글을 입력해주세요" />
+            <textarea
+              value={comments}
+              onChange={onChangeComments}
+              type="text"
+              placeholder="댓글을 입력해주세요"
+            />
+            <button onClick={() => addCommentsHandler(params.id, comments)}>
+              댓글 추가하기
+            </button>
           </div>
         </StyledCommentsDiv>
         {data &&
