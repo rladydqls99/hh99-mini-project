@@ -37,6 +37,7 @@ function Detail() {
 
   const addCommentsHandler = (detailId, newComments) => {
     addMutation.mutate({ detailId, newComments });
+    setComments("");
   };
   // ----------------------------------------------------------------
 
@@ -73,7 +74,7 @@ function Detail() {
   // ----------------------------------------------------------------
 
   // 프로필 모달 관리
-  const Modal = () => {
+  const Modal = (commentID) => {
     return (
       <>
         <div>닉네임</div>
@@ -135,7 +136,7 @@ function Detail() {
                   {modalOpenStates[index] && (
                     <ModalFlex>
                       <ModalSetUp>
-                        <Modal />
+                        <Modal commentID={comment.id} />
                         <button onClick={() => closeModal(index)}>X</button>
                       </ModalSetUp>
                     </ModalFlex>
