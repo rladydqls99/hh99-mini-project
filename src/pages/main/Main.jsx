@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Magnifier } from "../../icons/icon";
 
 function Main() {
+  const navigate = useNavigate();
   // 기업 검색하는 검색창 컨트롤
   const [searchCompany, setSearchCompany] = useState("");
   const searchOnChange = (e) => {
@@ -25,14 +26,14 @@ function Main() {
   // DB에 있는 기업 리스트 불러오기
   const { isError, isLoading, data } = useQuery("company", getCompany);
   if (isLoading) {
-    <div>로딩중..</div>;
+    return <div>로딩중..</div>;
   }
   if (isError) {
-    <div>에러발생</div>;
+    return <div>에러발생</div>;
   }
 
   // 기업 박스를 누르면 해당 기업 상세 페이지로 이동
-  const navigate = useNavigate();
+
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
       state: { companyName, location },
@@ -53,6 +54,7 @@ function Main() {
       <OuterContainer>
         <Container>
           {data?.map((company) => {
+            console.log(typeof data);
             return (
               <StyledBox
                 onClick={() =>

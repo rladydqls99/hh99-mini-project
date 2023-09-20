@@ -10,7 +10,6 @@ function Header() {
 
   useEffect(() => {
     const token = getCookie();
-    console.log(token);
     if (token) {
       setLogin(true);
     } else {

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useParams } from "react-router-dom";
 import { deleteComments, getComments, patchComments } from "../../api/comments";
 import { Container, StyledCommentsDiv, StyledComment } from "./styles";
-import { ModalSetUp, ModalFlex } from "./Modal";
+import { ModalSetUp, ModalFlex } from "./modalstyle";
 import Comment from "./Comment";
-import { useState } from "react";
+import axios from "axios";
 
 function Detail() {
   // 전역으로 사용할 것들
@@ -47,11 +47,36 @@ function Detail() {
   // ----------------------------------------------------------------
 
   // 프로필 모달 관리
-  const Modal = () => {
+  const Modal = ({ commentId }) => {
+    console.log(commentId);
+    const [nickname, setNickname] = useState("");
+    const [email, setEmail] = useState("");
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const { data } = await axios.get(
+            // "http://3.36.132.42:8080/mypage/{userid}"
+            "http://localhost:4000/member"
+          );
+
+          const userInfo = data.find((user) => user.id === commentId);
+
+          if (userInfo) {
+            setNickname(userInfo.nickname);
+            setEmail(userInfo.email);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+    }, [commentId]);
+
     return (
       <>
-        <div>닉네임</div>
-        <div>이메일</div>
+        <div>닉네임: {nickname}</div>
+        <div>이메일: {email}</div>
       </>
     );
   };
@@ -102,7 +127,7 @@ function Detail() {
                   {modalOpenStates[index] && (
                     <ModalFlex>
                       <ModalSetUp>
-                        <Modal />
+                        <Modal commentId={comment.id} />
                         <button onClick={() => closeModal(index)}>X</button>
                       </ModalSetUp>
                     </ModalFlex>

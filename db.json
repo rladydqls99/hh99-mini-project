@@ -34,11 +34,11 @@
   "comments": [
     {
       "id": 1,
-      "comment": "asdasdasd",
+      "comment": "asdasdasd안녕ㅎ",
       "detailid": 1234
     },
     {
-      "id": 3,
+      "id": 2,
       "comment": "사장님 착함asdasd",
       "detailid": 1234
     },
@@ -88,6 +88,18 @@
       "email": "afd@n",
       "password": "1234",
       "id": 3
+    }
+  ],
+  "member": [
+    {
+      "id": 1,
+      "nickname": "team2",
+      "email": "team2@naver.com"
+    },
+    {
+      "id": 2,
+      "nickname": "두번째야",
+      "email": "second@naver.com"
     }
   ]
 }

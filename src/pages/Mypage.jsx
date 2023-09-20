@@ -10,23 +10,23 @@
 // //   };
 
 // //   useEffect(() => {
-// //     myData();
-// //   }, []);
+//     myData();
+//   }, []);
 
-// //   return (
-// //     <ContainerDiv>
-// //       <h1>마이 페이지</h1>
-// //       <IconBox></IconBox>
-// //       {myContent.length > 0 ? (
-// //         <>
-// //           <ContentBox>닉네임: {`${myContent[0].nickname}`}</ContentBox>
-// //           <ContentBox>이메일: {`${myContent[0].email}`}</ContentBox>
-// //         </>
-// //       ) : (
-// //         <p>데이터를 불러오는 중입니다...</p>
-// //       )}
-// //     </ContainerDiv>
-// //   );
-// // }
+//   return (
+//     <ContainerDiv>
+//       <h1>마이 페이지</h1>
+//       <IconBox></IconBox>
+//       {myContent.length > 0 ? (
+//         <>
+//           <ContentBox>닉네임: {`${myContent[0].nickname}`}</ContentBox>
+//           <ContentBox>이메일: {`${myContent[0].email}`}</ContentBox>
+//         </>
+//       ) : (
+//         <p>데이터를 불러오는 중입니다...</p>
+//       )}
+//     </ContainerDiv>
+//   );
+// }
 
-// // export default Mypage;
+// export default Mypage;

@@ -3,7 +3,10 @@ import axios from "axios";
 // comments 리스트 가져오기
 const getComments = async () => {
   try {
-    const response = await axios.get("http://3.36.132.42:8080/api/comment");
+    const response = await axios.get(
+      // "http://3.36.132.42:8080/api/comment"
+      "http://localhost:4000/comments"
+    );
     return response.data;
   } catch (error) {
     console.log("error 발생", error);

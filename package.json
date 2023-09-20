@@ -43,5 +43,7 @@
   },
   "devDependencies": {
     "json-server-auth": "^2.1.0"
-  }
+  },
+  "proxy": "http://3.36.132.42:8080"
+
 }
