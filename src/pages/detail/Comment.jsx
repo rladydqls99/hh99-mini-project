@@ -24,6 +24,7 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
     dec = JSON.parse(base64.decode(payload));
   }
   console.log(dec);
+
   // -----------------------------------------------------------------------------
 
   // input 태그 관리
