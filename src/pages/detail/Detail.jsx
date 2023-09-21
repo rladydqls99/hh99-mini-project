@@ -27,6 +27,8 @@ function Detail() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
+  useEffect(() => {}, [params, state]);
+
   // 댓글 추가하기
   const [comments, setComments] = useState("");
 
@@ -52,6 +54,7 @@ function Detail() {
       setComments("");
     }
   };
+
   // ----------------------------------------------------------------
 
   // 댓글 수정하기
