@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   deleteComments,
@@ -7,10 +7,17 @@ import {
   patchComments,
   addComments,
 } from "../../api/comments";
-import { Container, StyledCommentsDiv, StyledComment } from "./styles";
+import {
+  Container,
+  StyledCommentsDiv,
+  StyledComment,
+  BlurDiv,
+  Blur,
+} from "./styles";
 import { ModalSetUp, ModalFlex } from "./modalstyle";
 import Comment from "./Comment";
 import axios from "axios";
+import { getCookie } from "../../cookies/cookies";
 
 function Detail() {
   // 전역으로 사용할 것들
@@ -18,6 +25,7 @@ function Detail() {
   const params = useParams();
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   // 댓글 추가하기
   const [comments, setComments] = useState("");
@@ -125,60 +133,112 @@ function Detail() {
   };
   // ------------------------------------------------------
 
+  // 로그인 안됐을 때 댓글 안보이게 하기
+  const token = getCookie("token");
+
   return (
     <>
       <Container>
         <h1>{state.companyName}</h1>
         <h3>{state.location}</h3>
       </Container>
+      <StyledCommentsDiv>
+        <h1>댓글</h1>
+        <div>
+          <textarea
+            value={comments}
+            onChange={onChangeComments}
+            type="text"
+            placeholder="댓글을 입력해주세요"
+          />
+          <button onClick={() => addCommentsHandler(params.id, comments)}>
+            댓글 추가하기
+          </button>
+        </div>
+      </StyledCommentsDiv>
       <Container>
-        <StyledCommentsDiv>
-          <h1>댓글</h1>
-          <div>
-            <textarea
-              value={comments}
-              onChange={onChangeComments}
-              type="text"
-              placeholder="댓글을 입력해주세요"
-            />
-            <button onClick={() => addCommentsHandler(params.id, comments)}>
-              댓글 추가하기
-            </button>
-          </div>
-        </StyledCommentsDiv>
-        {data &&
-          data
-            .filter((comment) => {
-              return comment.detailid === parseInt(params.id);
-            })
-            .map((comment, index) => (
-              <StyledComment key={comment.id}>
-                <div>
-                  <button onClick={() => openModal(index)}>프로필</button>
-                  {modalOpenStates[index] && (
-                    <ModalFlex>
-                      <ModalSetUp>
-                        <Modal
-                          commentId={comment.id}
-                          memberId={comment.memberId}
-                        />
-                        <button onClick={() => closeModal(index)}>X</button>
-                      </ModalSetUp>
-                    </ModalFlex>
-                  )}
-                  <h3>comment Id: {comment.id}</h3>
-                </div>
-                {/* 각 댓글을 Comment 컴포넌트로 대체 */}
-                <Comment
-                  nickname={comment.nickname}
-                  comment={comment.comment}
-                  onEdit={(editedComment) =>
-                    patchCommentsHandler(comment.id, editedComment)
-                  }
-                  onDelete={() => doRemoveComments(comment.id)}
-                />
-              </StyledComment>
-            ))}
+        {!!token ? (
+          <>
+            {data &&
+              data
+                .filter((comment) => {
+                  return comment.detailid === parseInt(params.id);
+                })
+                .map((comment, index) => (
+                  <StyledComment key={comment.id}>
+                    <div>
+                      <button onClick={() => openModal(index)}>프로필</button>
+                      {modalOpenStates[index] && (
+                        <ModalFlex>
+                          <ModalSetUp>
+                            <Modal
+                              commentId={comment.id}
+                              memberId={comment.memberId}
+                            />
+                            <button onClick={() => closeModal(index)}>X</button>
+                          </ModalSetUp>
+                        </ModalFlex>
+                      )}
+                      <h3>comment Id: {comment.id}</h3>
+                    </div>
+                    {/* 각 댓글을 Comment 컴포넌트로 대체 */}
+                    <Comment
+                      memberId={comment.memberId}
+                      comment={comment.comment}
+                      onEdit={(editedComment) =>
+                        patchCommentsHandler(comment.id, editedComment)
+                      }
+                      onDelete={() => doRemoveComments(comment.id)}
+                    />
+                  </StyledComment>
+                ))}
+          </>
+        ) : (
+          <>
+            <BlurDiv>
+              <Blur>
+                <button onClick={() => navigate("/login")} className="btn">
+                  로그인하고 댓글 보러가기!
+                </button>
+              </Blur>
+              {data &&
+                data
+                  .filter((comment) => {
+                    return comment.detailid === parseInt(params.id);
+                  })
+                  .map((comment, index) => (
+                    <StyledComment key={comment.id}>
+                      <div>
+                        <button onClick={() => openModal(index)}>프로필</button>
+                        {modalOpenStates[index] && (
+                          <ModalFlex>
+                            <ModalSetUp>
+                              <Modal
+                                commentId={comment.id}
+                                memberId={comment.memberId}
+                              />
+                              <button onClick={() => closeModal(index)}>
+                                X
+                              </button>
+                            </ModalSetUp>
+                          </ModalFlex>
+                        )}
+                        <h3>comment Id: {comment.id}</h3>
+                      </div>
+                      {/* 각 댓글을 Comment 컴포넌트로 대체 */}
+                      <Comment
+                        memberId={comment.memberId}
+                        comment={comment.comment}
+                        onEdit={(editedComment) =>
+                          patchCommentsHandler(comment.id, editedComment)
+                        }
+                        onDelete={() => doRemoveComments(comment.id)}
+                      />
+                    </StyledComment>
+                  ))}
+            </BlurDiv>
+          </>
+        )}
       </Container>
     </>
   );
