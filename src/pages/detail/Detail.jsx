@@ -44,9 +44,13 @@ function Detail() {
   });
 
   const addCommentsHandler = (detailId, newComments) => {
-    addMutation.mutate({ detailId, newComments });
+    if (newComments.length === 0) {
+      alert("댓글을 입력해주세요");
+    } else {
+      addMutation.mutate({ detailId, newComments });
 
-    setComments("");
+      setComments("");
+    }
   };
   // ----------------------------------------------------------------
 

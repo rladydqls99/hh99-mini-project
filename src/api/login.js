@@ -1,5 +1,6 @@
 import axios from "axios";
 import { setCookie } from "../cookies/cookies";
+
 const postLogin = async ({ email, password }) => {
   try {
     const response = await axios.post("http://3.36.132.42:8080/api/login", {
@@ -19,6 +20,7 @@ const postLogin = async ({ email, password }) => {
       // 쿠키는 50분 동안 유효(보안 등으로 인해)
 
       alert("로그인 되었습니다.");
+      navigate("/");
     }
   } catch (error) {
     console.error("로그인 실패", error);

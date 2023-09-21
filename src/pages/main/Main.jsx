@@ -15,7 +15,9 @@ import { useNavigate } from "react-router-dom";
 import { Magnifier } from "../../icons/icon";
 
 function Main() {
+  // 공통 사용
   const navigate = useNavigate();
+
   // 기업 검색하는 검색창 컨트롤
   const [searchCompany, setSearchCompany] = useState("");
   const searchOnChange = (e) => {

@@ -35,12 +35,17 @@ function Header() {
       <StyledNav>
         <StyledUl>
           <Link to="/">
-            <li>JobPlanet</li>
+            <li className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              JobPlanet
+            </li>
           </Link>
           <button onClick={onMypageToggleButtonHandler} className="mypage">
             {token ? "마이페이지" : "회원가입"}
           </button>
-          <button onClick={onToggleButtonHandler}>
+          <button
+            className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+            onClick={onToggleButtonHandler}
+          >
             {token ? "로그아웃" : "로그인"}
           </button>
         </StyledUl>

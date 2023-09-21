@@ -45,7 +45,7 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
 
   return (
     <CommentContainer>
-      {dec.member_id === memberId ? ( // dec.nickname과 nickname을 비교하여 같을 경우
+      {dec.member_id === memberId ? (
         isEditMode ? (
           <>
             <CommentInput
@@ -68,7 +68,6 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
           </>
         )
       ) : (
-        // dec.nickname과 nickname이 다를 경우
         <>
           <CommentP>댓글: {comment}</CommentP>
           <CommentButtons>{/* 아무 버튼도 출력하지 않음 */}</CommentButtons>
