@@ -9,18 +9,21 @@ import {
 import { getCookie } from "../../cookies/cookies";
 import base64 from "base-64";
 
-function Comment({ comment, onEdit, onDelete, nickname }) {
+function Comment({ comment, onEdit, onDelete, memberId }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedComment, setEditedComment] = useState(comment);
 
   // 토큰 디코딩
   const token = getCookie("token");
-  // 토큰이 없는 경우(로그인 안 한 경우)
-  if (!token) {
-    return;
+  let dec = "";
+  if (token) {
+    const payload = token.substring(
+      token.indexOf(".") + 1,
+      token.lastIndexOf(".")
+    );
+    dec = JSON.parse(base64.decode(payload));
   }
-  let payload = token.substring(token.indexOf(".") + 1, token.lastIndexOf("."));
-  let dec = JSON.parse(base64.decode(payload));
+  console.log(dec);
 
   // -----------------------------------------------------------------------------
 
@@ -42,7 +45,7 @@ function Comment({ comment, onEdit, onDelete, nickname }) {
 
   return (
     <CommentContainer>
-      {dec.nickname === nickname ? ( // dec.nickname과 nickname을 비교하여 같을 경우
+      {dec.member_id === memberId ? ( // dec.nickname과 nickname을 비교하여 같을 경우
         isEditMode ? (
           <>
             <CommentInput

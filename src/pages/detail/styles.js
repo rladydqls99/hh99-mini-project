@@ -15,6 +15,8 @@ const StyledCommentsDiv = styled.div`
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
+  max-width: 1170px;
+  margin: 30px auto;
 
   h1 {
     font-size: 24px;
@@ -72,4 +74,23 @@ const StyledComment = styled.div`
   }
 `;
 
-export { Container, StyledCommentsDiv, StyledComment };
+const BlurDiv = styled.div`
+  position: relative;
+
+  .btn {
+    display: block; /* 버튼을 블록 레벨 요소로 설정 */
+    margin: 20px auto; /* 가로 중앙 정렬 */
+  }
+`;
+const Blur = styled.div`
+  position: absolute;
+  top: 20;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); /* 흐린 투명 배경 색상 및 투명도 설정 */
+  backdrop-filter: blur(5px); /* 흐림 효과 적용 (원하는 정도로 조정) */
+  z-index: 1; /* 다른 컴포넌트 위에 나타나도록 설정 (원하는 숫자로 조정) */
+`;
+
+export { Container, StyledCommentsDiv, StyledComment, BlurDiv, Blur };
