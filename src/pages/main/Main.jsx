@@ -12,7 +12,6 @@ import {
   Icon,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { Magnifier } from "../../icons/icon";
 
 function Main() {
   // 공통 사용
@@ -46,12 +45,8 @@ function Main() {
     <>
       <StyledDiv>
         <StyledInput>
-          <Icon>
-            <Magnifier />
-          </Icon>
           <input type="text" placeholder="검색어를 입력하세요" />
         </StyledInput>
-        <Icon></Icon>
       </StyledDiv>
       <OuterContainer>
         <Container>
