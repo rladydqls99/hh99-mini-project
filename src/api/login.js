@@ -1,8 +1,6 @@
 import axios from "axios";
 import { setCookie } from "../cookies/cookies";
-import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate;
 const postLogin = async ({ email, password }) => {
   try {
     const response = await axios.post("http://3.36.132.42:8080/api/login", {

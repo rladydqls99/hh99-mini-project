@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie } from "../../cookies/cookies";
+import { getCookie, setCookie } from "../../cookies/cookies";
 import { postLogin } from "../../api/login";
 import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 
 function Login() {
+  const navigate = useNavigate();
+  const token = getCookie("token");
+  const queryClient = useQueryClient();
+
   useEffect(() => {
-    const token = getCookie("token");
     if (token) {
       navigate("/");
     }
   }, []);
-
-  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +42,6 @@ function Login() {
     mutation.mutate({ email, password });
   };
 
-  const queryClient = useQueryClient();
   const mutation = useMutation(postLogin, {
     onSuccess: () => {
       queryClient.invalidateQueries("login");

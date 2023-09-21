@@ -10,6 +10,7 @@ function Header() {
   const navigate = useNavigate();
   const token = getCookie("token");
 
+  // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
     if (!token) {
       removeCookie("token");
@@ -19,8 +20,9 @@ function Header() {
     }
   };
 
+  // 로그인/로그아웃 버튼
   const onToggleButtonHandler = () => {
-    if (token) {
+    if (!login) {
       setLogin(false);
       removeCookie("token");
       navigate("/login");
