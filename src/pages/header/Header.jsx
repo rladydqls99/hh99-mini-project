@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ function Header() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const token = getCookie("token");
+  // console.log("header 토큰", token);
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
@@ -29,6 +30,7 @@ function Header() {
       navigate("/login");
     }
   };
+
   return (
     <>
       <nav
