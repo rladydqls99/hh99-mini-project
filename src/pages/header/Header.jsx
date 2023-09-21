@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { StyledNav, StyledUl } from "./styles";
 import { getCookie, removeCookie } from "../../cookies/cookies";
+import { Link } from "react-router-dom";
 
 function Header() {
   //로그인 상태
@@ -9,11 +10,19 @@ function Header() {
   const navigate = useNavigate();
   const token = getCookie("token");
 
+  const onMypageToggleButtonHandler = () => {
+    if (!token) {
+      removeCookie("token");
+      navigate("/signup");
+    } else {
+      navigate("/mypage");
+    }
+  };
+
   const onToggleButtonHandler = () => {
-    if (!login) {
+    if (token) {
       setLogin(false);
       removeCookie("token");
-
       navigate("/login");
     } else {
       navigate("/login");
@@ -23,9 +32,18 @@ function Header() {
     <>
       <StyledNav>
         <StyledUl>
-          <li>JobPlanet</li>
-          <li className="mypage">마이페이지</li>
-          <button onClick={onToggleButtonHandler}>
+          <Link to="/">
+            <li className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              JobPlanet
+            </li>
+          </Link>
+          <button onClick={onMypageToggleButtonHandler} className="mypage">
+            {token ? "마이페이지" : "회원가입"}
+          </button>
+          <button
+            className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+            onClick={onToggleButtonHandler}
+          >
             {token ? "로그아웃" : "로그인"}
           </button>
         </StyledUl>

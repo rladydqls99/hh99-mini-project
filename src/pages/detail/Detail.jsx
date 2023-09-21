@@ -44,9 +44,13 @@ function Detail() {
   });
 
   const addCommentsHandler = (detailId, newComments) => {
-    addMutation.mutate({ detailId, newComments });
+    if (newComments.length === 0) {
+      alert("댓글을 입력해주세요");
+    } else {
+      addMutation.mutate({ detailId, newComments });
 
-    setComments("");
+      setComments("");
+    }
   };
   // ----------------------------------------------------------------
 
@@ -93,9 +97,6 @@ function Detail() {
           const { data } = await axios.get(
             `http://3.36.132.42:8080/mypage/${memberId}`
           );
-          console.log(data.email);
-          console.log(data.nickname);
-
           setNickname(data.nickname);
           setEmail(data.email);
         } catch (error) {
