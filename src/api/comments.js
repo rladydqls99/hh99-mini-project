@@ -1,7 +1,5 @@
 import axios from "axios";
-import { getCookie } from "../cookies/cookies";
 
-const token = getCookie("token");
 // comments 리스트 가져오기
 const getComments = async () => {
   try {
@@ -16,12 +14,13 @@ const getComments = async () => {
 const addComments = async (props) => {
   const detailId = props.detailId;
   const newComment = props.newComments;
+  const token = props.token;
 
   try {
-    await axios.post(
+    const response = await axios.post(
       `http://3.36.132.42:8080/api/comment`,
       {
-        detailid: detailId,
+        detailid: parseInt(detailId),
         comment: newComment,
       },
       {
@@ -30,6 +29,8 @@ const addComments = async (props) => {
         },
       }
     );
+    console.log(response);
+    console.log(token);
     alert("댓글이 추가되었습니다.");
   } catch (error) {
     console.log("comments 추가 중 에러 발생", error);
@@ -38,7 +39,9 @@ const addComments = async (props) => {
 };
 
 // comment 삭제
-const deleteComments = async (commentID) => {
+const deleteComments = async (props) => {
+  const commentID = props.commentId;
+  const token = props.token;
   try {
     await axios.delete(`http://3.36.132.42:8080/api/comment/${commentID}`, {
       headers: {
@@ -54,6 +57,7 @@ const deleteComments = async (commentID) => {
 const patchComments = async (props) => {
   const commentID = props.commentsID;
   const updateComments = props.updateComments;
+  const token = props.token;
   try {
     await axios.patch(
       `http://3.36.132.42:8080/api/comment/${commentID}`,

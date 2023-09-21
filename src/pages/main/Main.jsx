@@ -56,7 +56,6 @@ function Main() {
       <OuterContainer>
         <Container>
           {data?.map((company) => {
-            console.log(typeof data);
             return (
               <StyledBox
                 onClick={() =>

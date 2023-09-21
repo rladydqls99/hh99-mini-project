@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { StyledNav, StyledUl } from "./styles";
 import { getCookie, removeCookie } from "../../cookies/cookies";
@@ -9,6 +9,7 @@ function Header() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const token = getCookie("token");
+  // console.log("header 토큰", token);
 
   const onMypageToggleButtonHandler = () => {
     if (!token) {
@@ -28,6 +29,7 @@ function Header() {
       navigate("/login");
     }
   };
+
   return (
     <>
       <StyledNav>
