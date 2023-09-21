@@ -9,15 +9,21 @@ import {
 import { getCookie } from "../../cookies/cookies";
 import base64 from "base-64";
 
-function Comment({ comment, onEdit, onDelete, nickname }) {
+function Comment({ comment, onEdit, onDelete, memberId }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedComment, setEditedComment] = useState(comment);
 
   // 토큰 디코딩
   const token = getCookie("token");
-  let payload = token.substring(token.indexOf(".") + 1, token.lastIndexOf("."));
-  let dec = JSON.parse(base64.decode(payload));
-
+  let dec = "";
+  if (token) {
+    const payload = token.substring(
+      token.indexOf(".") + 1,
+      token.lastIndexOf(".")
+    );
+    dec = JSON.parse(base64.decode(payload));
+  }
+  console.log(dec);
   // -----------------------------------------------------------------------------
 
   // input 태그 관리
@@ -38,7 +44,7 @@ function Comment({ comment, onEdit, onDelete, nickname }) {
 
   return (
     <CommentContainer>
-      {dec.nickname === nickname ? ( // dec.nickname과 nickname을 비교하여 같을 경우
+      {dec.member_id === memberId ? ( // dec.nickname과 nickname을 비교하여 같을 경우
         isEditMode ? (
           <>
             <CommentInput
