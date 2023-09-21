@@ -85,9 +85,6 @@ function Detail() {
           const { data } = await axios.get(
             `http://3.36.132.42:8080/mypage/${memberId}`
           );
-          console.log(data.email);
-          console.log(data.nickname);
-
           setNickname(data.nickname);
           setEmail(data.email);
         } catch (error) {

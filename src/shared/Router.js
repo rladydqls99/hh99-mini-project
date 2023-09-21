@@ -6,7 +6,7 @@ import Header from "../pages/header/Header";
 import Detail from "../pages/detail/Detail";
 import SignUp from "../pages/authentication/SignUp";
 import Login from "../pages/authentication/Login";
-import Mypage from "../pages/Mypage";
+import Mypage from "../pages/mypage/Mypage";
 
 const Router = () => {
   return (
@@ -18,7 +18,7 @@ const Router = () => {
             <Route path="login" element={<Login />} />
             <Route path="/" element={<Main />}></Route>
             <Route path="/detail/:id" element={<Detail />}></Route>
-            {/* <Route path="/mypage/:member_id" element={<Mypage />} /> */}
+            <Route path="mypage" element={<Mypage />} />
           </Route>
         </Routes>
       </BrowserRouter>

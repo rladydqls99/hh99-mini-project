@@ -15,6 +15,10 @@ function Comment({ comment, onEdit, onDelete, nickname }) {
 
   // 토큰 디코딩
   const token = getCookie("token");
+  // 토큰이 없는 경우(로그인 안 한 경우)
+  if (!token) {
+    return;
+  }
   let payload = token.substring(token.indexOf(".") + 1, token.lastIndexOf("."));
   let dec = JSON.parse(base64.decode(payload));
 
