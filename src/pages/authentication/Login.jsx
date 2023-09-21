@@ -57,7 +57,9 @@ function Login() {
   return (
     <ContainerDiv>
       <FlexForm onSubmit={requestLogin}>
-        <h1>로그인</h1>
+        <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          로그인
+        </h1>
         <InputContent
           type="text"
           placeholder="이메일"
