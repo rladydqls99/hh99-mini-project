@@ -28,6 +28,8 @@ function Detail() {
   const navigate = useNavigate();
   const token = getCookie("token");
 
+  useEffect(() => {}, [params, state]);
+
   // 댓글 추가하기
   const [comments, setComments] = useState("");
 
@@ -53,6 +55,7 @@ function Detail() {
       setComments("");
     }
   };
+
   // ----------------------------------------------------------------
 
   // 댓글 수정하기

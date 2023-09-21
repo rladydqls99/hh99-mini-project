@@ -9,7 +9,6 @@ import {
   SideDiv,
   OuterContainer,
   LogoImage,
-  Icon,
 } from "./styles";
 import { useNavigate } from "react-router-dom";
 
@@ -44,9 +43,9 @@ function Main() {
   return (
     <>
       <StyledDiv>
-        <StyledInput>
+        {/* <StyledInput>
           <input type="text" placeholder="검색어를 입력하세요" />
-        </StyledInput>
+        </StyledInput> */}
       </StyledDiv>
       <OuterContainer>
         <Container>

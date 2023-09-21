@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie, setCookie } from "../../cookies/cookies";
+import { getCookie } from "../../cookies/cookies";
 import { postLogin } from "../../api/login";
 import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
@@ -39,6 +39,7 @@ function Login() {
       alert("이메일을 올바르게 입력해주세요.");
       return;
     }
+
     mutation.mutate({ email, password });
   };
 

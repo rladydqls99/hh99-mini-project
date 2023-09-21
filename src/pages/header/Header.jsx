@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import { Link } from "react-router-dom";
+import { Navbar, FlexContainer, ButtonToggle } from "./styles";
 
 function Header() {
   //로그인 상태
@@ -12,7 +13,8 @@ function Header() {
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
-    if (!token) {
+    console.log(token);
+    if (token) {
       removeCookie("token");
       navigate("/signup");
     } else {
@@ -22,7 +24,7 @@ function Header() {
 
   // 로그인/로그아웃 버튼
   const onToggleButtonHandler = () => {
-    if (!login) {
+    if (token) {
       setLogin(false);
       removeCookie("token");
       navigate("/login");
@@ -33,36 +35,14 @@ function Header() {
 
   return (
     <>
-      <nav
-        className="relative flex w-full flex-wrap items-center justify-between bg-[#FBFBFB] py-4 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 lg:py-4"
-        data-te-navbar-ref
-      >
-        <div className="flex w-full flex-wrap items-center justify-between px-3">
-          <button
-            className="block border-0 bg-transparent px-2 text-neutral-500 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+      <Navbar>
+        <FlexContainer>
+          <ButtonToggle
             type="button"
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent4"
             aria-controls="navbarSupportedContent4"
             aria-expanded="false"
             aria-label="Toggle navigation"
-          >
-            <span className="[&>svg]:w-7">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-7 w-7"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
-
+          ></ButtonToggle>
           <div
             className="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
             id="navbarSupportedContent4"
@@ -110,8 +90,8 @@ function Header() {
               </button>
             </div>
           </div>
-        </div>
-      </nav>
+        </FlexContainer>
+      </Navbar>
       <Outlet />
     </>
   );
