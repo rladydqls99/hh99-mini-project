@@ -55,6 +55,39 @@ const StyledComment = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
 
+  .info-container {
+    display: flex;
+    min-width: 0;
+    gap: 0.25rem;
+
+    .user-avatar {
+      flex: none;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+    }
+
+    .user-details {
+      flex: auto;
+
+      .user-name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .user-email {
+        margin-top: 0.25rem;
+        font-size: 0.75rem;
+        color: #777;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
   &:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }

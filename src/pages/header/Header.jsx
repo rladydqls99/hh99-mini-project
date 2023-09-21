@@ -9,6 +9,7 @@ function Header() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const token = getCookie("token");
+  // console.log("header 토큰", token);
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
@@ -31,11 +32,6 @@ function Header() {
       navigate("/login");
     }
   };
-
-  useEffect(() => {
-    if (!token) {
-    }
-  }, []);
 
   return (
     <>

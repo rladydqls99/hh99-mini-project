@@ -26,6 +26,7 @@ function Detail() {
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const token = getCookie("token");
 
   useEffect(() => {}, [params, state]);
 
@@ -49,7 +50,7 @@ function Detail() {
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
-      addMutation.mutate({ detailId, newComments });
+      addMutation.mutate({ detailId, newComments, token });
 
       setComments("");
     }
@@ -68,7 +69,7 @@ function Detail() {
   });
 
   const patchCommentsHandler = (commentsID, updateComments) => {
-    patchMutation.mutate({ commentsID, updateComments });
+    patchMutation.mutate({ commentsID, updateComments, token });
   };
   // ----------------------------------------------------------------
 
@@ -84,7 +85,7 @@ function Detail() {
 
   const doRemoveComments = (commentId) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
-      deleteMutation.mutate(commentId);
+      deleteMutation.mutate({ commentId, token });
     }
   };
   // ----------------------------------------------------------------
@@ -137,9 +138,6 @@ function Detail() {
   };
   // ------------------------------------------------------
 
-  // 로그인 안됐을 때 댓글 안보이게 하기
-  const token = getCookie("token");
-
   return (
     <>
       <Container>
@@ -155,7 +153,10 @@ function Detail() {
             type="text"
             placeholder="댓글을 입력해주세요"
           />
-          <button onClick={() => addCommentsHandler(params.id, comments)}>
+          <button
+            type="button"
+            onClick={() => addCommentsHandler(params.id, comments)}
+          >
             댓글 추가하기
           </button>
         </div>

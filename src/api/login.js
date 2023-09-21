@@ -20,6 +20,7 @@ const postLogin = async ({ email, password }) => {
       // 쿠키는 50분 동안 유효(보안 등으로 인해)
 
       alert("로그인 되었습니다.");
+      navigate("/");
     }
   } catch (error) {
     console.error("로그인 실패", error);
