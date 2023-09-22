@@ -96,11 +96,12 @@ function Detail() {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
 
+    console.log(data);
     useEffect(() => {
       const fetchData = async () => {
         try {
           const { data } = await axios.get(
-            `http://3.36.132.42:8080/mypage/${memberId}`
+            `http://3.36.132.42:8080/api/member/${memberId}`
           );
           setNickname(data.nickname);
           setEmail(data.email);
@@ -168,8 +169,9 @@ function Detail() {
             {data &&
               data
                 .filter((comment) => {
-                  return comment.detailid === parseInt(params.id);
+                  return comment.companyId === parseInt(params.id);
                 })
+                .sort((before, after) => after.id - before.id)
                 .map((comment, index) => (
                   <StyledComment key={comment.id}>
                     <div>
@@ -191,6 +193,7 @@ function Detail() {
                     <Comment
                       memberId={comment.memberId}
                       comment={comment.comment}
+                      commentId={comment.id}
                       onEdit={(editedComment) =>
                         patchCommentsHandler(comment.id, editedComment)
                       }
@@ -210,7 +213,7 @@ function Detail() {
               {data &&
                 data
                   .filter((comment) => {
-                    return comment.detailid === parseInt(params.id);
+                    return comment.companyId === parseInt(params.id);
                   })
                   .map((comment, index) => (
                     <StyledComment key={comment.id}>

@@ -4,7 +4,7 @@ import axios from "axios";
 const getCompany = async () => {
   try {
     const response = await axios.get(
-      "http://3.36.132.42:8080/"
+      "http://3.36.132.42:8080/api/company"
       // "http://localhost:4000/company"
     );
     return response.data;

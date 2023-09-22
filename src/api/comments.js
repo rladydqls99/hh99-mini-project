@@ -4,6 +4,7 @@ import axios from "axios";
 const getComments = async () => {
   try {
     const response = await axios.get(`http://3.36.132.42:8080/api/comment`);
+
     return response.data;
   } catch (error) {
     console.log("error 발생", error);
@@ -12,15 +13,14 @@ const getComments = async () => {
 
 // 댓글 추가하기
 const addComments = async (props) => {
-  const detailId = props.detailId;
+  const companyId = props.detailId;
   const newComment = props.newComments;
   const token = props.token;
 
   try {
     const response = await axios.post(
-      `http://3.36.132.42:8080/api/comment`,
+      `http://3.36.132.42:8080/api/company/${companyId}/comment`,
       {
-        detailid: parseInt(detailId),
         comment: newComment,
       },
       {
@@ -29,8 +29,6 @@ const addComments = async (props) => {
         },
       }
     );
-    console.log(response);
-    console.log(token);
     alert("댓글이 추가되었습니다.");
   } catch (error) {
     console.log("comments 추가 중 에러 발생", error);
