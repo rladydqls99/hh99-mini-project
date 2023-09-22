@@ -13,12 +13,15 @@ import {
   FlexEnd,
 } from "./styles";
 
+
+
 function Header() {
   const navigate = useNavigate();
   const token = getCookie("token");
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
+
     if (!token) {
       navigate("/signup");
     } else {
@@ -39,24 +42,17 @@ function Header() {
     <>
       <Navbar>
         <FlexContainer>
-          <ButtonToggle></ButtonToggle>
-          <VisibleContainer>
-            <NavList>
-              <NavItem>
-                <NavLink>
                   <Link to="/" style={{ fontWeight: "bold" }}>
                     JobPlanet
                   </Link>
                 </NavLink>
               </NavItem>
             </NavList>
-
             <FlexEnd>
               <ButtonToggle onClick={onMypageToggleButtonHandler}>
                 {token ? "마이페이지" : "회원가입"}
               </ButtonToggle>
               <ButtonToggle onClick={onToggleButtonHandler}>
-                {token ? "로그아웃" : "로그인"}
               </ButtonToggle>
             </FlexEnd>
           </VisibleContainer>

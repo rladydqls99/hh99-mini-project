@@ -29,6 +29,8 @@ function Detail() {
 
   useEffect(() => {}, [params, state]);
 
+  useEffect(() => {}, [params, state]);
+
   // 댓글 추가하기
   const [comments, setComments] = useState("");
 
