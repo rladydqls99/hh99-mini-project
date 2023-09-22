@@ -82,12 +82,12 @@ function Login() {
         >
           회원가입 하기
         </ButtonStyle>
-        <button
+        {/* <button
           id="login-kakao-btn"
-          onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:8080/api/user/kakao/callback&response_type=code'"
+          onClick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:8080/api/user/kakao/callback&response_type=code'"
         >
           카카오로 로그인하기
-        </button>
+        </button> */}
       </FlexForm>
     </ContainerDiv>
   );

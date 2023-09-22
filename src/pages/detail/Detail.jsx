@@ -14,8 +14,8 @@ import {
   BlurDiv,
   Blur,
 } from "./styles";
-import { ModalSetUp, ModalFlex } from "./modalstyle";
-import Comment from "./Comment";
+import { ModalSetUp, ModalFlex } from "./modal/modalstyle";
+import Comment from "./comment/Comment";
 import axios from "axios";
 import { getCookie } from "../../cookies/cookies";
 
@@ -26,7 +26,8 @@ function Detail() {
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const token = getCookie("token");
+
+  useEffect(() => {}, [params, state]);
 
   useEffect(() => {}, [params, state]);
 
@@ -50,7 +51,7 @@ function Detail() {
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
-      addMutation.mutate({ detailId, newComments, token });
+      addMutation.mutate({ detailId, newComments });
 
       setComments("");
     }
@@ -69,7 +70,7 @@ function Detail() {
   });
 
   const patchCommentsHandler = (commentsID, updateComments) => {
-    patchMutation.mutate({ commentsID, updateComments, token });
+    patchMutation.mutate({ commentsID, updateComments });
   };
   // ----------------------------------------------------------------
 
@@ -85,7 +86,7 @@ function Detail() {
 
   const doRemoveComments = (commentId) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
-      deleteMutation.mutate({ commentId, token });
+      deleteMutation.mutate(commentId);
     }
   };
   // ----------------------------------------------------------------
@@ -138,6 +139,9 @@ function Detail() {
   };
   // ------------------------------------------------------
 
+  // 로그인 안됐을 때 댓글 안보이게 하기
+  const token = getCookie("token");
+
   return (
     <>
       <Container>
@@ -153,10 +157,7 @@ function Detail() {
             type="text"
             placeholder="댓글을 입력해주세요"
           />
-          <button
-            type="button"
-            onClick={() => addCommentsHandler(params.id, comments)}
-          >
+          <button onClick={() => addCommentsHandler(params.id, comments)}>
             댓글 추가하기
           </button>
         </div>
