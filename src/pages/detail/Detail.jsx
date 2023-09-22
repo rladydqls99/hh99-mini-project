@@ -91,12 +91,11 @@ function Detail() {
   };
   // ----------------------------------------------------------------
 
-  // 프로필 모달 관리
+  // !프로필 모달 관리
   const Modal = ({ commentId, memberId }) => {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
 
-    console.log(data);
     useEffect(() => {
       const fetchData = async () => {
         try {
