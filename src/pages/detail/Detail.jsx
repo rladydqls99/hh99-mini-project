@@ -14,8 +14,8 @@ import {
   BlurDiv,
   Blur,
 } from "./styles";
-import { ModalSetUp, ModalFlex } from "./modalstyle";
-import Comment from "./Comment";
+import { ModalSetUp, ModalFlex } from "./modal/modalstyle";
+import Comment from "./comment/Comment";
 import axios from "axios";
 import { getCookie } from "../../cookies/cookies";
 
@@ -53,6 +53,7 @@ function Detail() {
       setComments("");
     }
   };
+
   // ----------------------------------------------------------------
 
   // 댓글 수정하기
@@ -92,11 +93,12 @@ function Detail() {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
 
+    console.log(data);
     useEffect(() => {
       const fetchData = async () => {
         try {
           const { data } = await axios.get(
-            `http://3.36.132.42:8080/mypage/${memberId}`
+            `http://3.36.132.42:8080/api/member/${memberId}`
           );
           setNickname(data.nickname);
           setEmail(data.email);
@@ -150,10 +152,7 @@ function Detail() {
             type="text"
             placeholder="댓글을 입력해주세요"
           />
-          <button
-            type="button"
-            onClick={() => addCommentsHandler(params.id, comments)}
-          >
+          <button onClick={() => addCommentsHandler(params.id, comments)}>
             댓글 추가하기
           </button>
         </div>
@@ -164,8 +163,9 @@ function Detail() {
             {data &&
               data
                 .filter((comment) => {
-                  return comment.detailid === parseInt(params.id);
+                  return comment.companyId === parseInt(params.id);
                 })
+                .sort((before, after) => after.id - before.id)
                 .map((comment, index) => (
                   <StyledComment key={comment.id}>
                     <div>
@@ -187,6 +187,7 @@ function Detail() {
                     <Comment
                       memberId={comment.memberId}
                       comment={comment.comment}
+                      commentId={comment.id}
                       onEdit={(editedComment) =>
                         patchCommentsHandler(comment.id, editedComment)
                       }
@@ -206,7 +207,7 @@ function Detail() {
               {data &&
                 data
                   .filter((comment) => {
-                    return comment.detailid === parseInt(params.id);
+                    return comment.companyId === parseInt(params.id);
                   })
                   .map((comment, index) => (
                     <StyledComment key={comment.id}>

@@ -1,39 +1,119 @@
 import styled from "styled-components";
 
-export const StyledNav = styled.nav`
-  margin-bottom: 0px;
-  z-index: 1;
-  top: 0;
-  right: auto;
-  bottom: auto;
-  width: 100%;
-  -ms-flex-wrap: wrap;
+export const Navbar = styled.nav`
+  position: relative;
+  display: flex;
   flex-wrap: wrap;
-  border: none;
-  border-bottom: none;
-  position: fixed;
-  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fbfbfb;
+  padding: 4px 0;
+  color: #7f7f7f;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s;
 
-  border-bottom: 1px solid gray;
-  background-color: #fff;
+  &:hover,
+  &:focus {
+    color: #4d4d4d;
+  }
+
+  &.dark {
+    background-color: #3d3d3d;
+  }
 `;
 
-export const StyledUl = styled.ul`
+export const FlexContainer = styled.div`
   display: flex;
-  border-radius: 0.28571429rem;
-  min-height: 2.42em;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  flex-grow: 1;
+`;
 
-  li {
-    flex: 0 0 auto;
-    list-style: none;
-    padding: 0.71em 1.14285714em;
+export const FlexEnd = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+`;
 
-    cursor: pointer;
+export const ButtonToggle = styled.button`
+  display: block;
+  border: 0;
+  background-color: transparent;
+  padding: 0 8px;
+  color: #7f7f7f;
+  outline: none;
+
+  &.dark {
+    color: #c0c0c0;
   }
-  .mypage {
-    margin-left: auto;
+`;
+
+export const VisibleContainer = styled.div`
+  display: none;
+  flex-grow: 1;
+  flex-basis: 100%;
+  align-items: center;
+  margin-top: 2rem; /* mt-2 */
+  flex-grow: 1;
+
+  @media (min-width: 1024px) {
+    /* lg: */
+    display: flex;
+    flex-basis: auto;
+    margin-top: 0;
   }
-  button {
-    margin-right: 40px;
+`;
+
+export const NavList = styled.ul`
+  list-style: none;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+
+  &.lg {
+    flex-direction: row;
+    margin-top: 4px;
+  }
+`;
+
+export const NavItem = styled.li`
+  margin: 16px 0 16px 8px;
+
+  &.lg {
+    margin: 0 8px 0 4px;
+  }
+`;
+
+export const NavLink = styled.a`
+  color: #7f7f7f;
+  transition: color 0.3s;
+
+  &:hover,
+  &:focus {
+    color: #4d4d4d;
+  }
+
+  &.disabled {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &.dark {
+    color: #c0c0c0;
+
+    &:hover,
+    &:focus {
+      color: #666666;
+    }
+
+    &.active {
+      color: #666666;
+    }
+  }
+
+  &.active {
+    color: rgba(0, 0, 0, 0.9);
   }
 `;

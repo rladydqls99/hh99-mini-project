@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Reactpaginate from "react-paginate";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -52,6 +53,16 @@ export const Container = styled.div`
   position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
 `;
 
+export const MiddleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; /* 화면 가로폭에 맞추기 */
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  position: relative;
+  flex-direction: column; /* 수직으로 정렬 */
+`;
+
 export const StyledBox = styled.div`
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -89,4 +100,53 @@ export const Icon = styled.div`
   position: absolute;
   top: 9px; /* 원하는 위치로 조정 */
   left: 92%; /* 원하는 위치로 조정 */
+`;
+
+export const StyledReactpaginate = styled(Reactpaginate)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin-top: 30px; /* 페이지네이션과 내용 사이 여백 조절 */
+
+  ul.paginationBtn {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0 5px; /* 페이지 버튼 사이 여백 조절 */
+      display: inline-block;
+
+      a {
+        text-decoration: none;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        color: #333;
+        background-color: #f0f0f0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ddd;
+        }
+      }
+
+      &.selected a {
+        background-color: #007bff;
+        color: white;
+      }
+
+      &.previous a,
+      &.next a {
+        background-color: #007bff;
+        color: white;
+      }
+
+      &.break a {
+        cursor: default;
+      }
+    }
+  }
 `;

@@ -1,55 +1,66 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { StyledNav, StyledUl } from "./styles";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import { Link } from "react-router-dom";
+import {
+  Navbar,
+  FlexContainer,
+  ButtonToggle,
+  VisibleContainer,
+  NavList,
+  NavItem,
+  NavLink,
+  FlexEnd,
+} from "./styles";
 
 function Header() {
-  //로그인 상태
-  const [login, setLogin] = useState(false);
   const navigate = useNavigate();
   const token = getCookie("token");
-  // console.log("header 토큰", token);
 
+  // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
     if (!token) {
-      removeCookie("token");
       navigate("/signup");
     } else {
       navigate("/mypage");
     }
   };
 
+  // 로그인/로그아웃 버튼
   const onToggleButtonHandler = () => {
     if (token) {
-      setLogin(false);
       removeCookie("token");
       navigate("/login");
     } else {
       navigate("/login");
     }
   };
-
   return (
     <>
-      <StyledNav>
-        <StyledUl>
-          <Link to="/">
-            <li className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              JobPlanet
-            </li>
-          </Link>
-          <button onClick={onMypageToggleButtonHandler} className="mypage">
-            {token ? "마이페이지" : "회원가입"}
-          </button>
-          <button
-            className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
-            onClick={onToggleButtonHandler}
-          >
-            {token ? "로그아웃" : "로그인"}
-          </button>
-        </StyledUl>
-      </StyledNav>
+      <Navbar>
+        <FlexContainer>
+          <VisibleContainer>
+            <NavList>
+              <NavItem>
+                <NavLink>
+                  <Link to="/" style={{ fontWeight: "bold" }}>
+                    JobPlanet
+                  </Link>
+                </NavLink>
+              </NavItem>
+            </NavList>
+
+            <FlexEnd>
+              <ButtonToggle onClick={onMypageToggleButtonHandler}>
+                {token ? "마이페이지" : "회원가입"}
+              </ButtonToggle>
+              <ButtonToggle onClick={onToggleButtonHandler}>
+                {token ? "로그아웃" : "로그인"}
+              </ButtonToggle>
+            </FlexEnd>
+          </VisibleContainer>
+        </FlexContainer>
+      </Navbar>
       <Outlet />
     </>
   );
