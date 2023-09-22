@@ -106,8 +106,10 @@ export const StyledReactpaginate = styled(Reactpaginate)`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-
+  flex-direction: row;
+  position: absolute;
+  top: 100%;
+  left: 55%;
   margin-top: 30px; /* 페이지네이션과 내용 사이 여백 조절 */
 
   ul.paginationBtn {
