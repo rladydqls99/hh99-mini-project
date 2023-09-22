@@ -26,7 +26,10 @@ function Detail() {
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const token = getCookie("token");
+
+  useEffect(() => {}, [params, state]);
+
+  useEffect(() => {}, [params, state]);
 
   // 댓글 추가하기
   const [comments, setComments] = useState("");
@@ -48,7 +51,7 @@ function Detail() {
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
-      addMutation.mutate({ detailId, newComments, token });
+      addMutation.mutate({ detailId, newComments });
 
       setComments("");
     }
@@ -67,7 +70,7 @@ function Detail() {
   });
 
   const patchCommentsHandler = (commentsID, updateComments) => {
-    patchMutation.mutate({ commentsID, updateComments, token });
+    patchMutation.mutate({ commentsID, updateComments });
   };
   // ----------------------------------------------------------------
 
@@ -83,7 +86,7 @@ function Detail() {
 
   const doRemoveComments = (commentId) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
-      deleteMutation.mutate({ commentId, token });
+      deleteMutation.mutate(commentId);
     }
   };
   // ----------------------------------------------------------------
@@ -136,6 +139,9 @@ function Detail() {
     setModalOpenStates(newModalOpenStates);
   };
   // ------------------------------------------------------
+
+  // 로그인 안됐을 때 댓글 안보이게 하기
+  const token = getCookie("token");
 
   return (
     <>

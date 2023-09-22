@@ -12,6 +12,7 @@ import {
 } from "./styles";
 import DisplayCompanys from "./DisplayCompanys";
 
+
 function Main() {
   // 공통 사용
   const { isError, isLoading, data } = useQuery("company", getCompany);
@@ -55,6 +56,7 @@ function Main() {
         <StyledInput>
           <input type="text" placeholder="검색어를 입력하세요" />
         </StyledInput>
+
       </StyledDiv>
       <OuterContainer>
         <MiddleContainer>
