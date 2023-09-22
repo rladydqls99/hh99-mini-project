@@ -38,10 +38,10 @@ const addComments = async (props) => {
 
 // comment 삭제
 const deleteComments = async (props) => {
-  const commentID = props.commentId;
+  const commentId = props.commentsID;
   const token = props.token;
   try {
-    await axios.delete(`http://3.36.132.42:8080/api/comment/${commentID}`, {
+    await axios.delete(`http://3.36.132.42:8080/api/comment/${commentId}`, {
       headers: {
         Authorization: token,
       },
@@ -53,12 +53,12 @@ const deleteComments = async (props) => {
 
 // comment 수정
 const patchComments = async (props) => {
-  const commentID = props.commentsID;
+  const commentId = props.commentsID;
   const updateComments = props.updateComments;
   const token = props.token;
   try {
     await axios.patch(
-      `http://3.36.132.42:8080/api/comment/${commentID}`,
+      `http://3.36.132.42:8080/api/comment/${commentId}`,
       {
         comment: updateComments,
       },

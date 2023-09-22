@@ -11,7 +11,7 @@ import {
   MiddleContainer,
 } from "./styles";
 import DisplayCompanys from "./DisplayCompanys";
-
+import axios from "axios";
 
 function Main() {
   // 공통 사용
@@ -36,6 +36,26 @@ function Main() {
     setPageNumber(selected);
   };
 
+  // 페이지네이션
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(8);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      const response = await axios.get(`http://3.36.132.42:8080/api/company`);
+      setPosts(response.data.content);
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirst, indexOfLast);
+
   // 기업 검색하는 검색창 컨트롤
   const [searchCompany, setSearchCompany] = useState("");
   const searchOnChange = (e) => {
@@ -56,7 +76,6 @@ function Main() {
         <StyledInput>
           <input type="text" placeholder="검색어를 입력하세요" />
         </StyledInput>
-
       </StyledDiv>
       <OuterContainer>
         <MiddleContainer>
