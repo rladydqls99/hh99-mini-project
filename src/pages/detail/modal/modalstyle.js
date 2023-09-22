@@ -15,7 +15,7 @@ export const ModalFlex = styled.div`
 
 export const ModalSetUp = styled.div`
   width: 600px; /* 모달의 너비를 조절 */
-  height: 100%;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center; /* 모달 내의 내용을 세로 가운데 정렬 */

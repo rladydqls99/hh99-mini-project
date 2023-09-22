@@ -16,7 +16,6 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
 
   // 토큰 디코딩
   const token = getCookie("token");
-  // console.log("comment 토큰", token);
   let dec = "";
   if (token) {
     const payload = token.substring(

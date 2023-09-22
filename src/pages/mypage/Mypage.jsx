@@ -3,30 +3,25 @@ import axios from "axios";
 import { ContainerDiv, IconBox, ContentBox } from "./styles";
 
 function Mypage() {
-  // const [myContent, setMyContent] = useState([]);
-  // const myData = async () => {
-  //   const { data } = await axios.get("http://localhost:4000/users");
-  //   setMyContent(data);
-  // };
+  const [myContent, setMyContent] = useState([]);
+  const myData = async () => {
+    const { data } = await axios
+      .get
+      // `http://3.36.132.42:8080/api/mypage/${member_id}`
+      ();
+    setMyContent(data);
+  };
 
-  // useEffect(() => {
-  //   myData();
-  // }, []);
+  useEffect(() => {
+    myData();
+  }, []);
 
   return (
     <>
-      {/* // <ContainerDiv> */}
       <h1>마이 페이지</h1>
-      {/* <IconBox></IconBox>
-      {myContent.length > 0 ? (
-        <>
-          <ContentBox>닉네임: {`${myContent[0].nickname}`}</ContentBox>
-          <ContentBox>이메일: {`${myContent[0].email}`}</ContentBox>
-        </>
-      ) : (
-        <p>데이터를 불러오는 중입니다...</p>
-      )} */}
-      {/* </ContainerDiv> */}
+      {/* <div>닉네임: {`${myContent.memberId.nickname}`}</div>
+      <div>이메일: {`${myContent.memberId.email}`}</div> */}
+      {/* // <ContainerDiv> */}
     </>
   );
 }

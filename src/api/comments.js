@@ -12,15 +12,14 @@ const getComments = async () => {
 
 // 댓글 추가하기
 const addComments = async (props) => {
-  const detailId = props.detailId;
+  const companyId = props.detailId;
   const newComment = props.newComments;
   const token = props.token;
 
   try {
     const response = await axios.post(
-      `http://3.36.132.42:8080/api/comment`,
+      `http://3.36.132.42:8080/api/company/${companyId}/comment`,
       {
-        detailid: parseInt(detailId),
         comment: newComment,
       },
       {
@@ -29,8 +28,6 @@ const addComments = async (props) => {
         },
       }
     );
-    console.log(response);
-    console.log(token);
     alert("댓글이 추가되었습니다.");
   } catch (error) {
     console.log("comments 추가 중 에러 발생", error);
@@ -40,10 +37,10 @@ const addComments = async (props) => {
 
 // comment 삭제
 const deleteComments = async (props) => {
-  const commentID = props.commentId;
+  const commentId = props.commentsID;
   const token = props.token;
   try {
-    await axios.delete(`http://3.36.132.42:8080/api/comment/${commentID}`, {
+    await axios.delete(`http://3.36.132.42:8080/api/comment/${commentId}`, {
       headers: {
         Authorization: token,
       },
@@ -55,12 +52,12 @@ const deleteComments = async (props) => {
 
 // comment 수정
 const patchComments = async (props) => {
-  const commentID = props.commentsID;
+  const commentId = props.commentsID;
   const updateComments = props.updateComments;
   const token = props.token;
   try {
     await axios.patch(
-      `http://3.36.132.42:8080/api/comment/${commentID}`,
+      `http://3.36.132.42:8080/api/comment/${commentId}`,
       {
         comment: updateComments,
       },
