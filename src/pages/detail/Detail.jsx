@@ -51,7 +51,7 @@ function Detail() {
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
-      addMutation.mutate({ detailId, newComments });
+      addMutation.mutate({ detailId, newComments, token });
 
       setComments("");
     }
@@ -70,7 +70,7 @@ function Detail() {
   });
 
   const patchCommentsHandler = (commentsID, updateComments) => {
-    patchMutation.mutate({ commentsID, updateComments });
+    patchMutation.mutate({ commentsID, updateComments, token });
   };
   // ----------------------------------------------------------------
 
@@ -84,9 +84,9 @@ function Detail() {
     },
   });
 
-  const doRemoveComments = (commentId) => {
+  const doRemoveComments = (commentsID) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
-      deleteMutation.mutate(commentId);
+      deleteMutation.mutate({ commentsID, token });
     }
   };
   // ----------------------------------------------------------------
@@ -103,6 +103,7 @@ function Detail() {
           const { data } = await axios.get(
             `http://3.36.132.42:8080/api/member/${memberId}`
           );
+
           setNickname(data.nickname);
           setEmail(data.email);
         } catch (error) {
