@@ -58,9 +58,7 @@ function Login() {
   return (
     <ContainerDiv>
       <FlexForm onSubmit={requestLogin}>
-        <h1 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          로그인
-        </h1>
+        <h1>로그인</h1>
         <InputContent
           type="text"
           placeholder="이메일"
@@ -84,6 +82,12 @@ function Login() {
         >
           회원가입 하기
         </ButtonStyle>
+        {/* <button
+          id="login-kakao-btn"
+          onClick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:8080/api/user/kakao/callback&response_type=code'"
+        >
+          카카오로 로그인하기
+        </button> */}
       </FlexForm>
     </ContainerDiv>
   );

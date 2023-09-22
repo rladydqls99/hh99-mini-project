@@ -28,6 +28,13 @@ export const FlexContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
+  flex-grow: 1;
+`;
+
+export const FlexEnd = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
 `;
 
 export const ButtonToggle = styled.button`
@@ -48,8 +55,11 @@ export const VisibleContainer = styled.div`
   flex-grow: 1;
   flex-basis: 100%;
   align-items: center;
+  margin-top: 2rem; /* mt-2 */
+  flex-grow: 1;
 
-  &.lg {
+  @media (min-width: 1024px) {
+    /* lg: */
     display: flex;
     flex-basis: auto;
     margin-top: 0;

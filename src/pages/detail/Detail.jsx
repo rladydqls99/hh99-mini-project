@@ -14,8 +14,8 @@ import {
   BlurDiv,
   Blur,
 } from "./styles";
-import { ModalSetUp, ModalFlex } from "./modalstyle";
-import Comment from "./Comment";
+import { ModalSetUp, ModalFlex } from "./modal/modalstyle";
+import Comment from "./comment/Comment";
 import axios from "axios";
 import { getCookie } from "../../cookies/cookies";
 

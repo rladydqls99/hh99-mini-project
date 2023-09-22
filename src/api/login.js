@@ -18,12 +18,11 @@ const postLogin = async ({ email, password }) => {
       // path: 쿠키가 어디에서 유효하냐 /-> 모든 경로
       // secrue: true http를 사용해야 쿠키 설정 가능
       // 쿠키는 50분 동안 유효(보안 등으로 인해)
-
       alert("로그인 되었습니다.");
     }
   } catch (error) {
-    console.error("로그인 실패", error);
-    alert("이메일 혹은 비밀번호를 확인하세요.");
+    alert(error.response.data.msg);
+    return Promise.reject(error);
   }
 };
 

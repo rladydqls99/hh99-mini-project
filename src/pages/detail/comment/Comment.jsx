@@ -6,7 +6,8 @@ import {
   CommentButtons,
   CommentButton,
 } from "./commentStyles";
-import { getCookie } from "../../cookies/cookies";
+
+import { getCookie } from "../../../cookies/cookies";
 import base64 from "base-64";
 
 function Comment({ comment, onEdit, onDelete, memberId }) {
@@ -15,6 +16,7 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
 
   // 토큰 디코딩
   const token = getCookie("token");
+  // console.log("comment 토큰", token);
   let dec = "";
   if (token) {
     const payload = token.substring(
@@ -23,7 +25,6 @@ function Comment({ comment, onEdit, onDelete, memberId }) {
     );
     dec = JSON.parse(base64.decode(payload));
   }
-  console.log(dec);
 
   // -----------------------------------------------------------------------------
 

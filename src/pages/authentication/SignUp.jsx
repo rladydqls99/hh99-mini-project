@@ -87,7 +87,6 @@ function SignUp() {
             value={checkPassword}
             onChange={setPwOnChangeHandler}
           />
-
           <ButtonStyle back-color={"#4E61FF"} type="submit">
             회원가입 하기
           </ButtonStyle>
