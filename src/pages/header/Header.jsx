@@ -19,6 +19,7 @@ function Header() {
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
+
     if (!token) {
       navigate("/signup");
     } else {
@@ -39,11 +40,11 @@ function Header() {
     <>
       <Navbar>
         <FlexContainer>
-          <ButtonToggle></ButtonToggle>
           <VisibleContainer>
             <NavList>
               <NavItem>
                 <NavLink>
+
                   <Link to="/" style={{ fontWeight: "bold" }}>
                     JobPlanet
                   </Link>
@@ -56,7 +57,9 @@ function Header() {
                 {token ? "마이페이지" : "회원가입"}
               </ButtonToggle>
               <ButtonToggle onClick={onToggleButtonHandler}>
+
                 {token ? "로그아웃" : "로그인"}
+
               </ButtonToggle>
             </FlexEnd>
           </VisibleContainer>

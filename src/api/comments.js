@@ -4,6 +4,7 @@ import axios from "axios";
 const getComments = async () => {
   try {
     const response = await axios.get(`http://3.36.132.42:8080/api/comment`);
+
     return response.data;
   } catch (error) {
     console.log("error 발생", error);

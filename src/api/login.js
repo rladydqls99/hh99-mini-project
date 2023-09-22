@@ -8,7 +8,6 @@ const postLogin = async ({ email, password }) => {
       password,
     });
 
-    const token = response.data.token;
     if (response.status === 200) {
       setCookie("token", response.data.token, {
         path: "/",

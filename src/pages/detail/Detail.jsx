@@ -29,6 +29,8 @@ function Detail() {
 
   useEffect(() => {}, [params, state]);
 
+  useEffect(() => {}, [params, state]);
+
   // 댓글 추가하기
   const [comments, setComments] = useState("");
 
@@ -94,6 +96,7 @@ function Detail() {
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
 
+    console.log(data);
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -169,6 +172,7 @@ function Detail() {
                 .filter((comment) => {
                   return comment.companyId === parseInt(params.id);
                 })
+                .sort((before, after) => after.id - before.id)
                 .map((comment, index) => (
                   <StyledComment key={comment.id}>
                     <div>
@@ -190,6 +194,7 @@ function Detail() {
                     <Comment
                       memberId={comment.memberId}
                       comment={comment.comment}
+                      commentId={comment.id}
                       onEdit={(editedComment) =>
                         patchCommentsHandler(comment.id, editedComment)
                       }
@@ -209,7 +214,7 @@ function Detail() {
               {data &&
                 data
                   .filter((comment) => {
-                    return comment.detailid === parseInt(params.id);
+                    return comment.companyId === parseInt(params.id);
                   })
                   .map((comment, index) => (
                     <StyledComment key={comment.id}>
