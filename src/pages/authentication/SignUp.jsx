@@ -59,7 +59,7 @@ function SignUp() {
   return (
     <>
       <ContainerDiv>
-        <FlexForm onSubmit={onSubmitHandler}>
+        <FlexForm>
           <h1>회원가입</h1>
           <InputContent
             type="text"
