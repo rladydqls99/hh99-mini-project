@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const PageUl = styled.ul`
+export const PageUl = styled.ul`
   float: left;
   list-style: none;
   text-align: center;
@@ -12,18 +12,17 @@ const PageUl = styled.ul`
   border-bottom: 3px solid #186ead;
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
-  top: 550px;
-  left: 500px;
+  top: 95%;
+  left: 55%;
 `;
 
-const PageLi = styled.li`
+export const PageLi = styled.li`
   display: inline-block;
   font-size: 17px;
   font-weight: 600;
   padding: 5px;
   border-radius: 5px;
   width: 25px;
-
   &:hover {
     cursor: pointer;
     color: white;
@@ -35,7 +34,7 @@ const PageLi = styled.li`
   }
 `;
 
-const PageSpan = styled.span`
+export const PageSpan = styled.span`
   &:hover::after,
   &:focus::after {
     border-radius: 100%;
@@ -44,8 +43,9 @@ const PageSpan = styled.span`
   }
 `;
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+export const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
+
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
