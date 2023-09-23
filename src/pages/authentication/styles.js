@@ -12,7 +12,7 @@ export const ContainerDiv = styled.div`
   }
 `;
 
-export const FlexForm = styled.form`
+export const FlexForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@ export const FlexForm = styled.form`
 `;
 
 export const InputContent = styled.input`
-  width: 430px;
+  width: 300px;
   height: 45.5px;
   margin-top: 14px;
   @media screen and (max-width: 780px) {
@@ -34,13 +34,13 @@ export const InputContent = styled.input`
 `;
 
 export const ButtonStyle = styled.button`
-  width: 440px;
-  height: 50px;
+  width: 300px;
+  height: 45px;
   margin-top: 10px;
   background-color: ${(props) => props["back-color"]};
   color: white;
   border-color: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
   @media screen and (max-width: 780px) {
     width: 400px;
   }
@@ -48,4 +48,12 @@ export const ButtonStyle = styled.button`
   @media screen and (max-width: 488px) {
     width: 380pxs;
   }
+`;
+
+export const KakaoButton = styled.button`
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

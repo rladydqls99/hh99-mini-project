@@ -24,8 +24,6 @@ function SignUp() {
     setCheckPassword(e.target.value);
   };
   const onSubmitHandler = async (e) => {
-    e.preventDefault();
-
     if (!nickname || !email || !password) {
       alert("닉네임, 이메일, 비밀번호 모두 입력해주세요");
       return;
@@ -87,7 +85,11 @@ function SignUp() {
             value={checkPassword}
             onChange={setPwOnChangeHandler}
           />
-          <ButtonStyle back-color={"#4E61FF"} type="submit">
+          <ButtonStyle
+            onClick={onSubmitHandler}
+            back-color={"#4E61FF"}
+            type="submit"
+          >
             회원가입 하기
           </ButtonStyle>
           <ButtonStyle
