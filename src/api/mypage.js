@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// 댓글 쓴 유저 정보 가져오기
-export const getMemberInfo = async (memberID) => {
+// 마이페이지 멤버 정보 가져오기
+export const getMypageInfo = async (memberId) => {
   try {
     const response = await axios.get(
-      `http://3.36.132.42:8080/api/member/${memberID}`
+      `http://3.36.132.42:8080/api/member/${memberId}`
     );
     return response.data;
   } catch (error) {
