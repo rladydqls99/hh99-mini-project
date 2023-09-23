@@ -87,13 +87,24 @@ function Detail() {
   };
   // ----------------------------------------------------------------
 
-  // 모달 열고 닫기 함수
-  const [modalState, setModalState] = useState(false);
+  // 각 댓글의 모달 열림 상태를 관리하는 배열
+  const [modalOpenStates, setModalOpenStates] = useState(
+    data?.map(() => false) || []
+  );
 
-  const modalChangeBtn = () => {
-    setModalState(!modalState);
+  // 모달 열기 함수
+  const openModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = true;
+    setModalOpenStates(newModalOpenStates);
   };
 
+  // 모달 닫기 함수
+  const closeModal = (index) => {
+    const newModalOpenStates = [...modalOpenStates];
+    newModalOpenStates[index] = false;
+    setModalOpenStates(newModalOpenStates);
+  };
   // ------------------------------------------------------
 
   // 로그인 안됐을 때 댓글 안보이게 하기
@@ -127,18 +138,16 @@ function Detail() {
                   return comment.companyId === parseInt(params.id);
                 })
                 .sort((before, after) => after.id - before.id)
-                .map((comment) => (
+                .map((comment, index) => (
                   <StyledComment key={comment.id}>
                     <div>
-                      <button onClick={modalChangeBtn}>프로필</button>
-                      {modalState ? (
+                      <button onClick={() => openModal(index)}>프로필</button>
+                      {modalOpenStates[index] && (
                         <Modal
-                          nickname={comment.nickname}
-                          email={comment.email}
-                          modalChangeBtn={modalChangeBtn}
-                          memberID={comment.memberId}
+                          memberId={comment.memberId}
+                          closeModal={() => closeModal(index)}
                         />
-                      ) : null}
+                      )}
                     </div>
                     {/* 각 댓글을 Comment 컴포넌트로 대체 */}
                     <Comment
@@ -166,18 +175,16 @@ function Detail() {
                   .filter((comment) => {
                     return comment.companyId === parseInt(params.id);
                   })
-                  .map((comment) => (
+                  .map((comment, index) => (
                     <StyledComment key={comment.id}>
                       <div>
-                        <button onClick={modalChangeBtn}>프로필</button>
-                        {modalState ? (
+                        <button onClick={() => openModal(index)}>프로필</button>
+                        {modalOpenStates[index] && (
                           <Modal
-                            nickname={comment.nickname}
-                            email={comment.email}
-                            modalChangeBtn={modalChangeBtn}
-                            memberID={comment.memberId}
+                            memberId={comment.memberId}
+                            closeModal={() => closeModal(index)}
                           />
-                        ) : null}
+                        )}
                       </div>
                       {/* 각 댓글을 Comment 컴포넌트로 대체 */}
                       <Comment

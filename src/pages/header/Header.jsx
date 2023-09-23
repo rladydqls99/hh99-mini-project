@@ -27,7 +27,6 @@ function Header() {
     );
     dec = JSON.parse(base64.decode(payload));
   }
-  console.log("dec", dec.member_id);
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {

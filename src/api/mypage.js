@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// 마이페이지 멤버 정보 가져오기
+// 댓글 쓴 유저 정보 가져오기
 export const getMemberInfo = async (memberId) => {
   try {
     const response = await axios.get(

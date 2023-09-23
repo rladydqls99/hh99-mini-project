@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function DisplayCompanies({ companyName, location, companyId }) {
   const navigate = useNavigate();
-
   // 기업 박스를 누르면 해당 기업 상세 페이지로 이동
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
