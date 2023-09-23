@@ -1,10 +1,12 @@
 import React from "react";
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { getMemberInfo } from "../../../api/mypage";
 import { ModalFlex, ModalSetUp } from "./modalstyle";
 
 function Modal({ modalChangeBtn, memberID }) {
   const { data } = useQuery("members", () => getMemberInfo(memberID));
+  console.log(data);
+  console.log("member", memberID);
 
   return (
     <>

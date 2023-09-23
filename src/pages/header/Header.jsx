@@ -16,6 +16,8 @@ import base64 from "base-64";
 
 function Header() {
   const navigate = useNavigate();
+
+  // 마이페이지 디코딩
   const token = getCookie("token");
   let dec = "";
   if (token) {
