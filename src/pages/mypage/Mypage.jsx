@@ -21,13 +21,16 @@ function Mypage() {
 
   return (
     <>
-      <h1>마이 페이지</h1>
-      {data && (
-        <>
-          <div>{data.nickname}</div>
-          <div>{data.email}</div>
-        </>
-      )}
+      <Mypage>
+        <h1>마이 페이지</h1>
+        <div>프로필 사진</div>
+        {data && (
+          <>
+            <div>{data.nickname}</div>
+            <div>{data.email}</div>
+          </>
+        )}
+      </Mypage>
     </>
   );
 }
