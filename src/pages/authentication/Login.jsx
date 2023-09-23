@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../cookies/cookies";
 import { postLogin } from "../../api/login";
-import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
+import {
+  ContainerDiv,
+  FlexForm,
+  InputContent,
+  ButtonStyle,
+  KakaoButton,
+} from "./styles";
 import { useMutation, useQueryClient } from "react-query";
-import axios from "axios";
-import { setCookie } from "../../cookies/cookies";
+import kakaoLogin from "../../img/kakao_login_medium_wide.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -30,8 +35,6 @@ function Login() {
   };
 
   const requestLogin = async (e) => {
-    e.preventDefault();
-
     if (!email.length || !password.length) {
       alert("이메일과 비밀번호 모두 입력해주세요");
       return;
@@ -57,39 +60,9 @@ function Login() {
     },
   });
 
-  // 카카오 로그인하기
-  const kakaoLogin = async () => {
-    try {
-      // 비동기 작업을 수행하기 위해 await를 사용하고, 화살표 함수 내에서 직접 URL을 설정합니다.
-      const response = await axios.get(
-        "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://3.36.132.42:8080/api/user/kakao/callback",
-        { withCredentials: true }
-      );
-
-      // console.log(response);
-
-      // 헤더에 저장된 토큰을 가져오는 방법
-      // let accessToken = res.headers.authorization; // 응답헤더에서 토큰 받기
-      // let refreshToken = res.headers.refresh; // 응답헤더에서
-      // if (response.status === 200) {
-      setCookie("token", response.data.token, {
-        path: "/",
-        secure: true,
-        maxAge: 3000,
-      });
-      // path: 쿠키가 어디에서 유효하냐 /-> 모든 경로
-      // secrue: true http를 사용해야 쿠키 설정 가능
-      // 쿠키는 50분 동안 유효(보안 등으로 인해)
-      alert("로그인 되었습니다.");
-      // }
-    } catch (error) {
-      console.log("kakao 로그인 에러", error);
-    }
-  };
-
   return (
     <ContainerDiv>
-      <FlexForm onSubmit={requestLogin}>
+      <FlexForm>
         <h1>로그인</h1>
         <InputContent
           type="text"
@@ -103,7 +76,11 @@ function Login() {
           value={password}
           onChange={pwOnChangeHandler}
         />
-        <ButtonStyle back-color={"#4E61FF"} type="submit">
+        <ButtonStyle
+          onClick={requestLogin}
+          back-color={"#4E61FF"}
+          type="submit"
+        >
           로그인 하기
         </ButtonStyle>
         <ButtonStyle
@@ -114,15 +91,15 @@ function Login() {
         >
           회원가입 하기
         </ButtonStyle>
-        <button
+        <KakaoButton
           id="login-kakao-btn"
           onClick={() =>
             (window.location.href =
               "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:3000/api/user/kakao/callback&response_type=code")
           }
         >
-          카카오로 로그인하기
-        </button>
+          <img src={kakaoLogin} />
+        </KakaoButton>
       </FlexForm>
     </ContainerDiv>
   );
