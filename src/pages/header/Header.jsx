@@ -12,18 +12,28 @@ import {
   NavLink,
   FlexEnd,
 } from "./styles";
+import base64 from "base-64";
 
 function Header() {
   const navigate = useNavigate();
+
+  // 마이페이지 디코딩
   const token = getCookie("token");
+  let dec = "";
+  if (token) {
+    const payload = token.substring(
+      token.indexOf(".") + 1,
+      token.lastIndexOf(".")
+    );
+    dec = JSON.parse(base64.decode(payload));
+  }
 
   // 마이페이지/회원가입 버튼
   const onMypageToggleButtonHandler = () => {
-
     if (!token) {
       navigate("/signup");
     } else {
-      navigate("/mypage");
+      navigate(`/mypage/${dec.member_id}`);
     }
   };
 
@@ -44,7 +54,6 @@ function Header() {
             <NavList>
               <NavItem>
                 <NavLink>
-
                   <Link to="/" style={{ fontWeight: "bold" }}>
                     JobPlanet
                   </Link>
@@ -57,9 +66,7 @@ function Header() {
                 {token ? "마이페이지" : "회원가입"}
               </ButtonToggle>
               <ButtonToggle onClick={onToggleButtonHandler}>
-
                 {token ? "로그아웃" : "로그인"}
-
               </ButtonToggle>
             </FlexEnd>
           </VisibleContainer>

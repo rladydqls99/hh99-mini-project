@@ -118,7 +118,7 @@ export const StyledReactpaginate = styled(Reactpaginate)`
     padding: 0;
 
     li {
-      margin: 0 5px; /* 페이지 버튼 사이 여백 조절 */
+      margin: 0 10px; /* 페이지 버튼 사이 여백 조절 */
       display: inline-block;
 
       a {

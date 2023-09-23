@@ -27,7 +27,8 @@ function Main() {
   }, [data]);
 
   // 페이지당 원하는 수
-  const companiesPerPage = 3;
+
+  const companiesPerPage = 8;
   const pagesVisited = pageNumber * companiesPerPage;
   const pageCount = Math.ceil(companies.length / companiesPerPage);
 
@@ -73,8 +74,8 @@ function Main() {
                 );
               })}
             <StyledReactpaginate
-              previousLabel={"이전"}
-              nextLabel={"다음"}
+              previousLabel={"⏪"}
+              nextLabel={"⏩"}
               pageCount={pageCount}
               onPageChange={changePage}
               containerClassName={"paginationBtn"}
