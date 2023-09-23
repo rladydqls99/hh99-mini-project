@@ -28,10 +28,10 @@ function Main() {
 
   // 페이지당 원하는 수
 
-  const companysPerPage = 8;
-  const pagesVisited = pageNumber * companysPerPage;
-  const pageCount = Math.ceil(companys.length / companysPerPage);
- 
+  const companiesPerPage = 8;
+  const pagesVisited = pageNumber * companiesPerPage;
+  const pageCount = Math.ceil(companies.length / companiesPerPage);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };

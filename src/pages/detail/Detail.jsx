@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   deleteComments,
   getComments,
@@ -26,9 +26,7 @@ function Detail() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-
   useEffect(() => {}, [params, state]);
-
 
   // 댓글 추가하기
   const [comments, setComments] = useState("");
@@ -100,7 +98,6 @@ function Detail() {
 
   // 로그인 안됐을 때 댓글 안보이게 하기
   const token = getCookie("token");
-
   return (
     <>
       <Container>
@@ -130,7 +127,7 @@ function Detail() {
                   return comment.companyId === parseInt(params.id);
                 })
                 .sort((before, after) => after.id - before.id)
-                .map((comment, index) => (
+                .map((comment) => (
                   <StyledComment key={comment.id}>
                     <div>
                       <button onClick={modalChangeBtn}>프로필</button>
@@ -139,7 +136,7 @@ function Detail() {
                           nickname={comment.nickname}
                           email={comment.email}
                           modalChangeBtn={modalChangeBtn}
-                          memberID={comment.id}
+                          memberID={comment.memberId}
                         />
                       ) : null}
                     </div>
@@ -169,7 +166,7 @@ function Detail() {
                   .filter((comment) => {
                     return comment.companyId === parseInt(params.id);
                   })
-                  .map((comment, index) => (
+                  .map((comment) => (
                     <StyledComment key={comment.id}>
                       <div>
                         <button onClick={modalChangeBtn}>프로필</button>
@@ -178,7 +175,7 @@ function Detail() {
                             nickname={comment.nickname}
                             email={comment.email}
                             modalChangeBtn={modalChangeBtn}
-                            memberID={comment.id}
+                            memberID={comment.memberId}
                           />
                         ) : null}
                       </div>
