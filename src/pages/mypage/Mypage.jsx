@@ -1,29 +1,35 @@
-// // import React, { useState, useEffect } from "react";
-// // import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { getMypageInfo } from "../../api/mypage";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 
-// // function Mypage() {
-// //   // 닉네임,이메일 불러오기
-// //   const [myContent, setMyContent] = useState(null);
-// //   const myData = async () => {
-// //     const { data } =
-// //       await axios.get`http://3.36.132.42:8080/api/mypage/${member_id}`;
-// //     console.log(data);
-// //     setMyContent(data);
-// //   };
+function Mypage() {
+  const { memberId } = useParams();
+  useEffect(() => {}, [memberId]);
+  // 닉네임,이메일 불러오기
+  const { isLoading, isError, data } = useQuery("mypageInfo", () =>
+    getMypageInfo(memberId)
+  );
 
-// //   useEffect(() => {
-// //     myData();
-// //   }, []);
-//   // 최초 mount 때 DB로부터 값을 가져온다.
+  if (isLoading) {
+    return <h1>로딩 중입니다..</h1>;
+  }
 
-//   return (
-//     <>
-//       <h1>마이 페이지</h1>
-//       {/* <div>닉네임: {`${myContent.memberId.nickname}`}</div>
-//       <div>이메일: {`${myContent.memberId.email}`}</div> */}
-//       {/* // <ContainerDiv> */}
-//     </>
-//   );
-// }
+  if (isError) {
+    return <h1>에러가 발생했습니다.</h1>;
+  }
 
-// export default Mypage;
+  return (
+    <>
+      <h1>마이 페이지</h1>
+      {data && (
+        <>
+          <div>{data.nickname}</div>
+          <div>{data.email}</div>
+        </>
+      )}
+    </>
+  );
+}
+
+export default Mypage;
