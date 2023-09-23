@@ -25,4 +25,16 @@ const postLogin = async ({ email, password }) => {
   }
 };
 
+// 카카오 로그인
+export const kakaoLogin = async (codeParam) => {
+  try {
+    const response = await axios.get(
+      `http://3.36.132.42:8080/api/user/kakao/callback?code=${codeParam}`
+    );
+    console.log(response);
+  } catch (error) {
+    console.log("kakao login error", error);
+  }
+};
+
 export { postLogin };
