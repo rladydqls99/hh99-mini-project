@@ -10,51 +10,30 @@ import {
   StyledReactpaginate,
   MiddleContainer,
 } from "./styles";
-import DisplayCompanys from "./DisplayCompanys";
-import axios from "axios";
+import DisplayCompanies from "./DisplayCompanys";
 
 function Main() {
   // 공통 사용
   const { isError, isLoading, data } = useQuery("company", getCompany);
 
   // 페이지 네이션
-  const [companys, setCompanys] = useState([]);
+  const [companies, setCompanies] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     if (data) {
-      setCompanys(data.content);
+      setCompanies(data.content);
     }
   }, [data]);
 
   // 페이지당 원하는 수
-  const companysPerPage = 3;
-  const pagesVisited = pageNumber * companysPerPage;
-  const pageCount = Math.ceil(companys.length / companysPerPage);
+  const companiesPerPage = 3;
+  const pagesVisited = pageNumber * companiesPerPage;
+  const pageCount = Math.ceil(companies.length / companiesPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-
-  // 페이지네이션
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await axios.get(`http://3.36.132.42:8080/api/company`);
-      setPosts(response.data.content);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
-
-  const indexOfLast = currentPage * postsPerPage;
-  const indexOfFirst = indexOfLast - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirst, indexOfLast);
 
   // 기업 검색하는 검색창 컨트롤
   const [searchCompany, setSearchCompany] = useState("");
@@ -81,11 +60,11 @@ function Main() {
         <MiddleContainer>
           <Container>
             {data.content
-              .slice(pagesVisited, pagesVisited + companysPerPage)
+              .slice(pagesVisited, pagesVisited + companiesPerPage)
               .map((company) => {
                 return (
                   <>
-                    <DisplayCompanys
+                    <DisplayCompanies
                       companyId={company.id}
                       companyName={company.companyName}
                       location={company.location}

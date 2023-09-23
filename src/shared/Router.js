@@ -7,12 +7,14 @@ import Detail from "../pages/detail/Detail";
 import SignUp from "../pages/authentication/SignUp";
 import Login from "../pages/authentication/Login";
 import Mypage from "../pages/mypage/Mypage";
+import Kakao from "../pages/authentication/Kakao";
 
 const Router = () => {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/api/user/kakao/callback" element={<Kakao />} />
           <Route element={<Header />}>
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />

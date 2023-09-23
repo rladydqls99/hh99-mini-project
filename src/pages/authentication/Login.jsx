@@ -62,21 +62,26 @@ function Login() {
     try {
       // 비동기 작업을 수행하기 위해 await를 사용하고, 화살표 함수 내에서 직접 URL을 설정합니다.
       const response = await axios.get(
-        "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://3.36.132.42:8080/api/user/kakao/callback"
+        "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://3.36.132.42:8080/api/user/kakao/callback",
+        { withCredentials: true }
       );
 
-      console.log(response);
-      if (response.status === 200) {
-        setCookie("token", response.data.token, {
-          path: "/",
-          secure: true,
-          maxAge: 3000,
-        });
-        // path: 쿠키가 어디에서 유효하냐 /-> 모든 경로
-        // secrue: true http를 사용해야 쿠키 설정 가능
-        // 쿠키는 50분 동안 유효(보안 등으로 인해)
-        alert("로그인 되었습니다.");
-      }
+      // console.log(response);
+
+      // 헤더에 저장된 토큰을 가져오는 방법
+      // let accessToken = res.headers.authorization; // 응답헤더에서 토큰 받기
+      // let refreshToken = res.headers.refresh; // 응답헤더에서
+      // if (response.status === 200) {
+      setCookie("token", response.data.token, {
+        path: "/",
+        secure: true,
+        maxAge: 3000,
+      });
+      // path: 쿠키가 어디에서 유효하냐 /-> 모든 경로
+      // secrue: true http를 사용해야 쿠키 설정 가능
+      // 쿠키는 50분 동안 유효(보안 등으로 인해)
+      alert("로그인 되었습니다.");
+      // }
     } catch (error) {
       console.log("kakao 로그인 에러", error);
     }
@@ -109,7 +114,13 @@ function Login() {
         >
           회원가입 하기
         </ButtonStyle>
-        <button id="login-kakao-btn" onClick={kakaoLogin}>
+        <button
+          id="login-kakao-btn"
+          onClick={() =>
+            (window.location.href =
+              "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:3000/api/user/kakao/callback&response_type=code")
+          }
+        >
           카카오로 로그인하기
         </button>
       </FlexForm>

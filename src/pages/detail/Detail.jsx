@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   deleteComments,
   getComments,
@@ -14,10 +14,9 @@ import {
   BlurDiv,
   Blur,
 } from "./styles";
-import { ModalSetUp, ModalFlex } from "./modal/modalstyle";
 import Comment from "./comment/Comment";
-import axios from "axios";
 import { getCookie } from "../../cookies/cookies";
+import Modal from "./modal/Modal";
 
 function Detail() {
   // 전역으로 사용할 것들
@@ -26,10 +25,6 @@ function Detail() {
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
-  useEffect(() => {}, [params, state]);
-
-  useEffect(() => {}, [params, state]);
 
   // 댓글 추가하기
   const [comments, setComments] = useState("");
@@ -56,7 +51,6 @@ function Detail() {
       setComments("");
     }
   };
-
   // ----------------------------------------------------------------
 
   // 댓글 수정하기
@@ -91,54 +85,13 @@ function Detail() {
   };
   // ----------------------------------------------------------------
 
-  // 프로필 모달 관리
-  const Modal = ({ commentId, memberId }) => {
-    const [nickname, setNickname] = useState("");
-    const [email, setEmail] = useState("");
+  // 모달 열고 닫기 함수
+  const [modalState, setModalState] = useState(false);
 
-    console.log(data);
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const { data } = await axios.get(
-            `http://3.36.132.42:8080/api/member/${memberId}`
-          );
-
-          setNickname(data.nickname);
-          setEmail(data.email);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      fetchData();
-    }, [commentId, memberId]);
-
-    return (
-      <>
-        <div>닉네임: {nickname}</div>
-        <div>이메일: {email}</div>
-      </>
-    );
+  const modalChangeBtn = () => {
+    setModalState(!modalState);
   };
 
-  // 각 댓글의 모달 열림 상태를 관리하는 배열
-  const [modalOpenStates, setModalOpenStates] = useState(
-    data?.map(() => false) || []
-  );
-
-  // 모달 열기 함수
-  const openModal = (index) => {
-    const newModalOpenStates = [...modalOpenStates];
-    newModalOpenStates[index] = true;
-    setModalOpenStates(newModalOpenStates);
-  };
-
-  // 모달 닫기 함수
-  const closeModal = (index) => {
-    const newModalOpenStates = [...modalOpenStates];
-    newModalOpenStates[index] = false;
-    setModalOpenStates(newModalOpenStates);
-  };
   // ------------------------------------------------------
 
   // 로그인 안됐을 때 댓글 안보이게 하기
@@ -176,19 +129,15 @@ function Detail() {
                 .map((comment, index) => (
                   <StyledComment key={comment.id}>
                     <div>
-                      <button onClick={() => openModal(index)}>프로필</button>
-                      {modalOpenStates[index] && (
-                        <ModalFlex>
-                          <ModalSetUp>
-                            <Modal
-                              commentId={comment.id}
-                              memberId={comment.memberId}
-                            />
-                            <button onClick={() => closeModal(index)}>X</button>
-                          </ModalSetUp>
-                        </ModalFlex>
-                      )}
-                      <h3>comment Id: {comment.id}</h3>
+                      <button onClick={modalChangeBtn}>프로필</button>
+                      {modalState ? (
+                        <Modal
+                          nickname={comment.nickname}
+                          email={comment.email}
+                          modalChangeBtn={modalChangeBtn}
+                          memberID={comment.id}
+                        />
+                      ) : null}
                     </div>
                     {/* 각 댓글을 Comment 컴포넌트로 대체 */}
                     <Comment
@@ -219,21 +168,15 @@ function Detail() {
                   .map((comment, index) => (
                     <StyledComment key={comment.id}>
                       <div>
-                        <button onClick={() => openModal(index)}>프로필</button>
-                        {modalOpenStates[index] && (
-                          <ModalFlex>
-                            <ModalSetUp>
-                              <Modal
-                                commentId={comment.id}
-                                memberId={comment.memberId}
-                              />
-                              <button onClick={() => closeModal(index)}>
-                                X
-                              </button>
-                            </ModalSetUp>
-                          </ModalFlex>
-                        )}
-                        <h3>comment Id: {comment.id}</h3>
+                        <button onClick={modalChangeBtn}>프로필</button>
+                        {modalState ? (
+                          <Modal
+                            nickname={comment.nickname}
+                            email={comment.email}
+                            modalChangeBtn={modalChangeBtn}
+                            memberID={comment.id}
+                          />
+                        ) : null}
                       </div>
                       {/* 각 댓글을 Comment 컴포넌트로 대체 */}
                       <Comment
