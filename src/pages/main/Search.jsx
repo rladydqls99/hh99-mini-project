@@ -48,22 +48,20 @@ function Search() {
         </StyledInput>
       </StyledDiv>
       <OuterContainer>
-        <MiddleContainer>
-          <Container>
-            {location.state.map((company) => {
-              return (
-                <>
-                  <DisplayCompanies
-                    key={company.id}
-                    companyId={company.id}
-                    companyName={company.companyName}
-                    location={company.location}
-                  />
-                </>
-              );
-            })}
-          </Container>
-        </MiddleContainer>
+        <Container>
+          {location.state.map((company) => {
+            return (
+              <>
+                <DisplayCompanies
+                  key={company.id}
+                  companyId={company.id}
+                  companyName={company.companyName}
+                  location={company.location}
+                />
+              </>
+            );
+          })}
+        </Container>
         <SideDiv>this</SideDiv>
       </OuterContainer>
     </>

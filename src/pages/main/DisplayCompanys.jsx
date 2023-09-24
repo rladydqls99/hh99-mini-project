@@ -7,17 +7,19 @@ function DisplayCompanies({ companyName, location, companyId, logo }) {
   // 기업 박스를 누르면 해당 기업 상세 페이지로 이동
   const goDetail = (companyId, companyName, location) => {
     navigate(`/detail/${companyId}`, {
-      state: { companyName, location },
+      state: { companyName, location, logo },
     });
   };
+
   return (
     <StyledBox
       onClick={() => goDetail(companyId, companyName, location)}
       key={companyId}
     >
       <LogoImage src={logo} />
-      <h1>기업명: {companyName}</h1>
-      <h3>위치: {location}</h3>
+      <div>
+        <h1>{companyName}</h1>
+      </div>
     </StyledBox>
   );
 }
