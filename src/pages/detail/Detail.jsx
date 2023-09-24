@@ -13,6 +13,9 @@ import {
   StyledComment,
   BlurDiv,
   Blur,
+  DetailLogoImage,
+  CompanyContainer,
+  CommentDiv,
 } from "./styles";
 import Comment from "./comment/Comment";
 import { getCookie } from "../../cookies/cookies";
@@ -109,76 +112,49 @@ function Detail() {
 
   // 로그인 안됐을 때 댓글 안보이게 하기
   const token = getCookie("token");
+
   return (
-    <>
-      <Container>
-        <h1>{state.companyName}</h1>
-        <h3>{state.location}</h3>
-      </Container>
-      <StyledCommentsDiv>
-        <h1>댓글</h1>
+    <div style={{ backgroundColor: "#F8F0E5" }}>
+      <CompanyContainer>
+        <DetailLogoImage src={state.logo} />
         <div>
-          <textarea
-            value={comments}
-            onChange={onChangeComments}
-            type="text"
-            placeholder="댓글을 입력해주세요"
-          />
-          <button onClick={() => addCommentsHandler(params.id, comments)}>
-            댓글 추가하기
-          </button>
+          <h1>{state.companyName}</h1>
+          <h3>위치: {state.location}</h3>
         </div>
-      </StyledCommentsDiv>
-      <Container>
-        {!!token ? (
-          <>
-            {data &&
-              data
-                .filter((comment) => {
-                  return comment.companyId === parseInt(params.id);
-                })
-                .sort((before, after) => after.id - before.id)
-                .map((comment, index) => (
-                  <StyledComment key={comment.id}>
-                    <div>
-                      <button onClick={() => openModal(index)}>프로필</button>
-                      {modalOpenStates[index] && (
-                        <Modal
-                          memberId={comment.memberId}
-                          closeModal={() => closeModal(index)}
-                        />
-                      )}
-                    </div>
-                    {/* 각 댓글을 Comment 컴포넌트로 대체 */}
-                    <Comment
-                      memberId={comment.memberId}
-                      comment={comment.comment}
-                      commentId={comment.id}
-                      onEdit={(editedComment) =>
-                        patchCommentsHandler(comment.id, editedComment)
-                      }
-                      onDelete={() => doRemoveComments(comment.id)}
-                    />
-                  </StyledComment>
-                ))}
-          </>
-        ) : (
-          <>
-            <BlurDiv>
-              <Blur>
-                <button onClick={() => navigate("/login")} className="btn">
-                  로그인하고 댓글 보러가기!
-                </button>
-              </Blur>
+      </CompanyContainer>
+      <CommentDiv>
+        <StyledCommentsDiv>
+          <h1>댓글</h1>
+          <div>
+            <textarea
+              value={comments}
+              onChange={onChangeComments}
+              type="text"
+              placeholder="댓글을 입력해주세요"
+            />
+            <button onClick={() => addCommentsHandler(params.id, comments)}>
+              댓글 추가하기
+            </button>
+          </div>
+        </StyledCommentsDiv>
+        <Container>
+          {!!token ? (
+            <>
               {data &&
                 data
                   .filter((comment) => {
                     return comment.companyId === parseInt(params.id);
                   })
+                  .sort((before, after) => after.id - before.id)
                   .map((comment, index) => (
                     <StyledComment key={comment.id}>
                       <div>
-                        <button onClick={() => openModal(index)}>프로필</button>
+                        <button
+                          className="profile"
+                          onClick={() => openModal(index)}
+                        >
+                          프로필
+                        </button>
                         {modalOpenStates[index] && (
                           <Modal
                             memberId={comment.memberId}
@@ -190,6 +166,7 @@ function Detail() {
                       <Comment
                         memberId={comment.memberId}
                         comment={comment.comment}
+                        commentId={comment.id}
                         onEdit={(editedComment) =>
                           patchCommentsHandler(comment.id, editedComment)
                         }
@@ -197,11 +174,53 @@ function Detail() {
                       />
                     </StyledComment>
                   ))}
-            </BlurDiv>
-          </>
-        )}
-      </Container>
-    </>
+            </>
+          ) : (
+            <>
+              <BlurDiv>
+                <Blur>
+                  <button onClick={() => navigate("/login")} className="btn">
+                    로그인하고 댓글 보러가기!
+                  </button>
+                </Blur>
+                {data &&
+                  data
+                    .filter((comment) => {
+                      return comment.companyId === parseInt(params.id);
+                    })
+                    .map((comment, index) => (
+                      <StyledComment key={comment.id}>
+                        <div>
+                          <button
+                            className="profile"
+                            onClick={() => openModal(index)}
+                          >
+                            프로필
+                          </button>
+                          {modalOpenStates[index] && (
+                            <Modal
+                              memberId={comment.memberId}
+                              closeModal={() => closeModal(index)}
+                            />
+                          )}
+                        </div>
+                        {/* 각 댓글을 Comment 컴포넌트로 대체 */}
+                        <Comment
+                          memberId={comment.memberId}
+                          comment={comment.comment}
+                          onEdit={(editedComment) =>
+                            patchCommentsHandler(comment.id, editedComment)
+                          }
+                          onDelete={() => doRemoveComments(comment.id)}
+                        />
+                      </StyledComment>
+                    ))}
+              </BlurDiv>
+            </>
+          )}
+        </Container>
+      </CommentDiv>
+    </div>
   );
 }
 

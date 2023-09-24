@@ -1,12 +1,46 @@
 import styled from "styled-components";
+import { colors } from "../../color/colors";
+
+const CompanyContainer = styled.div`
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  max-width: 1170px;
+  margin: 0px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  gap: 20px;
+
+  div {
+    margin-top: 30px;
+    border-top: 1px solid ${colors.darkColor};
+    padding: 10px 0px 0px 10px;
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 30px;
+    }
+  }
+`;
+const CommentDiv = styled.div`
+  max-width: 1170px;
+  margin: 0px auto 0px auto;
+  border-radius: 20px;
+  background-color: white;
+`;
 
 const Container = styled.div`
   padding: 20px;
-  background-color: #f9f9fb;
+  background-color: white;
   border-radius: 12px;
   max-width: 1170px;
-  margin: 30px auto;
+  margin: 0px auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  gap: 20px;
 `;
 
 const StyledCommentsDiv = styled.div`
@@ -28,7 +62,7 @@ const StyledCommentsDiv = styled.div`
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: ${colors.darkColor};
     color: white;
     border: none;
     padding: 10px 20px;
@@ -48,7 +82,7 @@ const StyledCommentsDiv = styled.div`
 `;
 
 const StyledComment = styled.div`
-  border-bottom: 1px solid #ddd;
+  border: 1px solid ${colors.darkColor};
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -65,7 +99,6 @@ const StyledComment = styled.div`
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
-      background-color: #f0f0f0;
     }
 
     .user-details {
@@ -93,7 +126,7 @@ const StyledComment = styled.div`
   }
 
   button {
-    background-color: #007bff;
+    background-color: ${colors.darkColor};
     color: white;
     border: none;
     padding: 5px 10px;
@@ -104,6 +137,11 @@ const StyledComment = styled.div`
     &:hover {
       background-color: #007bff;
     }
+  }
+  .profile {
+    border-radius: 50px;
+    width: 70px;
+    height: 70px;
   }
 `;
 
@@ -126,4 +164,21 @@ const Blur = styled.div`
   z-index: 1; /* 다른 컴포넌트 위에 나타나도록 설정 (원하는 숫자로 조정) */
 `;
 
-export { Container, StyledCommentsDiv, StyledComment, BlurDiv, Blur };
+const DetailLogoImage = styled.img`
+  width: 400px;
+  height: 100%;
+
+  padding-bottom: 10px;
+  padding: 5px;
+`;
+
+export {
+  Container,
+  StyledCommentsDiv,
+  StyledComment,
+  BlurDiv,
+  Blur,
+  DetailLogoImage,
+  CompanyContainer,
+  CommentDiv,
+};
