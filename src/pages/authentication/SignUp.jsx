@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postSignup } from "../../api/signup";
-import { ContainerDiv, FlexForm, InputContent, ButtonStyle } from "./styles";
+import {
+  ContainerDiv,
+  FlexForm,
+  InputContent,
+  ButtonStyle,
+  BorderDiv,
+  Background,
+  IconContainer,
+} from "./styles";
 import { useMutation, useQueryClient } from "react-query";
+import { colors } from "../../color/colors";
+import { SignupIcon } from "../../icon/icons";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -58,50 +68,60 @@ function SignUp() {
 
   return (
     <>
-      <ContainerDiv>
-        <FlexForm onSubmit={onSubmitHandler}>
-          <h1>회원가입</h1>
-          <InputContent
-            type="text"
-            placeholder="닉네임"
-            value={nickname}
-            onChange={nickNameOnChangeHandler}
-          />
-          <InputContent
-            type="text"
-            placeholder="이메일"
-            value={email}
-            onChange={emailOnChangeHandler}
-          />
-          <InputContent
-            type="password"
-            placeholder="비밀번호"
-            value={password}
-            onChange={pwOnChangeHandler}
-          />
-          <InputContent
-            type="password"
-            placeholder="비밀번호 확인"
-            value={checkPassword}
-            onChange={setPwOnChangeHandler}
-          />
-          <ButtonStyle
-            onClick={onSubmitHandler}
-            back-color={"#4E61FF"}
-            type="submit"
-          >
-            회원가입 하기
-          </ButtonStyle>
-          <ButtonStyle
-            onClick={() => {
-              navigate("/login");
-            }}
-            back-color={"lightgrey"}
-          >
-            로그인 하기
-          </ButtonStyle>
-        </FlexForm>
-      </ContainerDiv>
+      <Background back-color={colors.background}>
+        <ContainerDiv>
+          <FlexForm>
+            <IconContainer>
+              <SignupIcon />
+            </IconContainer>
+            <BorderDiv>
+              <InputContent
+                type="text"
+                placeholder="닉네임"
+                value={nickname}
+                onChange={nickNameOnChangeHandler}
+              />
+              <InputContent
+                type="text"
+                placeholder="이메일"
+                value={email}
+                onChange={emailOnChangeHandler}
+              />
+              <InputContent
+                type="password"
+                placeholder="비밀번호"
+                value={password}
+                onChange={pwOnChangeHandler}
+              />
+              <InputContent
+                type="password"
+                placeholder="비밀번호 확인"
+                value={checkPassword}
+                onChange={setPwOnChangeHandler}
+              />
+              <p>
+                <ButtonStyle
+                  onClick={onSubmitHandler}
+                  font-color={"white"}
+                  back-color={colors.darkColor}
+                  type="submit"
+                >
+                  회원가입 하기
+                </ButtonStyle>
+              </p>
+              <ButtonStyle
+                onClick={() => {
+                  navigate("/login");
+                }}
+                font-color={"black"}
+                back-color={"transparent"}
+              >
+                로그인 하기
+              </ButtonStyle>
+            </BorderDiv>
+          </FlexForm>
+        </ContainerDiv>
+      </Background>
     </>
   );
 }
