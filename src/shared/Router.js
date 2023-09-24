@@ -8,6 +8,7 @@ import SignUp from "../pages/authentication/SignUp";
 import Login from "../pages/authentication/Login";
 import Mypage from "../pages/mypage/Mypage";
 import Kakao from "../pages/authentication/Kakao";
+import Search from "../pages/main/Search";
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="/" element={<Main />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/mypage/:memberId" element={<Mypage />} />
           </Route>
