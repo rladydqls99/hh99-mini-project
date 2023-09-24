@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import { Link } from "react-router-dom";
@@ -19,6 +19,7 @@ function Header() {
 
   // 마이페이지 디코딩
   const token = getCookie("token");
+
   let dec = "";
   if (token) {
     const payload = token.substring(
