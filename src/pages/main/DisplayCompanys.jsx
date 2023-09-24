@@ -15,7 +15,7 @@ function DisplayCompanies({ companyName, location, companyId }) {
       onClick={() => goDetail(companyId, companyName, location)}
       key={companyId}
     >
-      <LogoImage src=""/>
+      <LogoImage src="" />
       <h1>기업명: {companyName}</h1>
       <h3>위치: {location}</h3>
     </StyledBox>

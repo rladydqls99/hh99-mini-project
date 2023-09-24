@@ -13,12 +13,8 @@ import DisplayCompanies from "./DisplayCompanys";
 import { useLocation } from "react-router-dom";
 
 function Main() {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const page = queryParams.get("page");
-  const size = queryParams.get("size");
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
+  const [postsPerPage, setPostsPerPage] = useState(12);
   const { isError, isLoading, data } = useQuery(
     ["pagination", currentPage, postsPerPage],
     () => getCompany(currentPage - 1, postsPerPage)
@@ -31,7 +27,6 @@ function Main() {
       setCompanies(data.content);
     }
   }, [data]);
-  console.log(data);
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
   const currentPosts = companies.slice(indexOfFirst, indexOfLast);
@@ -77,6 +72,7 @@ function Main() {
             paginate={setCurrentPage}
           ></Pagination>
         </Container>
+        <SideDiv></SideDiv>
       </OuterContainer>
     </>
   );
