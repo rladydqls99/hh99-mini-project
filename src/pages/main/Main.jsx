@@ -62,8 +62,9 @@ function Main() {
   if (isError) {
     return <div>에러발생</div>;
   }
+
   return (
-    <>
+    <div style={{ backgroundColor: "#F8F0E5" }}>
       <StyledDiv>
         <StyledInput>
           <input
@@ -96,7 +97,7 @@ function Main() {
         </Container>
         <SideDiv></SideDiv>
       </OuterContainer>
-    </>
+    </div>
   );
 }
 
