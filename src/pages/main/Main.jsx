@@ -10,7 +10,6 @@ import {
   SideDiv,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
-import { useLocation } from "react-router-dom";
 
 function Main() {
   const [currentPage, setCurrentPage] = useState(1);
