@@ -17,7 +17,7 @@ import axios from "axios";
 function Main() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(12);
+  const [postsPerPage, setPostsPerPage] = useState(9);
   const { isError, isLoading, data } = useQuery(
     ["pagination", currentPage, postsPerPage],
     () => getCompany(currentPage - 1, postsPerPage)

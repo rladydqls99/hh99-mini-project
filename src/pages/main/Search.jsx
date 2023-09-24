@@ -34,6 +34,7 @@ function Search() {
       console.log("검색결과가 없습니다", error);
     }
   };
+
   return (
     <>
       <StyledDiv>
@@ -61,7 +62,6 @@ function Search() {
             );
           })}
         </Container>
-
         <SideDiv>this</SideDiv>
       </OuterContainer>
     </>

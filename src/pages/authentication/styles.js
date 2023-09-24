@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Background = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: ${(props) => props["back-color"]};
+`;
+
 export const ContainerDiv = styled.div`
   width: 1170px;
   margin: auto;
@@ -20,10 +26,27 @@ export const FlexForm = styled.div`
   height: 100vh;
 `;
 
+export const BorderDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60%;
+  padding: 80px;
+  background-color: white;
+  border-radius: 30px;
+`;
+
+export const IconContainer = styled.div`
+  position: absolute;
+  top: 20%;
+  z-index: 10;
+`;
 export const InputContent = styled.input`
   width: 300px;
   height: 45.5px;
-  margin-top: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
   @media screen and (max-width: 780px) {
     width: 390px;
   }
@@ -35,10 +58,11 @@ export const InputContent = styled.input`
 
 export const ButtonStyle = styled.button`
   width: 300px;
-  height: 45px;
+  height: 45.5px;
   margin-top: 10px;
+  margin-bottom: -30px;
   background-color: ${(props) => props["back-color"]};
-  color: white;
+  color: ${(props) => props["font-color"]};
   border-color: transparent;
   border-radius: 5px;
   @media screen and (max-width: 780px) {
@@ -51,7 +75,7 @@ export const ButtonStyle = styled.button`
 `;
 
 export const KakaoButton = styled.button`
-  margin-top: 10px;
+  margin-top: 35px;
   border-radius: 10px;
   display: flex;
   align-items: center;

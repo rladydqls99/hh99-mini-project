@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // company 리스트 가져오기
-const getCompany = async (page = 18, size = 8) => {
+const getCompany = async (page = 16, size = 9) => {
   try {
     const response = await axios.get(
       `http://3.36.132.42:8080/api/company?page=${page}&size=${size}`
