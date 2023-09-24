@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../color/colors.js";
 
 export const Navbar = styled.nav`
   position: relative;
@@ -6,11 +7,12 @@ export const Navbar = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: #fbfbfb;
+  background-color: ${colors.background};
   padding: 4px 0;
-  color: #7f7f7f;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  color: ${colors.background};
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
   transition: color 0.3s;
+  border-bottom: 2px double ${colors.darkColor};
 
   &:hover,
   &:focus {
@@ -42,7 +44,7 @@ export const ButtonToggle = styled.button`
   border: 0;
   background-color: transparent;
   padding: 0 8px;
-  color: #7f7f7f;
+  color: ${colors.darkColor};
   outline: none;
 
   &.dark {
@@ -88,7 +90,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLink = styled.a`
-  color: #7f7f7f;
+  color: ${colors.darkColor};
   transition: color 0.3s;
 
   &:hover,
