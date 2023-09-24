@@ -21,8 +21,8 @@ export const patchNickname = async (props) => {
   console.log(props.changeNickname);
   console.log(props.token);
   try {
-    const response = await axios.patch(
-      `http://3.36.132.42:8080/api/member/${memberId}`,
+    const response = await axios.put(
+      `http://3.36.132.42:8080/api/member/me`,
       {
         nickname: changeNickname,
       },

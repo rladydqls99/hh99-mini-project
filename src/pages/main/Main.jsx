@@ -1,40 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { getCompany } from "../../api/main";
 import { useQuery } from "react-query";
+import Pagination from "./pagination";
 import {
   StyledDiv,
   StyledInput,
+  OuterContainer,
   Container,
   SideDiv,
-  OuterContainer,
-  StyledReactpaginate,
-  MiddleContainer,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
+import { useLocation } from "react-router-dom";
 
 function Main() {
-  // 공통 사용
-  const { isError, isLoading, data } = useQuery("company", getCompany);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(12);
+  const { isError, isLoading, data } = useQuery(
+    ["pagination", currentPage, postsPerPage],
+    () => getCompany(currentPage - 1, postsPerPage)
+  );
 
-  // 페이지 네이션
   const [companies, setCompanies] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     if (data) {
       setCompanies(data.content);
     }
   }, [data]);
-
-  // 페이지당 원하는 수
-
-  const companiesPerPage = 8;
-  const pagesVisited = pageNumber * companiesPerPage;
-  const pageCount = Math.ceil(companies.length / companiesPerPage);
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
+  const indexOfLast = currentPage * postsPerPage;
+  const indexOfFirst = indexOfLast - postsPerPage;
+  const currentPosts = companies.slice(indexOfFirst, indexOfLast);
 
   // 기업 검색하는 검색창 컨트롤
   const [searchCompany, setSearchCompany] = useState("");
@@ -50,6 +45,7 @@ function Main() {
   if (isError) {
     return <div>에러발생</div>;
   }
+
   return (
     <>
       <StyledDiv>
@@ -58,34 +54,25 @@ function Main() {
         </StyledInput>
       </StyledDiv>
       <OuterContainer>
-        <MiddleContainer>
-          <Container>
-            {data.content
-              .slice(pagesVisited, pagesVisited + companiesPerPage)
-              .map((company) => {
-                return (
-                  <>
-                    <DisplayCompanies
-                      companyId={company.id}
-                      companyName={company.companyName}
-                      location={company.location}
-                    />
-                  </>
-                );
-              })}
-            <StyledReactpaginate
-              previousLabel={"⏪"}
-              nextLabel={"⏩"}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={"paginationBtn"}
-              previousLinkClassName={"previousBtn"}
-              nextLinkClassName={"nextBtn"}
-              disabledClassName={"paginationDisabled"}
-            />
-          </Container>
-        </MiddleContainer>
-        <SideDiv>this</SideDiv>
+        <Container>
+          {companies?.map((company) => {
+            return (
+              <>
+                <DisplayCompanies
+                  companyId={company.id}
+                  companyName={company.companyName}
+                  location={company.location}
+                />
+              </>
+            );
+          })}
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={data?.totalElements || 0}
+            paginate={setCurrentPage}
+          ></Pagination>
+        </Container>
+        <SideDiv></SideDiv>
       </OuterContainer>
     </>
   );
