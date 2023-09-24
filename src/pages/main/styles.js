@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../color/colors.js";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -75,6 +76,10 @@ export const StyledBox = styled.div`
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
   /* 화면이 작아질 때 크기 조절 */
+  width: calc(
+    33.3% - 20px
+  ); /* 2개의 박스를 한 행에 표시하려면 50%로 설정 (간격 제외) */
+
   @media (max-width: 768px) {
     width: calc(
       50% - 20px

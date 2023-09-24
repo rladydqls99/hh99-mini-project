@@ -14,7 +14,6 @@ import { searchCompany } from "../../api/main";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 function Main() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,7 +62,6 @@ function Main() {
   if (isError) {
     return <div>에러발생</div>;
   }
-
   return (
     <>
       <StyledDiv>
@@ -85,6 +83,7 @@ function Main() {
                   companyId={company.id}
                   companyName={company.companyName}
                   location={company.location}
+                  logo={company.logoUrl}
                 />
               </>
             );
