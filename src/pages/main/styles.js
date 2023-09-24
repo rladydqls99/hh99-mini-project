@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import Reactpaginate from "react-paginate";
 
 export const StyledDiv = styled.div`
   display: flex;
   justify-content: center; /*수평 가운데 정렬*/
   align-items: center; /* 수직 가운데 정렬 */
-
   padding-bottom: 30px;
   gap: 10px;
 `;
@@ -42,6 +40,8 @@ export const OuterContainer = styled.div`
   justify-content: space-between; /* 컨테이너와 사이드 디브 간격을 최대화 */
   max-width: 1170px;
   margin: 0 auto 0 auto;
+  margin-bottom: 80px;
+  position: relative;
 `;
 
 export const Container = styled.div`
@@ -52,6 +52,7 @@ export const Container = styled.div`
   justify-content: flex-start; /* 왼쪽 정렬 */
   position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
 `;
+// !outerContainer와 container의 차이
 
 export const MiddleContainer = styled.div`
   display: flex;
@@ -102,53 +103,45 @@ export const Icon = styled.div`
   left: 92%; /* 원하는 위치로 조정 */
 `;
 
-export const StyledReactpaginate = styled(Reactpaginate)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+// 페이지네이션 관련 css
+export const PageUl = styled.ul`
+  float: left;
+  list-style: none;
+  text-align: center;
+  border-radius: 3px;
+  color: black;
+  padding: 1px;
+  border-top: 3px solid #186ead;
+  border-bottom: 3px solid #186ead;
+  background-color: white;
   position: absolute;
   top: 100%;
-  left: 55%;
-  margin-top: 30px; /* 페이지네이션과 내용 사이 여백 조절 */
+  left: 40%;
+`;
 
-  ul.paginationBtn {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+export const PageLi = styled.li`
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 5px;
+  width: 25px;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #263a6c;
+  }
+  &:focus::after {
+    color: white;
+    background-color: #263a6c;
+  }
+`;
 
-    li {
-      margin: 0 10px; /* 페이지 버튼 사이 여백 조절 */
-      display: inline-block;
-
-      a {
-        text-decoration: none;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        color: #333;
-        background-color: #f0f0f0;
-        cursor: pointer;
-
-        &:hover {
-          background-color: #ddd;
-        }
-      }
-
-      &.selected a {
-        background-color: #007bff;
-        color: white;
-      }
-
-      &.previous a,
-      &.next a {
-        background-color: #007bff;
-        color: white;
-      }
-
-      &.break a {
-        cursor: default;
-      }
-    }
+export const PageSpan = styled.span`
+  &:hover::after,
+  &:focus::after {
+    border-radius: 100%;
+    color: white;
+    background-color: #263a6c;
   }
 `;

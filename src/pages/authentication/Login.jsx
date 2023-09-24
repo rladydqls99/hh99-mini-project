@@ -35,6 +35,7 @@ function Login() {
   };
 
   const requestLogin = async (e) => {
+    e.preventDefault();
     if (!email.length || !password.length) {
       alert("이메일과 비밀번호 모두 입력해주세요");
       return;
@@ -76,11 +77,7 @@ function Login() {
           value={password}
           onChange={pwOnChangeHandler}
         />
-        <ButtonStyle
-          onClick={requestLogin}
-          back-color={"#4E61FF"}
-          type="submit"
-        >
+        <ButtonStyle onClick={requestLogin} back-color={"#4E61FF"}>
           로그인 하기
         </ButtonStyle>
         <ButtonStyle
