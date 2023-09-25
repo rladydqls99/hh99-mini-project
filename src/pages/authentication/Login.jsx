@@ -8,9 +8,14 @@ import {
   InputContent,
   ButtonStyle,
   KakaoButton,
+  BorderDiv,
+  Background,
+  IconContainer,
 } from "./styles";
 import { useMutation, useQueryClient } from "react-query";
 import kakaoLogin from "../../img/kakao_login_medium_wide.png";
+import { colors } from "../../color/colors";
+import { LoginIcon } from "../../icon/icons";
 
 function Login() {
   const navigate = useNavigate();
@@ -62,43 +67,55 @@ function Login() {
   });
 
   return (
-    <ContainerDiv>
-      <FlexForm>
-        <h1>로그인</h1>
-        <InputContent
-          type="text"
-          placeholder="이메일"
-          value={email}
-          onChange={emailOnChangeHandler}
-        />
-        <InputContent
-          type="password"
-          placeholder="비밀번호"
-          value={password}
-          onChange={pwOnChangeHandler}
-        />
-        <ButtonStyle onClick={requestLogin} back-color={"#4E61FF"}>
-          로그인 하기
-        </ButtonStyle>
-        <ButtonStyle
-          onClick={() => {
-            navigate("/signup");
-          }}
-          back-color={"lightgrey"}
-        >
-          회원가입 하기
-        </ButtonStyle>
-        <KakaoButton
-          id="login-kakao-btn"
-          onClick={() =>
-            (window.location.href =
-              "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:3000/api/user/kakao/callback&response_type=code")
-          }
-        >
-          <img src={kakaoLogin} />
-        </KakaoButton>
-      </FlexForm>
-    </ContainerDiv>
+
+    <Background back-color={colors.background}>
+      <ContainerDiv>
+        <FlexForm>
+          <IconContainer>
+            <LoginIcon />
+          </IconContainer>
+          <BorderDiv>
+            <InputContent
+              type="text"
+              placeholder="이메일"
+              value={email}
+              onChange={emailOnChangeHandler}
+            />
+            <InputContent
+              type="password"
+              placeholder="비밀번호"
+              value={password}
+              onChange={pwOnChangeHandler}
+            />
+            <ButtonStyle
+              onClick={requestLogin}
+              font-color={"white"}
+              back-color={colors.darkColor}
+            >
+              로그인 하기
+            </ButtonStyle>
+            <KakaoButton
+              id="login-kakao-btn"
+              onClick={() =>
+                (window.location.href =
+                  "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:3000/api/user/kakao/callback&response_type=code")
+              }
+            >
+              <img src={kakaoLogin} />
+            </KakaoButton>
+            <ButtonStyle
+              onClick={() => {
+                navigate("/signup");
+              }}
+              font-color={"black"}
+              back-color={"transparent"}
+            >
+              회원가입 하기
+            </ButtonStyle>
+          </BorderDiv>
+        </FlexForm>
+      </ContainerDiv>
+    </Background>
   );
 }
 

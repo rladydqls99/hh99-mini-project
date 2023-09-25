@@ -34,6 +34,7 @@ function Search() {
       console.log("검색결과가 없습니다", error);
     }
   };
+
   return (
     <>
       <StyledDiv>
@@ -56,12 +57,12 @@ function Search() {
                   companyId={company.id}
                   companyName={company.companyName}
                   location={company.location}
+                  logo={company.logoUrl}
                 />
               </>
             );
           })}
         </Container>
-
         <SideDiv>this</SideDiv>
       </OuterContainer>
     </>

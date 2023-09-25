@@ -8,6 +8,7 @@ import {
   OuterContainer,
   Container,
   SideDiv,
+  MainContainer,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
 import { searchCompany } from "../../api/main";
@@ -17,7 +18,7 @@ import axios from "axios";
 function Main() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(12);
+  const [postsPerPage] = useState(21);
   const { isError, isLoading, data } = useQuery(
     ["pagination", currentPage, postsPerPage],
     () => getCompany(currentPage - 1, postsPerPage)
@@ -30,10 +31,6 @@ function Main() {
       setCompanies(data.content);
     }
   }, [data]);
-
-  const indexOfLast = currentPage * postsPerPage;
-  const indexOfFirst = indexOfLast - postsPerPage;
-  const currentPosts = companies.slice(indexOfFirst, indexOfLast);
 
   // 기업 검색하는 검색창 컨트롤
   const [companyName, setCompanyName] = useState("");
@@ -64,7 +61,7 @@ function Main() {
   }
 
   return (
-    <div style={{ backgroundColor: "#F8F0E5" }}>
+    <>
       <StyledDiv>
         <StyledInput>
           <input
@@ -75,29 +72,32 @@ function Main() {
           <button onClick={() => goCompanyDetail(companyName)}>검색</button>
         </StyledInput>
       </StyledDiv>
-      <OuterContainer>
-        <Container>
-          {companies?.map((company) => {
-            return (
-              <>
-                <DisplayCompanies
-                  companyId={company.id}
-                  companyName={company.companyName}
-                  location={company.location}
-                  logo={company.logoUrl}
-                />
-              </>
-            );
-          })}
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={data?.totalElements || 0}
-            paginate={setCurrentPage}
-          ></Pagination>
-        </Container>
-        <SideDiv></SideDiv>
-      </OuterContainer>
-    </div>
+      <MainContainer>
+        <OuterContainer>
+          <Container>
+            {companies?.map((company) => {
+              return (
+                <>
+                  <DisplayCompanies
+                    companyId={company.id}
+                    companyName={company.companyName}
+                    location={company.location}
+                    logo={company.logoUrl}
+                  />
+                </>
+              );
+            })}
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={data?.totalElements || 0}
+              paginate={setCurrentPage}
+              currentPage={currentPage}
+            ></Pagination>
+          </Container>
+          {/* <SideDiv></SideDiv> */}
+        </OuterContainer>
+      </MainContainer>
+    </>
   );
 }
 

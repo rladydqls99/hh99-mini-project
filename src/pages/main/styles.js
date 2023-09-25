@@ -4,18 +4,17 @@ import { colors } from "../../color/colors.js";
 export const StyledDiv = styled.div`
   display: flex;
   justify-content: center; /*수평 가운데 정렬*/
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   gap: 10px;
-  border-bottom: 2px solid ${colors.background};
 `;
 
 export const StyledInput = styled.div`
-  border: 2px solid ${colors.darkColor};
+  border: 1px solid ${colors.darkColor};
   border-radius: 5px;
-  margin-top: 50px;
+  margin-top: 10px;
   padding-inline-start: 10px;
   width: 90%;
-  height: 40px;
+  height: 60px;
   max-width: 1170px;
   display: flex;
   align-items: center;
@@ -23,9 +22,8 @@ export const StyledInput = styled.div`
 
   input {
     width: 93%;
-    height: 70%;
+    height: 80%;
     outline: none;
-    background-color: ${colors.background};
   }
   button {
     margin-left: auto;
@@ -42,16 +40,14 @@ export const LogoImage = styled.img`
 `;
 
 export const StyledBox = styled.div`
-  border: 2px solid ${colors.background};
   border-radius: 10px;
   background-color: white;
   height: 150;
   width: 250px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 6px 24px 0px;
 
   div {
-    border-top: 1px solid ${colors.background};
+    border-top: 1px solid #f4f2f1;
     padding-top: 10px;
 
     h1 {
@@ -75,18 +71,22 @@ export const StyledBox = styled.div`
   }
 `;
 
+export const MainContainer = styled.div`
+  background-color: ${colors.background};
+  border-top: 1px solid #e4e2e1;
+`;
 export const OuterContainer = styled.div`
   display: flex;
   width: 100%;
-  background-color: white;
+  background-color: "#f4f2f1";
   justify-content: space-between; /* 컨테이너와 사이드 디브 간격을 최대화 */
   max-width: 1170px;
   margin: 0 auto 0 auto;
   padding: 40px;
   position: relative;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
-  border-radius: 30px;
-  background-color: ${colors.mediumColor};
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);  */
+
+  /* background-color: ${colors.background}; */
 `;
 
 export const Container = styled.div`
@@ -96,12 +96,12 @@ export const Container = styled.div`
   width: 100%; /* 화면 가로폭에 맞추기 */
   justify-content: flex-start; /* 왼쪽 정렬 */
   position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
+  margin-bottom: 30px;
 `;
-// !outerContainer와 container의 차이
 
 export const SideDiv = styled.div`
   width: 300px; /* 초기 너비 설정 */
-  background-color: ${colors.pointColor}; /* 배경색 설정 */
+  background-color: white; /* 배경색 설정 */
   /* 기타 스타일을 원하는 대로 추가하세요. */
 
   /* 화면 폭이 990px보다 좁아질 때 SideDiv를 숨깁니다. */
@@ -124,12 +124,10 @@ export const PageUl = styled.ul`
   border-radius: 3px;
   color: black;
   padding: 1px;
-  border-top: 3px solid #186ead;
-  border-bottom: 3px solid #186ead;
-  background-color: white;
   position: absolute;
   top: 100%;
-  left: 40%;
+  left: 47%;
+  margin-top: 20px;
 `;
 
 export const PageLi = styled.li`
@@ -151,6 +149,9 @@ export const PageLi = styled.li`
 `;
 
 export const PageSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+
   &:hover::after,
   &:focus::after {
     border-radius: 100%;
