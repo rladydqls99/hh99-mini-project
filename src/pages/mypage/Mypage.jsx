@@ -23,6 +23,7 @@ import { colors } from "../../color/colors";
 
 function Mypage() {
   const [changeNickname, setChangeNickname] = useState("");
+  const [changePassword, setChangePassword] = useState("");
   const { memberId } = useParams();
   const token = getCookie("token");
   const queryClient = useQueryClient();
@@ -43,6 +44,7 @@ function Mypage() {
   }
 
   // 닉네임 변경하기
+  // !변경 후 재렌더링 되도록 하고 비밀번호 변경도 가능하도록 하기
   const nicknameMutation = useMutation(patchNickname, {
     onSuccess: () => {
       queryClient.invalidateQueries("changeNickname");
@@ -52,10 +54,20 @@ function Mypage() {
 
   const onNicknameClickButtonHandler = () => {
     nicknameMutation.mutate({ memberId, changeNickname, token });
+    alert("닉네임 변경이 완료되었습니다!");
+  };
+
+  const onPasswordClickButtonHandler = () => {
+    nicknameMutation.mutate({ memberId, changePassword, token });
+    alert("비밀번호 변경이 완료되었습니다!");
   };
 
   const onNicknameChange = (e) => {
     setChangeNickname(e.target.value);
+  };
+
+  const onPasswordChange = (e) => {
+    setChangePassword(e.target.value);
   };
 
   // 모달
@@ -120,7 +132,18 @@ function Mypage() {
                               변경
                             </button>
                           </div>
-                          <div>이메일: {data.email}</div>
+                          <div>현재 비밀번호: {data.password} </div>
+                          <div>
+                            변경 할 비밀번호:{" "}
+                            <MypageInput
+                              value={changePassword}
+                              onChange={onPasswordChange}
+                            />
+                            &nbsp;
+                            <button onClick={onPasswordClickButtonHandler}>
+                              변경
+                            </button>
+                          </div>
                         </ModalContent>
                       </Modal>
                     )}

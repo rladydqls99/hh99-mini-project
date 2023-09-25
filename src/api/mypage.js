@@ -14,12 +14,12 @@ export const getMemberInfo = async (memberId) => {
 
 // 유저 닉네임 변경하기
 export const patchNickname = async (props) => {
-  const memberId = props.memberId;
   const changeNickname = props.changeNickname;
+  const changePassword = props.changePassword;
   const token = props.token;
-  console.log(props.memberId);
-  console.log(props.changeNickname);
-  console.log(props.token);
+
+  console.log(changePassword);
+
   try {
     const response = await axios.put(
       `http://3.36.132.42:8080/api/member/me`,
