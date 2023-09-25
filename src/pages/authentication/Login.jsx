@@ -16,6 +16,7 @@ import { useMutation, useQueryClient } from "react-query";
 import kakaoLogin from "../../img/kakao_login_medium_wide.png";
 import { colors } from "../../color/colors";
 import { LoginIcon } from "../../icon/icons";
+import LoginModal from "./LoginModal";
 
 function Login() {
   const navigate = useNavigate();
@@ -42,8 +43,6 @@ function Login() {
   const requestLogin = async (e) => {
     e.preventDefault();
     if (!email.length || !password.length) {
-      alert("이메일과 비밀번호 모두 입력해주세요");
-      return;
     }
 
     if (!email.includes("@")) {

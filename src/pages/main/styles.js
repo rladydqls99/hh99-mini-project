@@ -126,7 +126,7 @@ export const PageUl = styled.ul`
   padding: 1px;
   position: absolute;
   top: 100%;
-  left: 47%;
+  left: 38%;
   margin-top: 20px;
 `;
 

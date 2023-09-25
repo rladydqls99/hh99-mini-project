@@ -1,12 +1,20 @@
 import styled from "styled-components";
 import { colors } from "../../color/colors";
 
+const BackgroundDiv = styled.div`
+  background-color: ${colors.background};
+  height: 100%;
+`;
+
 const CompanyContainer = styled.div`
+  position: relative;
+  top: 30px;
   padding: 20px;
   background-color: white;
   border-radius: 12px;
   max-width: 1170px;
   margin: 0px auto;
+
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   align-items: center;
   gap: 20px;
@@ -26,8 +34,10 @@ const CompanyContainer = styled.div`
   }
 `;
 const CommentDiv = styled.div`
+  position: relative;
+  top: 30px;
   max-width: 1170px;
-  margin: 0px auto 0px auto;
+  margin: 20px auto 0px auto;
   border-radius: 20px;
   background-color: white;
 `;
@@ -181,4 +191,5 @@ export {
   DetailLogoImage,
   CompanyContainer,
   CommentDiv,
+  BackgroundDiv,
 };
