@@ -40,6 +40,7 @@ function Header() {
 
   // 로그인/로그아웃 버튼
   const onToggleButtonHandler = () => {
+    console.log("hi");
     if (token) {
       removeCookie("token");
       navigate("/login");
@@ -47,6 +48,7 @@ function Header() {
       navigate("/login");
     }
   };
+
   return (
     <>
       <Navbar>
