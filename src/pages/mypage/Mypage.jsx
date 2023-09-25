@@ -115,6 +115,7 @@ function Mypage() {
                               value={changeNickname}
                               onChange={onNicknameChange}
                             />
+                            &nbsp;
                             <button onClick={onNicknameClickButtonHandler}>
                               변경
                             </button>
