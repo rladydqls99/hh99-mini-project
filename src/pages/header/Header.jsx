@@ -56,11 +56,7 @@ function Header() {
           <VisibleContainer>
             <NavList>
               <NavItem>
-                <NavLink>
-                  <Link to="/" style={{ fontWeight: "bold" }}>
-                    JobPlanet
-                  </Link>
-                </NavLink>
+                <NavLink to={"/"}>JobPlanet</NavLink>
               </NavItem>
             </NavList>
 

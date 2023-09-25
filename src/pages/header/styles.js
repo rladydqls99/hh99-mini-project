@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../color/colors.js";
+import { Link } from "react-router-dom";
 
 export const Navbar = styled.nav`
   position: relative;
@@ -8,13 +9,12 @@ export const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  padding: 4px 0;
+  padding: 0px 0;
   color: ${colors.background};
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.07);
   transition: color 0.3s;
-  border-top: 1px double ${colors.darkColor};
-  border-bottom: 1px double ${colors.darkColor};
-  margin-top: 3px;
+  border-top: 1px double ${colors.line};
+  border-bottom: 1px double ${colors.line};
 
   &:hover,
   &:focus {
@@ -42,6 +42,7 @@ export const FlexEnd = styled.div`
 `;
 
 export const ButtonToggle = styled.button`
+  font-size: 20px;
   display: block;
   border: 0;
   background-color: transparent;
@@ -74,12 +75,9 @@ export const NavList = styled.ul`
   list-style: none;
   margin-right: auto;
   display: flex;
-  flex-direction: column;
-  padding-left: 0;
 
   &.lg {
     flex-direction: row;
-    margin-top: 4px;
   }
 `;
 
@@ -91,9 +89,12 @@ export const NavItem = styled.li`
   }
 `;
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
   color: ${colors.darkColor};
   transition: color 0.3s;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bolder;
 
   &:hover,
   &:focus {
