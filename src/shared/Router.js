@@ -15,10 +15,10 @@ const Router = () => {
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/api/user/kakao/callback" element={<Kakao />} />
           <Route element={<Header />}>
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
+            <Route path="/api/user/kakao/callback" element={<Kakao />} />
             <Route path="/" element={<Main />} />
             <Route path="/search" element={<Search />} />
             <Route path="/detail/:id" element={<Detail />} />
