@@ -17,7 +17,7 @@ import axios from "axios";
 function Main() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(9);
+  const [postsPerPage] = useState(9);
   const { isError, isLoading, data } = useQuery(
     ["pagination", currentPage, postsPerPage],
     () => getCompany(currentPage - 1, postsPerPage)
@@ -30,10 +30,6 @@ function Main() {
       setCompanies(data.content);
     }
   }, [data]);
-
-  const indexOfLast = currentPage * postsPerPage;
-  const indexOfFirst = indexOfLast - postsPerPage;
-  const currentPosts = companies.slice(indexOfFirst, indexOfLast);
 
   // 기업 검색하는 검색창 컨트롤
   const [companyName, setCompanyName] = useState("");
@@ -93,6 +89,7 @@ function Main() {
             postsPerPage={postsPerPage}
             totalPosts={data?.totalElements || 0}
             paginate={setCurrentPage}
+            currentPage={currentPage}
           ></Pagination>
         </Container>
         <SideDiv></SideDiv>

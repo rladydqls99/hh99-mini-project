@@ -57,6 +57,7 @@ function Search() {
                   companyId={company.id}
                   companyName={company.companyName}
                   location={company.location}
+                  logo={company.logoUrl}
                 />
               </>
             );

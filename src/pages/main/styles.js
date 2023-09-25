@@ -96,42 +96,8 @@ export const Container = styled.div`
   width: 100%; /* 화면 가로폭에 맞추기 */
   justify-content: flex-start; /* 왼쪽 정렬 */
   position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
+  margin-bottom: 30px;
 `;
-// !outerContainer와 container의 차이
-
-// 용빈님 이거 지우는 건가요? 제 파일에는 없고 용빈님 파일엔 있다고 나오는데 혹시 몰라서 안 지웠어요..
-export const MiddleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%; /* 화면 가로폭에 맞추기 */
-  justify-content: flex-start; /* 왼쪽 정렬 */
-  position: relative;
-  flex-direction: column; /* 수직으로 정렬 */
-`;
-
-export const StyledBox = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
-  width: calc(33.3% - 20px);
-  max-width: 350px;
-  min-height: 250px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-
-  /* 화면이 작아질 때 크기 조절 */
-  @media (max-width: 768px) {
-    width: calc(
-      50% - 20px
-    ); /* 2개의 박스를 한 행에 표시하려면 50%로 설정 (간격 제외) */
-  }
-
-  @media (max-width: 480px) {
-    width: 100%; /* 화면이 아주 작아질 때는 100%로 설정하여 한 개의 박스만 표시 */
-  }
-`;
-// 여기까지입니다. 확인 부탁드립니다.
 
 export const SideDiv = styled.div`
   width: 300px; /* 초기 너비 설정 */
@@ -158,12 +124,10 @@ export const PageUl = styled.ul`
   border-radius: 3px;
   color: black;
   padding: 1px;
-  border-top: 3px solid #186ead;
-  border-bottom: 3px solid #186ead;
-  background-color: white;
   position: absolute;
   top: 100%;
-  left: 40%;
+  left: 47%;
+  margin-top: 20px;
 `;
 
 export const PageLi = styled.li`
@@ -185,6 +149,9 @@ export const PageLi = styled.li`
 `;
 
 export const PageSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+
   &:hover::after,
   &:focus::after {
     border-radius: 100%;
