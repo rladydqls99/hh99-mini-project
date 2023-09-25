@@ -8,12 +8,12 @@ const CommentContainer = styled.div`
 
 const CommentInput = styled.textarea`
   width: 100%;
-  height: 100px;
+  height: 50px;
   margin-bottom: 10px;
 `;
 const CommentP = styled.p`
   width: 100%;
-  height: 100px;
+  height: 50px;
   margin-bottom: 10px;
 `;
 

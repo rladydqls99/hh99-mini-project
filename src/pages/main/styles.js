@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../color/colors.js";
+import { colors, darkMode } from "../../color/colors.js";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -126,7 +126,7 @@ export const PageUl = styled.ul`
   padding: 1px;
   position: absolute;
   top: 100%;
-  left: 47%;
+  left: 38%;
   margin-top: 20px;
 `;
 

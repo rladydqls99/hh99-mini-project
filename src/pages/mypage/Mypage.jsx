@@ -47,7 +47,7 @@ function Mypage() {
   // !변경 후 재렌더링 되도록 하고 비밀번호 변경도 가능하도록 하기
   const nicknameMutation = useMutation(patchNickname, {
     onSuccess: () => {
-      queryClient.invalidateQueries("changeNickname");
+      queryClient.invalidateQueries("members");
       console.log("mutation 성공하셨습니다");
     },
   });

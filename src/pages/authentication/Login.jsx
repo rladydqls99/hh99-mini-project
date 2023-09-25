@@ -16,6 +16,7 @@ import { useMutation, useQueryClient } from "react-query";
 import kakaoLogin from "../../img/kakao_login_medium_wide.png";
 import { colors } from "../../color/colors";
 import { LoginIcon } from "../../icon/icons";
+import LoginModal from "./LoginModal";
 
 function Login() {
   const navigate = useNavigate();
@@ -42,8 +43,6 @@ function Login() {
   const requestLogin = async (e) => {
     e.preventDefault();
     if (!email.length || !password.length) {
-      alert("이메일과 비밀번호 모두 입력해주세요");
-      return;
     }
 
     if (!email.includes("@")) {
@@ -97,7 +96,7 @@ function Login() {
               id="login-kakao-btn"
               onClick={() =>
                 (window.location.href =
-                  "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=https://mini-project-frontend-two.vercel.app/api/user/kakao/callback&response_type=code")
+                  "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=http://localhost:3000/api/user/kakao/callback&response_type=code")
               }
             >
               <img src={kakaoLogin} />
