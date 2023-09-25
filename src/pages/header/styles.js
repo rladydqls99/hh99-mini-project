@@ -7,12 +7,14 @@ export const Navbar = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: ${colors.background};
+
   padding: 4px 0;
   color: ${colors.background};
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.07);
   transition: color 0.3s;
-  border-bottom: 2px double ${colors.darkColor};
+  border-top: 1px double ${colors.darkColor};
+  border-bottom: 1px double ${colors.darkColor};
+  margin-top: 3px;
 
   &:hover,
   &:focus {
