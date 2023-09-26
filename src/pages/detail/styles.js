@@ -151,9 +151,8 @@ const StyledComment = styled.div`
     }
   }
   .profile {
-    border-radius: 50px;
-    width: 70px;
-    height: 70px;
+    color: #4f709c;
+    background-color: white;
   }
 `;
 

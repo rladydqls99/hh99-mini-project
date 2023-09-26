@@ -121,7 +121,6 @@ function Detail() {
     data.filter((comment) => {
       return comment.companyId === parseInt(params.id);
     });
-
   return (
     <>
       <BackgroundDiv>
@@ -163,7 +162,7 @@ function Detail() {
                             className="profile"
                             onClick={() => openModal(index)}
                           >
-                            프로필
+                            닉네임: {comment.nickname}
                           </button>
                           {modalOpenStates[index] && (
                             <Modal
