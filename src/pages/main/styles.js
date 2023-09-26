@@ -18,12 +18,13 @@ export const StyledInput = styled.div`
   max-width: 1170px;
   display: flex;
   align-items: center;
-  position: relative; /* 추가: 아이콘 위치 설정을 위해 상대 위치(relative)로 변경 */
+  position: relative;
 
   input {
     width: 93%;
     height: 80%;
     outline: none;
+    background-color: ${colors.background};
   }
   button {
     margin-left: auto;
@@ -66,14 +67,9 @@ export const StyledBox = styled.div`
     33.3% - 20px
   ); /* 2개의 박스를 한 행에 표시하려면 50%로 설정 (간격 제외) */
 
-  @media (max-width: 768px) {
-    width: calc(
-      50% - 20px
-    ); /* 2개의 박스를 한 행에 표시하려면 50%로 설정 (간격 제외) */
-  }
-
   @media (max-width: 480px) {
-    width: 100%; /* 화면이 아주 작아질 때는 100%로 설정하여 한 개의 박스만 표시 */
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -132,9 +128,13 @@ export const PageUl = styled.ul`
   color: black;
   padding: 1px;
   position: absolute;
-  top: 100%;
-  left: 38%;
-  margin-top: 20px;
+
+  /* 아래 정중앙에 정렬 스타일 추가 */
+  left: 50%; /* 왼쪽 위치를 화면 가로 중앙으로 이동 */
+  transform: translateX(-50%); /* 다시 왼쪽으로 50%만큼 이동하여 가운데 정렬 */
+  bottom: -50px; /* 아래 위치 조절, 필요한 위치로 조절 가능 */
+  margin: 0; /* margin 초기화 */
+  margin-top: 20px; /* 필요한 상단 마진 설정 */
 `;
 
 export const PageLi = styled.li`

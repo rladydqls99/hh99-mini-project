@@ -51,33 +51,33 @@ function Header() {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#f4f2f1" }}>
       <Navbar>
-        <FlexContainer>
-          <VisibleContainer>
-            <NavList>
-              <NavItem>
-                <NavLink to={"/"}>
-                  <IconFlex>
-                    MineSweeper
-                    <MineSweeper />
-                  </IconFlex>
-                </NavLink>
-              </NavItem>
-            </NavList>
-            <FlexEnd>
-              <ButtonToggle onClick={onMypageToggleButtonHandler}>
-                {token ? "마이페이지" : "회원가입"}
-              </ButtonToggle>
-              <ButtonToggle onClick={onToggleButtonHandler}>
-                {token ? "로그아웃" : "로그인"}
-              </ButtonToggle>
-            </FlexEnd>
-          </VisibleContainer>
-        </FlexContainer>
+        {/* <FlexContainer> */}
+        {/* <VisibleContainer> */}
+        <NavList>
+          <NavItem>
+            <NavLink to={"/"}>
+              <IconFlex>
+                MineSweeper
+                <MineSweeper />
+              </IconFlex>
+            </NavLink>
+          </NavItem>
+        </NavList>
+        <FlexEnd>
+          <ButtonToggle onClick={onMypageToggleButtonHandler}>
+            {token ? "마이페이지" : "회원가입"}
+          </ButtonToggle>
+          <ButtonToggle onClick={onToggleButtonHandler}>
+            {token ? "로그아웃" : "로그인"}
+          </ButtonToggle>
+        </FlexEnd>
+        {/* </VisibleContainer> */}
+        {/* </FlexContainer> */}
       </Navbar>
       <Outlet />
-    </>
+    </div>
   );
 }
 

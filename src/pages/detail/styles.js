@@ -34,12 +34,50 @@ const CompanyContainer = styled.div`
       font-size: 30px;
     }
   }
+  @media (max-width: 768px) {
+    top: 10px; /* top 조정 예시 */
+    padding: 10px; /* padding 조정 예시 */
+    margin-left: 5px;
+    margin-right: 5px;
+    div {
+      margin-top: 20px; /* div 내부 스타일 조정 예시 */
+      h1 {
+        font-size: 40px; /* h1 폰트 크기 조정 예시 */
+      }
+      h3 {
+        font-size: 20px; /* h3 폰트 크기 조정 예시 */
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* 화면 폭이 480px 이하인 경우 적용되는 스타일 */
+    top: 5px; /* top 조정 예시 */
+    padding: 5px; /* padding 조정 예시 */
+    div {
+      margin-top: 10px; /* div 내부 스타일 조정 예시 */
+      h1 {
+        font-size: 30px; /* h1 폰트 크기 조정 예시 */
+      }
+      h3 {
+        font-size: 15px; /* h3 폰트 크기 조정 예시 */
+      }
+    }
+  }
 `;
 const CommentDiv = styled.div`
   max-width: 1170px;
   margin: 60px auto 0px auto;
   border-radius: 20px;
   background-color: white;
+
+  @media (max-width: 768px) {
+    /* 화면 폭이 768px 이하인 경우 적용되는 스타일 */
+    margin: 30px auto 0px auto; /* margin 조정 예시 */
+    border-radius: 10px; /* border-radius 조정 예시 */
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
 
 const Container = styled.div`
@@ -181,6 +219,12 @@ const Blur = styled.div`
     position: relative;
     top: 20%;
     font-size: 30px;
+  }
+
+  @media (max-width: 480px) {
+    button {
+      font-size: 20px;
+    }
   }
 `;
 
