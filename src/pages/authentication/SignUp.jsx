@@ -103,7 +103,7 @@ function SignUp() {
                 <ButtonStyle
                   onClick={onSubmitHandler}
                   font-color={"white"}
-                  back-color={colors.darkColor}
+                  back-color={"#e393b9"}
                   type="submit"
                 >
                   회원가입 하기

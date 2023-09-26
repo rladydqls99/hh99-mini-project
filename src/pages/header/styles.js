@@ -132,3 +132,8 @@ export const NavLink = styled(Link)`
     color: rgba(0, 0, 0, 0.9);
   }
 `;
+
+export const IconFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+`;

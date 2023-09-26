@@ -39,7 +39,7 @@ export const BorderDiv = styled.div`
 
 export const IconContainer = styled.div`
   position: absolute;
-  top: 20%;
+  top: 22%;
   z-index: 10;
 `;
 export const InputContent = styled.input`

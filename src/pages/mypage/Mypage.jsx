@@ -8,22 +8,25 @@ import {
   InfoDiv,
   IconDiv,
   GreetingDiv,
-  MypageButton1,
-  MypageButton2,
+  MypageButton,
   Modal,
   ModalOverlay,
   ModalContent,
   MypageInput,
+  IconFlex,
+  FontSize,
+  ChangeButton,
+  MarginTop,
 } from "./styles";
 import { Background } from "../authentication/styles";
 import { useState } from "react";
 import { getCookie } from "../../cookies/cookies";
 import { LoginIcon } from "../../icon/icons";
+import { CheckIcon } from "../../icon/icons";
 import { colors } from "../../color/colors";
 
 function Mypage() {
   const [changeNickname, setChangeNickname] = useState("");
-  const [changePassword, setChangePassword] = useState("");
   const { memberId } = useParams();
   const token = getCookie("token");
   const queryClient = useQueryClient();
@@ -44,7 +47,6 @@ function Mypage() {
   }
 
   // 닉네임 변경하기
-  // !변경 후 재렌더링 되도록 하고 비밀번호 변경도 가능하도록 하기
   const nicknameMutation = useMutation(patchNickname, {
     onSuccess: () => {
       queryClient.invalidateQueries("members");
@@ -53,21 +55,23 @@ function Mypage() {
   });
 
   const onNicknameClickButtonHandler = () => {
+    if (data?.nickname === changeNickname) {
+      alert("현재 닉네임과 동일한 닉네임입니다. \n다른 닉네임을 입력해주세요.");
+      return;
+    }
+
+    if (!changeNickname || changeNickname.length === 0) {
+      alert("변경하실 닉네임을 입력해주세요.");
+      return;
+    }
+
     nicknameMutation.mutate({ memberId, changeNickname, token });
     alert("닉네임 변경이 완료되었습니다!");
-  };
-
-  const onPasswordClickButtonHandler = () => {
-    nicknameMutation.mutate({ memberId, changePassword, token });
-    alert("비밀번호 변경이 완료되었습니다!");
+    setChangeNickname("");
   };
 
   const onNicknameChange = (e) => {
     setChangeNickname(e.target.value);
-  };
-
-  const onPasswordChange = (e) => {
-    setChangePassword(e.target.value);
   };
 
   // 모달
@@ -77,6 +81,17 @@ function Mypage() {
 
   const toggleModalSecond = () => {
     setSecondModal(!secondModal);
+  };
+
+  const modalButtonHandler = () => {
+    onNicknameClickButtonHandler();
+    if (
+      data?.nickname !== changeNickname &&
+      changeNickname &&
+      changeNickname.length > 0
+    ) {
+      toggleModalSecond();
+    }
   };
 
   return (
@@ -94,56 +109,66 @@ function Mypage() {
               <Flexbox>
                 <InfoDiv>
                   <Flexbox>
-                    <MypageButton1 onClick={toggleModal}>
+                    <MypageButton onClick={toggleModal}>
                       회원정보 확인
-                    </MypageButton1>
+                    </MypageButton>
                     {modal && (
                       <Modal>
                         <ModalOverlay onClick={toggleModal}></ModalOverlay>
                         <ModalContent>
-                          <button onClick={toggleModal}>❎</button>
-                          <div>닉네임: {data.nickname} </div>
-                          <div>이메일: {data.email}</div>
+                          <IconFlex>
+                            <button onClick={toggleModal}>
+                              <CheckIcon />
+                            </button>
+                          </IconFlex>
+                          <FontSize>
+                            <div>닉네임: {data.nickname} </div>
+                            <div>이메일: {data.email}</div>
+                          </FontSize>
                         </ModalContent>
                       </Modal>
                     )}
                   </Flexbox>
 
                   <Flexbox>
-                    <MypageButton2 onClick={toggleModalSecond}>
+                    <MypageButton onClick={toggleModalSecond}>
                       회원정보 변경
-                    </MypageButton2>
+                    </MypageButton>
                     {secondModal && (
                       <Modal>
                         <ModalOverlay
                           onClick={toggleModalSecond}
                         ></ModalOverlay>
                         <ModalContent>
-                          <button onClick={toggleModalSecond}>❎</button>
-                          <div>현재 닉네임: {data.nickname} </div>
-                          <div>
-                            변경 할 닉네임:{" "}
-                            <MypageInput
-                              value={changeNickname}
-                              onChange={onNicknameChange}
-                            />
-                            &nbsp;
-                            <button onClick={onNicknameClickButtonHandler}>
-                              변경
-                            </button>
-                          </div>
-                          <div>현재 비밀번호: {data.password} </div>
-                          <div>
-                            변경 할 비밀번호:{" "}
-                            <MypageInput
-                              value={changePassword}
-                              onChange={onPasswordChange}
-                            />
-                            &nbsp;
-                            <button onClick={onPasswordClickButtonHandler}>
-                              변경
-                            </button>
-                          </div>
+                          <FontSize>
+                            <MarginTop>
+                              <div>현재 닉네임: {data.nickname} </div>
+                              <div>
+                                변경 할 닉네임:{" "}
+                                <MypageInput
+                                  value={changeNickname}
+                                  onChange={onNicknameChange}
+                                />
+                                &nbsp;
+                              </div>
+                            </MarginTop>
+                            <div>
+                              <ChangeButton
+                                back-color={"#4f709c"}
+                                hoverColor={"#456692"}
+                                onClick={toggleModalSecond}
+                              >
+                                취소하기
+                              </ChangeButton>
+                              <ChangeButton
+                                back-color={"#e393b9"}
+                                hoverColor={"#d989af"}
+                                onClick={modalButtonHandler}
+                              >
+                                변경하기
+                              </ChangeButton>
+                            </div>
+                          </FontSize>
                         </ModalContent>
                       </Modal>
                     )}
