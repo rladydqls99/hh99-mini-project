@@ -96,7 +96,7 @@ function Login() {
               id="login-kakao-btn"
               onClick={() =>
                 (window.location.href =
-                  "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=https://mini-project-frontend-two.vercel.app/api/user/kakao/callback&response_type=code")
+                  "https://kauth.kakao.com/oauth/authorize?client_id=7af57035200ce2da34864e794371c7db&redirect_uri=https://miniproject-frontend-chi.vercel.app/api/user/kakao/callback&response_type=code")
               }
             >
               <img src={kakaoLogin} />
