@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../color/colors.js";
 import { Link } from "react-router-dom";
+import { MineSweeper } from "../../icon/icons.js";
 
 export const Navbar = styled.nav`
   position: relative;
@@ -8,9 +9,10 @@ export const Navbar = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
   /* background-color: white; */
 
-  padding: 0px 0;
+  padding: 0px 12px;
   color: ${colors.background};
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.07);
   transition: color 0.3s;
@@ -24,6 +26,17 @@ export const Navbar = styled.nav`
 
   &.dark {
     background-color: #3d3d3d;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 12px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 8px;
   }
 `;
 
@@ -40,6 +53,14 @@ export const FlexEnd = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 `;
 
 export const ButtonToggle = styled.button`
@@ -58,6 +79,12 @@ export const ButtonToggle = styled.button`
 
   &.dark {
     color: #c0c0c0;
+  }
+  @media (max-width: 768px) {
+  }
+
+  @media (max-width: 480px) {
+    font-size: 15px;
   }
 `;
 
@@ -136,4 +163,12 @@ export const NavLink = styled(Link)`
 export const IconFlex = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 25px;
+  }
 `;
