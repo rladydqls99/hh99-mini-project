@@ -187,7 +187,7 @@ function Detail() {
               </>
             ) : (
               <>
-                {isComment.length === 0 ? null : (
+                {!isComment ? null : (
                   <BlurDiv>
                     <Blur>
                       <button
