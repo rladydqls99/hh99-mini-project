@@ -100,6 +100,7 @@ const StyledComment = styled.div`
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s;
+  height: 150px;
 
   .info-container {
     display: flex;
@@ -147,7 +148,8 @@ const StyledComment = styled.div`
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: #4f70aa;
+      transform: scale(1.1); /* 원래 크기의 110%로 확대 */
+      transition: transform 0.2s;
     }
   }
   .profile {

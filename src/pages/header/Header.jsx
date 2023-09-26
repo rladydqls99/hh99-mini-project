@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import {

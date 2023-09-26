@@ -20,8 +20,8 @@ function Modal({ memberId, closeModal }) {
     <>
       <ModalFlex>
         <ModalSetUp>
-          <div>닉네임: {data.nickname}</div>
-          <div>이메일: {data.email}</div>
+          <div className="nick">닉네임: {data.nickname}</div>
+          <div className="email">이메일: {data.email}</div>
           <button onClick={closeModal}>X</button>
         </ModalSetUp>
       </ModalFlex>
