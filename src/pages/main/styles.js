@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors, darkMode } from "../../color/colors.js";
+import { colors } from "../../color/colors.js";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -54,6 +54,12 @@ export const StyledBox = styled.div`
       text-align: center;
       margin-bottom: 20px;
     }
+  }
+
+  &:hover {
+    transform: scale(1.1); /* 원래 크기의 110%로 확대 */
+    transition: transform 0.2s;
+    cursor: pointer;
   }
   /* 화면이 작아질 때 크기 조절 */
   width: calc(

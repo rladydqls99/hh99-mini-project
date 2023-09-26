@@ -7,13 +7,12 @@ import {
   StyledInput,
   OuterContainer,
   Container,
-  SideDiv,
   MainContainer,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
-import { searchCompany } from "../../api/main";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Magnifier } from "../../icon/icons";
 
 function Main() {
   const navigate = useNavigate();
@@ -69,7 +68,9 @@ function Main() {
             type="text"
             placeholder="검색어를 입력하세요"
           />
-          <button onClick={() => goCompanyDetail(companyName)}>검색</button>
+          <button onClick={() => goCompanyDetail(companyName)}>
+            <Magnifier />
+          </button>
         </StyledInput>
       </StyledDiv>
       <MainContainer>

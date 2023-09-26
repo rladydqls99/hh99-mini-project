@@ -3,13 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   OuterContainer,
   Container,
-  SideDiv,
   StyledDiv,
   StyledInput,
   MainContainer,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
 import axios from "axios";
+import { Magnifier } from "../../icon/icons";
 
 function Search() {
   const navigate = useNavigate();
@@ -43,7 +43,9 @@ function Search() {
             type="text"
             placeholder="검색어를 입력하세요"
           />
-          <button onClick={() => goCompanyDetail(companyName)}>검색</button>
+          <button onClick={() => goCompanyDetail(companyName)}>
+            <Magnifier />
+          </button>
         </StyledInput>
       </StyledDiv>
       <MainContainer>
