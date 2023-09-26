@@ -186,50 +186,45 @@ function Detail() {
               </>
             ) : (
               <>
-                {isComment.length === 0 ? null : (
-                  <BlurDiv>
-                    <Blur>
-                      <button
-                        onClick={() => navigate("/login")}
-                        className="btn"
-                      >
-                        로그인하고 댓글 보러가기!
-                      </button>
-                    </Blur>
-                    {data &&
-                      data
-                        .filter((comment) => {
-                          return comment.companyId === parseInt(params.id);
-                        })
-                        .map((comment, index) => (
-                          <StyledComment key={comment.id}>
-                            <div>
-                              <button
-                                className="profile"
-                                onClick={() => openModal(index)}
-                              >
-                                프로필
-                              </button>
-                              {modalOpenStates[index] && (
-                                <Modal
-                                  memberId={comment.memberId}
-                                  closeModal={() => closeModal(index)}
-                                />
-                              )}
-                            </div>
-                            {/* 각 댓글을 Comment 컴포넌트로 대체 */}
-                            <Comment
-                              memberId={comment.memberId}
-                              comment={comment.comment}
-                              onEdit={(editedComment) =>
-                                patchCommentsHandler(comment.id, editedComment)
-                              }
-                              onDelete={() => doRemoveComments(comment.id)}
-                            />
-                          </StyledComment>
-                        ))}
-                  </BlurDiv>
-                )}
+                <BlurDiv>
+                  <Blur>
+                    <button onClick={() => navigate("/login")} className="btn">
+                      로그인하고 댓글 보러가기!
+                    </button>
+                  </Blur>
+                  {data &&
+                    data
+                      .filter((comment) => {
+                        return comment.companyId === parseInt(params.id);
+                      })
+                      .map((comment, index) => (
+                        <StyledComment key={comment.id}>
+                          <div>
+                            <button
+                              className="profile"
+                              onClick={() => openModal(index)}
+                            >
+                              프로필
+                            </button>
+                            {modalOpenStates[index] && (
+                              <Modal
+                                memberId={comment.memberId}
+                                closeModal={() => closeModal(index)}
+                              />
+                            )}
+                          </div>
+                          {/* 각 댓글을 Comment 컴포넌트로 대체 */}
+                          <Comment
+                            memberId={comment.memberId}
+                            comment={comment.comment}
+                            onEdit={(editedComment) =>
+                              patchCommentsHandler(comment.id, editedComment)
+                            }
+                            onDelete={() => doRemoveComments(comment.id)}
+                          />
+                        </StyledComment>
+                      ))}
+                </BlurDiv>
               </>
             )}
           </Container>
