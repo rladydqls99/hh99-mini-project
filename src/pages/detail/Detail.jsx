@@ -49,7 +49,6 @@ function Detail() {
   });
 
   const addCommentsHandler = (detailId, newComments) => {
-    console.log("hi");
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
@@ -121,6 +120,7 @@ function Detail() {
     data.filter((comment) => {
       return comment.companyId === parseInt(params.id);
     });
+
   return (
     <>
       <BackgroundDiv>
@@ -186,7 +186,7 @@ function Detail() {
               </>
             ) : (
               <>
-                {!isComment ? null : (
+                {isComment.length === 0 ? null : (
                   <BlurDiv>
                     <Blur>
                       <button

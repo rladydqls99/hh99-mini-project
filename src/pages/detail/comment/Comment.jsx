@@ -5,10 +5,13 @@ import {
   CommentP,
   CommentButtons,
   CommentButton,
+  CommentSaveButtons,
 } from "./commentStyles";
 
 import { getCookie } from "../../../cookies/cookies";
 import base64 from "base-64";
+import DropdownBtn from "./component/Dropdown";
+import { DoSave } from "../../../icon/icons";
 
 function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -47,22 +50,26 @@ function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
       {dec.member_id === memberId ? (
         isEditMode ? (
           <>
-            <CommentInput
-              type="text"
-              value={editedComment}
-              onChange={(e) => setEditedComment(e.target.value)}
-            />
-            <CommentButtons>
-              <CommentButton onClick={handleSaveClick}>저장</CommentButton>
-              <CommentButton onClick={handleCancelClick}>취소</CommentButton>
-            </CommentButtons>
+            <CommentInput>
+              <textarea
+                type="text"
+                value={editedComment}
+                onChange={(e) => setEditedComment(e.target.value)}
+              />
+
+              <CommentSaveButtons>
+                <button onClick={handleSaveClick}>저장</button>
+              </CommentSaveButtons>
+            </CommentInput>
           </>
         ) : (
           <>
             <CommentP>댓글: {comment}</CommentP>
             <CommentButtons>
-              <CommentButton onClick={handleEditClick}>수정</CommentButton>
-              <CommentButton onClick={onDelete}>삭제</CommentButton>
+              <DropdownBtn
+                handleEditClick={handleEditClick}
+                onDelete={onDelete}
+              />
             </CommentButtons>
           </>
         )
