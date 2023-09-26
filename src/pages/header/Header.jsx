@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
-import { Link } from "react-router-dom";
 import {
   Navbar,
   FlexContainer,
@@ -11,8 +10,10 @@ import {
   NavItem,
   NavLink,
   FlexEnd,
+  IconFlex,
 } from "./styles";
 import base64 from "base-64";
+import { MineSweeper } from "../../icon/icons";
 
 function Header() {
   const navigate = useNavigate();
@@ -56,10 +57,14 @@ function Header() {
           <VisibleContainer>
             <NavList>
               <NavItem>
-                <NavLink to={"/"}>MineSweeper</NavLink>
+                <NavLink to={"/"}>
+                  <IconFlex>
+                    MineSweeper
+                    <MineSweeper />
+                  </IconFlex>
+                </NavLink>
               </NavItem>
             </NavList>
-
             <FlexEnd>
               <ButtonToggle onClick={onMypageToggleButtonHandler}>
                 {token ? "마이페이지" : "회원가입"}
