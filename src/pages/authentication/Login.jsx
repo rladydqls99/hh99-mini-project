@@ -88,7 +88,7 @@ function Login() {
             <ButtonStyle
               onClick={requestLogin}
               font-color={"white"}
-              back-color={colors.darkColor}
+              back-color={"#e393b9"}
             >
               로그인 하기
             </ButtonStyle>

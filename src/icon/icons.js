@@ -5,8 +5,8 @@ export const LoginIcon = () => (
     viewBox="0 0 32 32"
     width="120x"
     height="120px"
-    fill="#DAC0A3"
-    stroke="#DAC0A3"
+    fill="#4f709c"
+    stroke="#4f709c"
   >
     <g stroke-width="0"></g>
     <g stroke-linecap="round" stroke-linejoin="round"></g>

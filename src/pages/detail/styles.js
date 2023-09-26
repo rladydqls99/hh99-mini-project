@@ -2,14 +2,10 @@ import styled from "styled-components";
 import { colors } from "../../color/colors";
 
 const BackgroundDiv = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${colors.background};
   z-index: -1; /* 다른 컴포넌트보다 아래에 위치하도록 설정 */
-  overflow: auto;
 `;
 
 const CompanyContainer = styled.div`
@@ -40,10 +36,8 @@ const CompanyContainer = styled.div`
   }
 `;
 const CommentDiv = styled.div`
-  position: relative;
-  top: 30px;
   max-width: 1170px;
-  margin: 20px auto 0px auto;
+  margin: 60px auto 0px auto;
   border-radius: 20px;
   background-color: white;
 `;
@@ -79,7 +73,7 @@ const StyledCommentsDiv = styled.div`
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: ${colors.darkColor};
+    background-color: #4f709c;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -95,11 +89,12 @@ const StyledCommentsDiv = styled.div`
     width: 100%;
     height: 100px;
     padding: 10px 0px 0px 10px;
+    outline-color: #4f709c;
   }
 `;
 
 const StyledComment = styled.div`
-  border: 1px solid ${colors.darkColor};
+  border: 1px solid #4f709c;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 6px;
@@ -143,7 +138,7 @@ const StyledComment = styled.div`
   }
 
   button {
-    background-color: ${colors.darkColor};
+    background-color: #4f709c;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -152,7 +147,7 @@ const StyledComment = styled.div`
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: #007bff;
+      background-color: #4f70aa;
     }
   }
   .profile {
@@ -180,6 +175,12 @@ const Blur = styled.div`
   background-color: rgba(0, 0, 0, 0.1); /* 흐린 투명 배경 색상 및 투명도 설정 */
   backdrop-filter: blur(5px); /* 흐림 효과 적용 (원하는 정도로 조정) */
   z-index: 1; /* 다른 컴포넌트 위에 나타나도록 설정 (원하는 숫자로 조정) */
+
+  button {
+    position: relative;
+    top: 20%;
+    font-size: 30px;
+  }
 `;
 
 const DetailLogoImage = styled.img`

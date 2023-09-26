@@ -9,7 +9,7 @@ export const StyledDiv = styled.div`
 `;
 
 export const StyledInput = styled.div`
-  border: 1px solid ${colors.darkColor};
+  border: 1px solid #4f709c;
   border-radius: 5px;
   margin-top: 10px;
   padding-inline-start: 10px;

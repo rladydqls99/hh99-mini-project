@@ -49,6 +49,7 @@ function Detail() {
   });
 
   const addCommentsHandler = (detailId, newComments) => {
+    console.log("hi");
     if (newComments.length === 0) {
       alert("댓글을 입력해주세요");
     } else {
@@ -114,6 +115,13 @@ function Detail() {
   // 로그인 안됐을 때 댓글 안보이게 하기
   const token = getCookie("token");
 
+  // 댓글이 없을 때 없음 출력
+  const isComment =
+    data &&
+    data.filter((comment) => {
+      return comment.companyId === parseInt(params.id);
+    });
+
   return (
     <>
       <BackgroundDiv>
@@ -178,45 +186,52 @@ function Detail() {
                     ))}
               </>
             ) : (
-              <BlurDiv>
-                <Blur>
-                  <button onClick={() => navigate("/login")} className="btn">
-                    로그인하고 댓글 보러가기!
-                  </button>
-                </Blur>
-                {data &&
-                  data
-                    .filter((comment) => {
-                      return comment.companyId === parseInt(params.id);
-                    })
-                    .map((comment, index) => (
-                      <StyledComment key={comment.id}>
-                        <div>
-                          <button
-                            className="profile"
-                            onClick={() => openModal(index)}
-                          >
-                            프로필
-                          </button>
-                          {modalOpenStates[index] && (
-                            <Modal
+              <>
+                {isComment.length === 0 ? null : (
+                  <BlurDiv>
+                    <Blur>
+                      <button
+                        onClick={() => navigate("/login")}
+                        className="btn"
+                      >
+                        로그인하고 댓글 보러가기!
+                      </button>
+                    </Blur>
+                    {data &&
+                      data
+                        .filter((comment) => {
+                          return comment.companyId === parseInt(params.id);
+                        })
+                        .map((comment, index) => (
+                          <StyledComment key={comment.id}>
+                            <div>
+                              <button
+                                className="profile"
+                                onClick={() => openModal(index)}
+                              >
+                                프로필
+                              </button>
+                              {modalOpenStates[index] && (
+                                <Modal
+                                  memberId={comment.memberId}
+                                  closeModal={() => closeModal(index)}
+                                />
+                              )}
+                            </div>
+                            {/* 각 댓글을 Comment 컴포넌트로 대체 */}
+                            <Comment
                               memberId={comment.memberId}
-                              closeModal={() => closeModal(index)}
+                              comment={comment.comment}
+                              onEdit={(editedComment) =>
+                                patchCommentsHandler(comment.id, editedComment)
+                              }
+                              onDelete={() => doRemoveComments(comment.id)}
                             />
-                          )}
-                        </div>
-                        {/* 각 댓글을 Comment 컴포넌트로 대체 */}
-                        <Comment
-                          memberId={comment.memberId}
-                          comment={comment.comment}
-                          onEdit={(editedComment) =>
-                            patchCommentsHandler(comment.id, editedComment)
-                          }
-                          onDelete={() => doRemoveComments(comment.id)}
-                        />
-                      </StyledComment>
-                    ))}
-              </BlurDiv>
+                          </StyledComment>
+                        ))}
+                  </BlurDiv>
+                )}
+              </>
             )}
           </Container>
         </CommentDiv>

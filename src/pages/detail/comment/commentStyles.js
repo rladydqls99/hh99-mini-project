@@ -24,7 +24,6 @@ const CommentButtons = styled.div`
 const CommentButton = styled.button`
   flex-grow: 1;
   padding: 10px;
-  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;

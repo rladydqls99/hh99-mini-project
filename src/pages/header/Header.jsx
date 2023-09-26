@@ -56,7 +56,7 @@ function Header() {
           <VisibleContainer>
             <NavList>
               <NavItem>
-                <NavLink to={"/"}>JobPlanet</NavLink>
+                <NavLink to={"/"}>MineSweeper</NavLink>
               </NavItem>
             </NavList>
 

@@ -10,9 +10,7 @@ import {
 import { getCookie } from "../../../cookies/cookies";
 import base64 from "base-64";
 
-
 function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
-
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedComment, setEditedComment] = useState(comment);
 
@@ -44,7 +42,6 @@ function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
     setIsEditMode(false);
   };
   // -----------------------------------------------------------------------------
-
   return (
     <CommentContainer>
       {dec.member_id === memberId ? (

@@ -48,7 +48,7 @@ export const ButtonToggle = styled.button`
   border: 0;
   background-color: transparent;
   padding: 0 8px;
-  color: ${colors.darkColor};
+  color: #4f709c;
   outline: none;
 
   &.dark {
@@ -91,7 +91,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLink = styled(Link)`
-  color: ${colors.darkColor};
+  color: #4f709c;
   transition: color 0.3s;
   text-decoration: none;
   font-size: 30px;
@@ -99,7 +99,7 @@ export const NavLink = styled(Link)`
 
   &:hover,
   &:focus {
-    color: #4d4d4d;
+    color: #4f709c;
   }
 
   &.disabled {
