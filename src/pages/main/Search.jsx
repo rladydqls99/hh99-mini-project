@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   OuterContainer,
-  MiddleContainer,
   Container,
   SideDiv,
   StyledDiv,
   StyledInput,
+  MainContainer,
 } from "./styles";
 import DisplayCompanies from "./DisplayCompanys";
 import axios from "axios";
@@ -21,11 +21,11 @@ function Search() {
     const { value } = e.target;
     setCompanyName(value);
   };
-
+  console.log(location);
   const goCompanyDetail = async (companyNames) => {
     try {
       const response = await axios.get(
-        `http://3.36.132.42:8080/api/company?name=${companyNames}`
+        `https://miniproject.kro.kr/api/company?name=${companyNames}`
       );
       if (response.data.content) {
         navigate(location.pathname, { state: response.data.content });
@@ -34,7 +34,6 @@ function Search() {
       console.log("검색결과가 없습니다", error);
     }
   };
-
   return (
     <>
       <StyledDiv>
@@ -47,24 +46,29 @@ function Search() {
           <button onClick={() => goCompanyDetail(companyName)}>검색</button>
         </StyledInput>
       </StyledDiv>
-      <OuterContainer>
-        <Container>
-          {location.state.map((company) => {
-            return (
-              <>
-                <DisplayCompanies
-                  key={company.id}
-                  companyId={company.id}
-                  companyName={company.companyName}
-                  location={company.location}
-                  logo={company.logoUrl}
-                />
-              </>
-            );
-          })}
-        </Container>
-        <SideDiv>this</SideDiv>
-      </OuterContainer>
+      <MainContainer>
+        <OuterContainer>
+          <Container>
+            {location.state.length === 0 ? (
+              <div>검색 결과가 없습니다.</div>
+            ) : (
+              location.state?.map((company) => {
+                return (
+                  <>
+                    <DisplayCompanies
+                      companyId={company.id}
+                      companyName={company.companyName}
+                      location={company.location}
+                      logo={company.logoUrl}
+                    />
+                  </>
+                );
+              })
+            )}
+          </Container>
+          {/* <SideDiv></SideDiv> */}
+        </OuterContainer>
+      </MainContainer>
     </>
   );
 }

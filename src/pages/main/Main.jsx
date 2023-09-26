@@ -42,7 +42,7 @@ function Main() {
   const goCompanyDetail = async (companyNames) => {
     try {
       const response = await axios.get(
-        `http://3.36.132.42:8080/api/company?name=${companyNames}`
+        `https://miniproject.kro.kr/api/company?name=${companyNames}`
       );
       if (response.data.content) {
         navigate("search", { state: response.data.content });

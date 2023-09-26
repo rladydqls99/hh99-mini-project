@@ -3,7 +3,7 @@ import { setCookie } from "../cookies/cookies";
 
 const postLogin = async ({ email, password }) => {
   try {
-    const response = await axios.post("http://3.36.132.42:8080/api/login", {
+    const response = await axios.post("https://miniproject.kro.kr/api/login", {
       email,
       password,
     });
@@ -29,7 +29,7 @@ const postLogin = async ({ email, password }) => {
 export const kakaoLogin = async (codeParam) => {
   try {
     const response = await axios.get(
-      `http://3.36.132.42:8080/api/user/kakao/callback?code=${codeParam}`
+      `https://miniproject.kro.kr/api/user/kakao/callback?code=${codeParam}`
     );
     if (response.status === 200) {
       setCookie("token", response.data.token, {

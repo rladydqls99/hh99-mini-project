@@ -3,7 +3,7 @@ import axios from "axios";
 // comments 리스트 가져오기
 const getComments = async () => {
   try {
-    const response = await axios.get(`http://3.36.132.42:8080/api/comment`);
+    const response = await axios.get(`https://miniproject.kro.kr/api/comment`);
 
     return response.data;
   } catch (error) {
@@ -19,7 +19,7 @@ const addComments = async (props) => {
 
   try {
     const response = await axios.post(
-      `http://3.36.132.42:8080/api/company/${companyId}/comment`,
+      `https://miniproject.kro.kr/api/company/${companyId}/comment`,
       {
         comment: newComment,
       },
@@ -41,7 +41,7 @@ const deleteComments = async (props) => {
   const commentId = props.commentsID;
   const token = props.token;
   try {
-    await axios.delete(`http://3.36.132.42:8080/api/comment/${commentId}`, {
+    await axios.delete(`https://miniproject.kro.kr/api/comment/${commentId}`, {
       headers: {
         Authorization: token,
       },
@@ -58,7 +58,7 @@ const patchComments = async (props) => {
   const token = props.token;
   try {
     await axios.patch(
-      `http://3.36.132.42:8080/api/comment/${commentId}`,
+      `https://miniproject.kro.kr/api/comment/${commentId}`,
       {
         comment: updateComments,
       },
