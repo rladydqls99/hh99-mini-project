@@ -8,6 +8,7 @@ export const Navbar = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  /* background-color: white; */
 
   padding: 0px 0;
   color: ${colors.background};

@@ -4,7 +4,7 @@ const postSignup = async ({ nickname, email, password }) => {
   console.log(nickname, email, password);
   try {
     const response = await axios.post(
-      "http://3.36.132.42:8080/api/signup",
+      "https://miniproject.kro.kr/api/signup",
       {
         nickname,
         email,

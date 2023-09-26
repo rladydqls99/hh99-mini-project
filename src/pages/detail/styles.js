@@ -2,8 +2,14 @@ import styled from "styled-components";
 import { colors } from "../../color/colors";
 
 const BackgroundDiv = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   background-color: ${colors.background};
-  height: 100%;
+  z-index: -1; /* 다른 컴포넌트보다 아래에 위치하도록 설정 */
+  overflow: auto;
 `;
 
 const CompanyContainer = styled.div`
@@ -45,6 +51,7 @@ const CommentDiv = styled.div`
 const Container = styled.div`
   padding: 20px;
   background-color: white;
+  position: flex;
   border-radius: 12px;
   max-width: 1170px;
   margin: 0px auto;
@@ -157,6 +164,7 @@ const StyledComment = styled.div`
 
 const BlurDiv = styled.div`
   position: relative;
+  margin: 20px;
 
   .btn {
     display: block; /* 버튼을 블록 레벨 요소로 설정 */

@@ -4,7 +4,7 @@ import axios from "axios";
 export const getMemberInfo = async (memberId) => {
   try {
     const response = await axios.get(
-      `http://3.36.132.42:8080/api/member/${memberId}`
+      `https://miniproject.kro.kr/api/member/${memberId}`
     );
     return response.data;
   } catch (error) {
@@ -22,7 +22,7 @@ export const patchNickname = async (props) => {
 
   try {
     const response = await axios.put(
-      `http://3.36.132.42:8080/api/member/me`,
+      `https://miniproject.kro.kr/api/member/me`,
       {
         nickname: changeNickname,
       },

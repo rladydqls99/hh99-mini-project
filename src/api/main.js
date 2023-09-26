@@ -4,7 +4,7 @@ import axios from "axios";
 const getCompany = async (page = 16, size = 9) => {
   try {
     const response = await axios.get(
-      `http://3.36.132.42:8080/api/company?page=${page}&size=${size}`
+      `https://miniproject.kro.kr/api/company?page=${page}&size=${size}`
     );
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ const getCompany = async (page = 16, size = 9) => {
 const searchCompany = async (companyName) => {
   try {
     const response = await axios.get(
-      `http://3.36.132.42:8080/api/company?name=${companyName}`
+      `https://miniproject.kro.kr/api/company?name=${companyName}`
     );
     return response.data;
   } catch (error) {

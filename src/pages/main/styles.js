@@ -74,6 +74,7 @@ export const StyledBox = styled.div`
 export const MainContainer = styled.div`
   background-color: ${colors.background};
   border-top: 1px solid #e4e2e1;
+  min-height: 100vh;
 `;
 export const OuterContainer = styled.div`
   display: flex;
