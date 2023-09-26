@@ -1,1 +1,1 @@
-https://mini-project-frontend-two.vercel.app/
+https://miniproject-frontend-chi.vercel.app/
