@@ -51,6 +51,11 @@ export const ButtonToggle = styled.button`
   color: #4f709c;
   outline: none;
 
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+  }
+
   &.dark {
     color: #c0c0c0;
   }
@@ -87,6 +92,10 @@ export const NavItem = styled.li`
 
   &.lg {
     margin: 0 8px 0 4px;
+  }
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
   }
 `;
 
