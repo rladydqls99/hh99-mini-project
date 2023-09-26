@@ -33,14 +33,33 @@ export const BorderDiv = styled.div`
   flex-direction: column;
   height: 60%;
   padding: 80px;
+  margin: auto;
   background-color: white;
   border-radius: 30px;
+  @media screen and (max-width: 780px) {
+    height: 60%;
+    width: 72%;
+    margin: auto;
+  }
+
+  @media screen and (max-width: 488px) {
+    height: 50%;
+    width: 74%;
+    margin: auto;
+    padding: 10px;
+  }
 `;
 
 export const IconContainer = styled.div`
   position: absolute;
   top: 22%;
   z-index: 10;
+  @media screen and (max-width: 780px) {
+    top: 13%;
+  }
+
+  @media screen and (max-width: 488px) {
+  }
 `;
 export const InputContent = styled.input`
   width: 300px;
@@ -48,11 +67,14 @@ export const InputContent = styled.input`
   margin-bottom: 10px;
   padding: 5px;
   @media screen and (max-width: 780px) {
-    width: 390px;
+    width: 300px;
   }
 
   @media screen and (max-width: 488px) {
-    width: 370pxs;
+    width: 200px;
+    height: 30px;
+    font-size: 9px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -61,16 +83,22 @@ export const ButtonStyle = styled.button`
   height: 45.5px;
   margin-top: 10px;
   margin-bottom: -30px;
+  padding-left: 19px;
   background-color: ${(props) => props["back-color"]};
   color: ${(props) => props["font-color"]};
   border-color: transparent;
   border-radius: 5px;
   @media screen and (max-width: 780px) {
-    width: 400px;
+    width: 300px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   @media screen and (max-width: 488px) {
-    width: 380pxs;
+    width: 200px;
+    height: 30px;
+    font-size: 2px;
+    padding: 1px;
   }
 `;
 
@@ -80,4 +108,13 @@ export const KakaoButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 780px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 488px) {
+    width: 200px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
 `;
