@@ -92,9 +92,9 @@ export const InputContent = styled.input`
 export const ButtonStyle = styled.button`
   width: 300px;
   height: 45.5px;
-  margin-top: 10px;
+  margin-top: 16px;
   margin-bottom: -30px;
-  padding-left: 19px;
+
   background-color: ${(props) => props["back-color"]};
   color: ${(props) => props["font-color"]};
   border-color: transparent;

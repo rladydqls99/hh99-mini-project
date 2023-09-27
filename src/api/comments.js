@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // comments 리스트 가져오기
-const getComments = async () => {
+export const getComments = async () => {
   try {
     const response = await axios.get(`https://miniproject.kro.kr/api/comment`);
 
@@ -12,7 +12,7 @@ const getComments = async () => {
 };
 
 // 댓글 추가하기
-const addComments = async (props) => {
+export const addComments = async (props) => {
   const companyId = props.detailId;
   const newComment = props.newComments;
   const token = props.token;
@@ -37,7 +37,7 @@ const addComments = async (props) => {
 };
 
 // comment 삭제
-const deleteComments = async (props) => {
+export const deleteComments = async (props) => {
   const commentId = props.commentsID;
   const token = props.token;
   try {
@@ -52,7 +52,7 @@ const deleteComments = async (props) => {
 };
 
 // comment 수정
-const patchComments = async (props) => {
+export const patchComments = async (props) => {
   const commentId = props.commentsID;
   const updateComments = props.updateComments;
   const token = props.token;
@@ -72,5 +72,3 @@ const patchComments = async (props) => {
     console.log("error 발생", error);
   }
 };
-
-export { getComments, deleteComments, patchComments, addComments };

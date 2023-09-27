@@ -103,7 +103,6 @@ function Main() {
               currentPage={currentPage}
             ></Pagination>
           </Container>
-          {/* <SideDiv></SideDiv> */}
         </OuterContainer>
       </MainContainer>
     </>

@@ -82,14 +82,10 @@ export const OuterContainer = styled.div`
   display: flex;
   width: 100%;
   background-color: "#f4f2f1";
-  justify-content: space-between; /* 컨테이너와 사이드 디브 간격을 최대화 */
   max-width: 1170px;
   margin: 0 auto 0 auto;
   padding: 40px;
   position: relative;
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);  */
-
-  /* background-color: ${colors.background}; */
 `;
 
 export const Container = styled.div`
@@ -100,17 +96,6 @@ export const Container = styled.div`
   justify-content: flex-start; /* 왼쪽 정렬 */
   position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
   margin-bottom: 30px;
-`;
-
-export const SideDiv = styled.div`
-  width: 300px; /* 초기 너비 설정 */
-  background-color: white; /* 배경색 설정 */
-  /* 기타 스타일을 원하는 대로 추가하세요. */
-
-  /* 화면 폭이 990px보다 좁아질 때 SideDiv를 숨깁니다. */
-  @media (max-width: 990px) {
-    display: none;
-  }
 `;
 
 export const Icon = styled.div`
