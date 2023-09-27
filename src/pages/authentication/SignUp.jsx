@@ -76,6 +76,10 @@ function SignUp() {
     },
     onError: () => {
       queryClient.invalidateQueries("signup");
+      setEmail("");
+      setNickname("");
+      setPassword("");
+      setCheckPassword("");
     },
   });
 

@@ -16,5 +16,6 @@ export const postSignup = async ({ nickname, email, password }) => {
     alert("회원가입이 완료되었습니다.");
   } catch (error) {
     alert(error.response.data.msg);
+    return Promise.reject(error);
   }
 };
