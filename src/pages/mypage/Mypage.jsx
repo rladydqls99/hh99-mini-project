@@ -32,6 +32,7 @@ function Mypage() {
   const queryClient = useQueryClient();
   const [modal, setModal] = useState(false);
   const [secondModal, setSecondModal] = useState(false);
+  const [message, setMessage] = useState("");
 
   // 닉네임,이메일 불러오기
   const { isLoading, isError, data } = useQuery("members", () =>
@@ -50,19 +51,26 @@ function Mypage() {
   const nicknameMutation = useMutation(patchNickname, {
     onSuccess: () => {
       queryClient.invalidateQueries("members");
-      console.log("mutation 성공하셨습니다");
     },
   });
 
   const onNicknameClickButtonHandler = () => {
+    setMessage("");
+
     if (data?.nickname === changeNickname) {
-      alert("현재 닉네임과 동일한 닉네임입니다. \n다른 닉네임을 입력해주세요.");
+      setMessage(
+        "현재 닉네임과 동일한 닉네임입니다. \n다른 닉네임을 입력해주세요."
+      );
       return;
+    } else {
+      setMessage("");
     }
 
     if (!changeNickname || changeNickname.length === 0) {
-      alert("변경하실 닉네임을 입력해주세요.");
+      setMessage("변경하실 닉네임을 입력해주세요.");
       return;
+    } else {
+      setMessage("");
     }
 
     nicknameMutation.mutate({ memberId, changeNickname, token });
@@ -81,6 +89,8 @@ function Mypage() {
 
   const toggleModalSecond = () => {
     setSecondModal(!secondModal);
+    setChangeNickname("");
+    setMessage("");
   };
 
   const modalButtonHandler = () => {
@@ -153,6 +163,11 @@ function Mypage() {
                               </div>
                             </MarginTop>
                             <div>
+                              {message && (
+                                <div style={{ color: "red", fontSize: "20px" }}>
+                                  {message}
+                                </div>
+                              )}
                               <ChangeButton
                                 back-color={"#4f709c"}
                                 hoverColor={"#456692"}

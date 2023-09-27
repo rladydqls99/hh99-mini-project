@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie } from "../../cookies/cookies";
 import { postLogin } from "../../api/login";
 import {
   ContainerDiv,
@@ -19,17 +18,12 @@ import { LoginIcon } from "../../icon/icons";
 
 function Login() {
   const navigate = useNavigate();
-  const token = getCookie("token");
   const queryClient = useQueryClient();
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [inputError, setInputError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const emailOnChangeHandler = (e) => {
     setEmail(e.target.value);
@@ -41,26 +35,35 @@ function Login() {
 
   const requestLogin = async (e) => {
     e.preventDefault();
+    setInputError("");
+    setEmailError("");
+
     if (!email.length || !password.length) {
+      setInputError("이메일과 비밀번호 모두 입력해주세요.");
+      return;
+    } else {
+      setInputError("");
     }
 
     if (!email.includes("@")) {
-      alert("이메일을 올바르게 입력해주세요.");
+      setEmailError("이메일을 정확히 입력해주세요.");
       return;
+    } else {
+      setEmailError("");
     }
 
-    mutation.mutate({ email, password });
+    if (!emailError && !inputError) {
+      mutation.mutate({ email, password });
+    }
   };
 
   const mutation = useMutation(postLogin, {
     onSuccess: () => {
       queryClient.invalidateQueries("login");
-      console.log("mutation 성공하셨습니다.");
       navigate("/");
     },
     onError: () => {
       queryClient.invalidateQueries("login");
-      console.log("mutation 실패하셨습니다.");
     },
   });
 
@@ -84,6 +87,8 @@ function Login() {
               value={password}
               onChange={pwOnChangeHandler}
             />
+            {inputError && <div style={{ color: "red" }}>{inputError}</div>}
+            {emailError && <div style={{ color: "red" }}>{emailError}</div>}
             <ButtonStyle
               onClick={requestLogin}
               font-color={"white"}

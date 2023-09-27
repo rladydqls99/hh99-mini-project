@@ -3,7 +3,7 @@ import { colors } from "../../color/colors.js";
 
 export const StyledDiv = styled.div`
   display: flex;
-  justify-content: center; /*수평 가운데 정렬*/
+  justify-content: center;
   padding-bottom: 10px;
   gap: 10px;
 `;
@@ -58,14 +58,12 @@ export const StyledBox = styled.div`
   }
 
   &:hover {
-    transform: scale(1.1); /* 원래 크기의 110%로 확대 */
+    transform: scale(1.1);
     transition: transform 0.2s;
     cursor: pointer;
   }
-  /* 화면이 작아질 때 크기 조절 */
-  width: calc(
-    33.3% - 20px
-  ); /* 2개의 박스를 한 행에 표시하려면 50%로 설정 (간격 제외) */
+
+  width: calc(33.3% - 20px);
 
   @media (max-width: 480px) {
     margin-left: auto;
@@ -82,44 +80,28 @@ export const OuterContainer = styled.div`
   display: flex;
   width: 100%;
   background-color: "#f4f2f1";
-  justify-content: space-between; /* 컨테이너와 사이드 디브 간격을 최대화 */
   max-width: 1170px;
   margin: 0 auto 0 auto;
   padding: 40px;
   position: relative;
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);  */
-
-  /* background-color: ${colors.background}; */
 `;
 
 export const Container = styled.div`
   display: flex;
-  flex-wrap: wrap; /* 화면 크기에 따라 자동으로 다음 행으로 이동 */
-  gap: 20px; /* 각 div 사이의 간격 조절 */
-  width: 100%; /* 화면 가로폭에 맞추기 */
-  justify-content: flex-start; /* 왼쪽 정렬 */
-  position: relative; /* 위치 지정을 위해 부모 요소를 상대 위치로 설정합니다. */
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+  position: relative;
   margin-bottom: 30px;
-`;
-
-export const SideDiv = styled.div`
-  width: 300px; /* 초기 너비 설정 */
-  background-color: white; /* 배경색 설정 */
-  /* 기타 스타일을 원하는 대로 추가하세요. */
-
-  /* 화면 폭이 990px보다 좁아질 때 SideDiv를 숨깁니다. */
-  @media (max-width: 990px) {
-    display: none;
-  }
 `;
 
 export const Icon = styled.div`
   position: absolute;
-  top: 9px; /* 원하는 위치로 조정 */
-  left: 92%; /* 원하는 위치로 조정 */
+  top: 9px;
+  left: 92%;
 `;
 
-// 페이지네이션 관련 css
 export const PageUl = styled.ul`
   float: left;
   list-style: none;
@@ -129,12 +111,11 @@ export const PageUl = styled.ul`
   padding: 1px;
   position: absolute;
 
-  /* 아래 정중앙에 정렬 스타일 추가 */
-  left: 50%; /* 왼쪽 위치를 화면 가로 중앙으로 이동 */
-  transform: translateX(-50%); /* 다시 왼쪽으로 50%만큼 이동하여 가운데 정렬 */
-  bottom: -50px; /* 아래 위치 조절, 필요한 위치로 조절 가능 */
-  margin: 0; /* margin 초기화 */
-  margin-top: 20px; /* 필요한 상단 마진 설정 */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -50px;
+  margin: 0;
+  margin-top: 20px;
 `;
 
 export const PageLi = styled.li`

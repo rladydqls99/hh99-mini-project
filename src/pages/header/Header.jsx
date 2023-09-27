@@ -3,9 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { getCookie, removeCookie } from "../../cookies/cookies";
 import {
   Navbar,
-  FlexContainer,
   ButtonToggle,
-  VisibleContainer,
   NavList,
   NavItem,
   NavLink,
@@ -17,10 +15,9 @@ import { MineSweeper } from "../../icon/icons";
 
 function Header() {
   const navigate = useNavigate();
-
-  // 마이페이지 디코딩
   const token = getCookie("token");
 
+  // 마이페이지 디코딩
   let dec = "";
   if (token) {
     const payload = token.substring(
@@ -41,7 +38,6 @@ function Header() {
 
   // 로그인/로그아웃 버튼
   const onToggleButtonHandler = () => {
-    console.log("hi");
     if (token) {
       removeCookie("token");
       navigate("/login");
@@ -53,8 +49,6 @@ function Header() {
   return (
     <div style={{ backgroundColor: "#f4f2f1" }}>
       <Navbar>
-        {/* <FlexContainer> */}
-        {/* <VisibleContainer> */}
         <NavList>
           <NavItem>
             <NavLink to={"/"}>
@@ -73,8 +67,6 @@ function Header() {
             {token ? "로그아웃" : "로그인"}
           </ButtonToggle>
         </FlexEnd>
-        {/* </VisibleContainer> */}
-        {/* </FlexContainer> */}
       </Navbar>
       <Outlet />
     </div>

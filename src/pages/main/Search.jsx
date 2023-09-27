@@ -59,7 +59,7 @@ function Search() {
         <OuterContainer>
           <Container>
             {location.state.length === 0 ? (
-              <div>검색 결과가 없습니다.</div>
+              <div>검색결과가 없습니다.</div>
             ) : (
               location.state?.map((company) => {
                 return (
@@ -75,7 +75,6 @@ function Search() {
               })
             )}
           </Container>
-          {/* <SideDiv></SideDiv> */}
         </OuterContainer>
       </MainContainer>
     </>

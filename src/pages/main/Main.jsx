@@ -16,14 +16,15 @@ import { Magnifier } from "../../icon/icons";
 
 function Main() {
   const navigate = useNavigate();
+
+  const [companies, setCompanies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(21);
+
   const { isError, isLoading, data } = useQuery(
     ["pagination", currentPage, postsPerPage],
     () => getCompany(currentPage - 1, postsPerPage)
   );
-
-  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     if (data) {
@@ -103,7 +104,6 @@ function Main() {
               currentPage={currentPage}
             ></Pagination>
           </Container>
-          {/* <SideDiv></SideDiv> */}
         </OuterContainer>
       </MainContainer>
     </>

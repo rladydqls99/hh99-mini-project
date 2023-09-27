@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const CommentContainer = styled.div`
+export const CommentContainer = styled.div`
   padding: 20px;
   position: relative;
 `;
 
-const CommentInput = styled.div`
+export const CommentInput = styled.div`
   flex: 1;
   width: 100%;
   flex-direction: row;
@@ -21,30 +21,30 @@ const CommentInput = styled.div`
   }
 `;
 
-const CommentSaveButtons = styled.div`
+export const CommentSaveButtons = styled.div`
   display: flex;
   position: relative;
   width: 60px;
   height: 50px;
-  justify-content: flex-end; /* 우측 정렬을 추가합니다. */
+  justify-content: flex-end;
 `;
-const CommentP = styled.p`
+export const CommentP = styled.p`
   width: 100%;
   height: 50px;
   margin-bottom: 10px;
   padding-left: 5px;
 `;
 
-const CommentButtons = styled.div`
+export const CommentButtons = styled.div`
   display: flex;
   position: relative;
   top: -118px;
   right: -20px;
   gap: 10px;
-  justify-content: flex-end; /* 우측 정렬을 추가합니다. */
+  justify-content: flex-end;
 `;
 
-const CommentButton = styled.button`
+export const CommentButton = styled.button`
   flex-grow: 1;
   padding: 10px;
   color: white;
@@ -57,12 +57,3 @@ const CommentButton = styled.button`
     background-color: #0056b3;
   }
 `;
-
-export {
-  CommentContainer,
-  CommentInput,
-  CommentP,
-  CommentButtons,
-  CommentButton,
-  CommentSaveButtons,
-};
