@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// company 리스트 가져오기
-const getCompany = async (page = 16, size = 9) => {
+// 기업 리스트 가져오기
+export const getCompany = async (page, size) => {
   try {
     const response = await axios.get(
       `https://miniproject.kro.kr/api/company?page=${page}&size=${size}`
@@ -13,7 +13,7 @@ const getCompany = async (page = 16, size = 9) => {
 };
 
 // 기업 검색하기
-const searchCompany = async (companyName) => {
+export const searchCompany = async (companyName) => {
   try {
     const response = await axios.get(
       `https://miniproject.kro.kr/api/company?name=${companyName}`
@@ -23,5 +23,3 @@ const searchCompany = async (companyName) => {
     console.log("기업 검색 에러발생", error);
   }
 };
-
-export { getCompany, searchCompany };

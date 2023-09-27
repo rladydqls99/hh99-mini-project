@@ -20,6 +20,9 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
+  const [inputError, setInputError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const nickNameOnChangeHandler = (e) => {
     setNickname(e.target.value);
@@ -34,37 +37,46 @@ function SignUp() {
     setCheckPassword(e.target.value);
   };
   const onSubmitHandler = async (e) => {
+    setInputError("");
+    setPasswordError("");
+    setEmailError("");
+
     if (!nickname || !email || !password) {
-      alert("닉네임, 이메일, 비밀번호 모두 입력해주세요");
+      setInputError("값을 모두 입력해주세요");
       return;
+    } else {
+      setInputError("");
     }
 
     if (password !== checkPassword) {
-      alert("비밀번호와 비밀번호 확인 값이 다릅니다");
+      setPasswordError("비밀번호와 비밀번호 확인 값이 다릅니다");
       return;
+    } else {
+      setPasswordError("");
     }
 
     if (!email.includes("@")) {
-      alert("이메일을 알맞게 입력해주세요.");
+      setEmailError("이메일을 알맞게 입력해주세요.");
       return;
+    } else {
+      setEmailError("");
     }
-    mutation.mutate({ nickname, email, password });
+
+    if (!emailError && !passwordError && !inputError) {
+      mutation.mutate({ nickname, email, password });
+    }
   };
 
   const queryClient = useQueryClient();
   const mutation = useMutation(postSignup, {
     onSuccess: () => {
       queryClient.invalidateQueries("signup");
-      console.log("mutation 성공하셨습니다.");
       navigate("/login");
     },
     onError: () => {
       queryClient.invalidateQueries("signup");
-      console.log("mutation 실패하셨습니다.");
     },
   });
-  // mutation(=변형) 데이터를 생성/업데이트/삭제 할 때 사용
-  // onSucess는 mutation이 성공하고 결과를 전달할 때 실행
 
   return (
     <>
@@ -99,6 +111,11 @@ function SignUp() {
                 value={checkPassword}
                 onChange={setPwOnChangeHandler}
               />
+              {inputError && <div style={{ color: "red" }}>{inputError}</div>}
+              {emailError && <div style={{ color: "red" }}>{emailError}</div>}
+              {passwordError && (
+                <div style={{ color: "red" }}>{passwordError}</div>
+              )}
               <p>
                 <ButtonStyle
                   onClick={onSubmitHandler}
