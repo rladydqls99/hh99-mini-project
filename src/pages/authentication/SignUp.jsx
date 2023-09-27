@@ -16,6 +16,7 @@ import { SignupIcon } from "../../icon/icons";
 
 function SignUp() {
   const navigate = useNavigate();
+
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

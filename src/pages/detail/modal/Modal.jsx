@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { getMemberInfo } from "../../../api/mypage";
 import { ModalFlex, ModalSetUp } from "./modalstyle";

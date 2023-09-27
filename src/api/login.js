@@ -1,6 +1,7 @@
 import axios from "axios";
 import { setCookie } from "../cookies/cookies";
 
+// 이메일 로그인
 export const postLogin = async ({ email, password }) => {
   try {
     const response = await axios.post("https://miniproject.kro.kr/api/login", {

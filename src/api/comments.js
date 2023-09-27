@@ -4,7 +4,6 @@ import axios from "axios";
 export const getComments = async () => {
   try {
     const response = await axios.get(`https://miniproject.kro.kr/api/comment`);
-
     return response.data;
   } catch (error) {
     console.log("error 발생", error);
@@ -18,7 +17,7 @@ export const addComments = async (props) => {
   const token = props.token;
 
   try {
-    const response = await axios.post(
+    await axios.post(
       `https://miniproject.kro.kr/api/company/${companyId}/comment`,
       {
         comment: newComment,

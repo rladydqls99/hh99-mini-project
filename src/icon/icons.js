@@ -124,23 +124,3 @@ export const ThreeDot = (props) => (
     </g>
   </svg>
 );
-
-export const DoSave = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlSpace="preserve"
-    width={30}
-    height={30}
-    fill="#4f709c"
-    viewBox="0 0 24 24"
-    {...props}
-  >
-    <path d="M19.3 5.3 9 15.6l-4.3-4.3-1.4 1.4 5 5 .7.7.7-.7 11-11-1.4-1.4z" />
-    <path
-      d="M0 0h24v24H0z"
-      style={{
-        fill: "none",
-      }}
-    />
-  </svg>
-);
