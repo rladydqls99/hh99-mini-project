@@ -24,6 +24,18 @@ export const FlexForm = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  @media screen and (max-width: 1400px) {
+    margin-right: 20%;
+  }
+  @media screen and (max-width: 780px) {
+    margin-right: 30%;
+  }
+  @media screen and (max-width: 600px) {
+    margin-right: 4%;
+  }
+  @media screen and (max-width: 488px) {
+    margin-right: 1%;
+  }
 `;
 
 export const BorderDiv = styled.div`
@@ -33,13 +45,11 @@ export const BorderDiv = styled.div`
   flex-direction: column;
   height: 60%;
   padding: 80px;
-  margin: auto;
   background-color: white;
   border-radius: 30px;
   @media screen and (max-width: 780px) {
     height: 60%;
     width: 72%;
-    margin: auto;
   }
 
   @media screen and (max-width: 488px) {
@@ -55,10 +65,11 @@ export const IconContainer = styled.div`
   top: 22%;
   z-index: 10;
   @media screen and (max-width: 780px) {
-    top: 13%;
+    top: 18%;
   }
 
   @media screen and (max-width: 488px) {
+    top: 16%;
   }
 `;
 export const InputContent = styled.input`
@@ -97,7 +108,7 @@ export const ButtonStyle = styled.button`
   @media screen and (max-width: 488px) {
     width: 200px;
     height: 30px;
-    font-size: 2px;
+    font-size: 8px;
     padding: 1px;
   }
 `;
