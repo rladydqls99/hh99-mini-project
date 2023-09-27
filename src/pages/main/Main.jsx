@@ -38,6 +38,13 @@ function Main() {
     setCompanyName(value);
   };
 
+  // 엔터 눌렀을 때 동작
+  const activeEnter = (e) => {
+    if (e.key === "Enter") {
+      goCompanyDetail(companyName);
+    }
+  };
+
   const goCompanyDetail = async (companyNames) => {
     try {
       const response = await axios.get(
@@ -65,6 +72,7 @@ function Main() {
         <StyledInput>
           <input
             onChange={searchOnChange}
+            onKeyDown={(e) => activeEnter(e)}
             type="text"
             placeholder="검색어를 입력하세요"
           />
