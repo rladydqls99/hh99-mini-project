@@ -23,6 +23,22 @@ export const InfoDiv = styled.div`
   height: 380px;
   border-radius: 30px;
   background-color: white;
+
+  @media screen and (max-width: 1400px) {
+    width: 40%;
+    height: 300px;
+  }
+
+  @media screen and (max-width: 780px) {
+    width: 55%;
+    height: 500px;
+  }
+
+  @media screen and (max-width: 488px) {
+    width: 80%;
+    height: 280px;
+    margin-top: 10%;
+  }
 `;
 
 // 아이콘 감싸는 div
@@ -30,6 +46,16 @@ export const IconDiv = styled.div`
   margin-top: 8%;
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 1400px) {
+    margin-top: 10%;
+  }
+  @media screen and (max-width: 780px) {
+    margin-top: 20%;
+  }
+
+  @media screen and (max-width: 488px) {
+    margin-top: 30%;
+  }
 `;
 
 // 인삿말 감싸는 div
@@ -40,6 +66,16 @@ export const GreetingDiv = styled.div`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 30px;
+  @media screen and (max-width: 1400px) {
+    font-size: 35px;
+  }
+  @media screen and (max-width: 780px) {
+    font-size: 30px;
+  }
+
+  @media screen and (max-width: 488px) {
+    font-size: 20px;
+  }
 `;
 
 //모달 버튼
@@ -57,6 +93,17 @@ export const MypageButton = styled.button`
   &:hover {
     background-color: #d989af;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media screen and (max-width: 1400px) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 780px) {
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: 488px) {
+    font-size: 12px;
   }
 `;
 
@@ -88,6 +135,19 @@ export const ModalContent = styled.div`
   margin: 20%;
   padding: 50px 100px;
   border-radius: 10px;
+  @media screen and (max-width: 1400px) {
+    width: 40%;
+  }
+
+  @media screen and (max-width: 780px) {
+    width: 85%;
+    height: 25%;
+  }
+
+  @media screen and (max-width: 488px) {
+    width: 85%;
+    height: 22%;
+  }
 `;
 
 export const MypageInput = styled.input`
@@ -107,6 +167,21 @@ export const FontSize = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 780px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 488px) {
+    font-size: 14px;
+    margin-right: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
 `;
 
 export const ChangeButton = styled.button`
@@ -120,6 +195,19 @@ export const ChangeButton = styled.button`
 
   &:hover {
     background-color: ${(props) => props.hoverColor || "#dddddd"};
+  }
+  @media screen and (max-width: 1400px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 780px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 488px) {
+    font-size: 12px;
+    border: 5px solid white;
+    margin-top: 5%;
   }
 `;
 
