@@ -108,7 +108,7 @@ export const MypageButton = styled.button`
 `;
 
 export const Modal = styled.div`
-  position: fixed; //스크롤 해도 고정됨
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -151,9 +151,9 @@ export const ModalContent = styled.div`
 `;
 
 export const MypageInput = styled.input`
-  border: none; //기본 속성 초기화
+  border: none;
   border-bottom: 1px solid;
-  outline: none; // 포커스 시 테두리 없애기
+  outline: none;
 `;
 
 export const IconFlex = styled.div`
@@ -190,7 +190,7 @@ export const ChangeButton = styled.button`
   color: white;
   margin-top: 10%;
   padding: 5px;
-  border: 18px solid white;
+  border: 10px solid white;
   border-radius: 35px;
 
   &:hover {
