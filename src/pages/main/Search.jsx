@@ -21,7 +21,13 @@ function Search() {
     const { value } = e.target;
     setCompanyName(value);
   };
-  console.log(location);
+
+  // 엔터키 누르면 이동
+  const activeEnter = (e) => {
+    if (e.key === "Enter") {
+      goCompanyDetail(companyName);
+    }
+  };
   const goCompanyDetail = async (companyNames) => {
     try {
       const response = await axios.get(
@@ -40,6 +46,7 @@ function Search() {
         <StyledInput>
           <input
             onChange={searchOnChange}
+            onKeyDown={(e) => activeEnter(e)}
             type="text"
             placeholder="검색어를 입력하세요"
           />
