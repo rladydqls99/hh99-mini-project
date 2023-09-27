@@ -15,10 +15,7 @@ export const getMemberInfo = async (memberId) => {
 // 유저 닉네임 변경하기
 export const patchNickname = async (props) => {
   const changeNickname = props.changeNickname;
-  const changePassword = props.changePassword;
   const token = props.token;
-
-  console.log(changePassword);
 
   try {
     const response = await axios.put(
