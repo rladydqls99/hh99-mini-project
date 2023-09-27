@@ -23,14 +23,12 @@ import { getCookie } from "../../cookies/cookies";
 import Modal from "./modal/Modal";
 
 function Detail() {
-  // 전역으로 사용할 것들
   const { state } = useLocation();
   const params = useParams();
   const { data } = useQuery("comments", getComments);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-
-  useEffect(() => {}, [params, state]);
+  const token = getCookie("token");
 
   // 댓글 추가하기
   const [comments, setComments] = useState("");
@@ -57,7 +55,6 @@ function Detail() {
       setComments("");
     }
   };
-  // ----------------------------------------------------------------
 
   // 댓글 수정하기
   const patchMutation = useMutation(patchComments, {
@@ -72,7 +69,6 @@ function Detail() {
   const patchCommentsHandler = (commentsID, updateComments) => {
     patchMutation.mutate({ commentsID, updateComments, token });
   };
-  // ----------------------------------------------------------------
 
   // 댓글 삭제하기
   const deleteMutation = useMutation(deleteComments, {
@@ -89,7 +85,6 @@ function Detail() {
       deleteMutation.mutate({ commentsID, token });
     }
   };
-  // ----------------------------------------------------------------
 
   // 각 댓글의 모달 열림 상태를 관리하는 배열
   const [modalOpenStates, setModalOpenStates] = useState(
@@ -109,17 +104,6 @@ function Detail() {
     newModalOpenStates[index] = false;
     setModalOpenStates(newModalOpenStates);
   };
-  // ------------------------------------------------------
-
-  // 로그인 안됐을 때 댓글 안보이게 하기
-  const token = getCookie("token");
-
-  // 댓글이 없을 때 없음 출력
-  const isComment =
-    data &&
-    data.filter((comment) => {
-      return comment.companyId === parseInt(params.id);
-    });
 
   return (
     <>

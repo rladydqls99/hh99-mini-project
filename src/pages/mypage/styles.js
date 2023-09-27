@@ -17,7 +17,6 @@ export const NicknameFlex = styled.div`
   justify-content: row;
 `;
 
-// 정보 뜨는 곳
 export const InfoDiv = styled.div`
   width: 40%;
   height: 380px;
@@ -41,7 +40,6 @@ export const InfoDiv = styled.div`
   }
 `;
 
-// 아이콘 감싸는 div
 export const IconDiv = styled.div`
   margin-top: 8%;
   display: flex;
@@ -58,7 +56,6 @@ export const IconDiv = styled.div`
   }
 `;
 
-// 인삿말 감싸는 div
 export const GreetingDiv = styled.div`
   font-size: 40px;
   font-weight: bold;
@@ -78,7 +75,6 @@ export const GreetingDiv = styled.div`
   }
 `;
 
-//모달 버튼
 export const MypageButton = styled.button`
   display: flex;
   justify-content: center;
@@ -118,7 +114,6 @@ export const Modal = styled.div`
   align-items: center;
 `;
 
-// 모달 배경
 export const ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../color/colors.js";
 import { Link } from "react-router-dom";
-import { MineSweeper } from "../../icon/icons.js";
 
 export const Navbar = styled.nav`
   position: relative;
@@ -10,7 +9,6 @@ export const Navbar = styled.nav`
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  /* background-color: white; */
 
   padding: 0px 12px;
   color: ${colors.background};
@@ -93,11 +91,10 @@ export const VisibleContainer = styled.div`
   flex-grow: 1;
   flex-basis: 100%;
   align-items: center;
-  margin-top: 2rem; /* mt-2 */
+  margin-top: 2rem;
   flex-grow: 1;
 
   @media (min-width: 1024px) {
-    /* lg: */
     display: flex;
     flex-basis: auto;
     margin-top: 0;

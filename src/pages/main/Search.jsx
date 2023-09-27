@@ -75,7 +75,6 @@ function Search() {
               })
             )}
           </Container>
-          {/* <SideDiv></SideDiv> */}
         </OuterContainer>
       </MainContainer>
     </>

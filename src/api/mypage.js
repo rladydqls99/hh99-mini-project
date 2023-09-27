@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// 댓글 쓴 유저 정보 가져오기
+// 유저 정보 가져오기(마이페이지, 프로필)
 export const getMemberInfo = async (memberId) => {
   try {
     const response = await axios.get(
@@ -12,7 +12,7 @@ export const getMemberInfo = async (memberId) => {
   }
 };
 
-// 유저 닉네임 변경하기
+// 유저 닉네임 변경하기(마이페이지)
 export const patchNickname = async (props) => {
   const changeNickname = props.changeNickname;
   const token = props.token;

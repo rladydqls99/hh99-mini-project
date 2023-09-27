@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../api/login";
 import {
@@ -19,10 +19,12 @@ import { LoginIcon } from "../../icon/icons";
 function Login() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inputError, setInputError] = useState("");
   const [emailError, setEmailError] = useState("");
+
   const emailOnChangeHandler = (e) => {
     setEmail(e.target.value);
   };

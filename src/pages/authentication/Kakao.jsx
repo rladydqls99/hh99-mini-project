@@ -6,7 +6,6 @@ import { kakaoLogin } from "../../api/login";
 
 function Kakao() {
   const navigate = useNavigate();
-  // const { code } = useParams();
 
   // useSearchParams 훅을 사용하여 쿼리 매개변수를 읽어옴
   const [searchParams, setSearchParams] = useSearchParams();

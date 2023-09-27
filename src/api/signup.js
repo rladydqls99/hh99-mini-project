@@ -1,9 +1,10 @@
 import axios from "axios";
 
+// 회원가입
 export const postSignup = async ({ nickname, email, password }) => {
   console.log(nickname, email, password);
   try {
-    const response = await axios.post(
+    await axios.post(
       "https://miniproject.kro.kr/api/signup",
       {
         nickname,

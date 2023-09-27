@@ -6,10 +6,3 @@ export const colors = {
   pointColor: "#DAC0A3",
   darkColor: "#0F2C59",
 };
-
-export const darkMode = {
-  background: "black",
-  mediumColor: "#EADBC8",
-  pointColor: "#DAC0A3",
-  darkColor: "#0F2C59",
-};

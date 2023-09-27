@@ -4,16 +4,13 @@ import {
   CommentInput,
   CommentP,
   CommentButtons,
-  CommentButton,
   CommentSaveButtons,
 } from "./commentStyles";
-
 import { getCookie } from "../../../cookies/cookies";
 import base64 from "base-64";
 import DropdownBtn from "./component/Dropdown";
-import { DoSave } from "../../../icon/icons";
 
-function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
+function Comment({ comment, onEdit, onDelete, memberId }) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedComment, setEditedComment] = useState(comment);
 
@@ -28,8 +25,6 @@ function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
     dec = JSON.parse(base64.decode(payload));
   }
 
-  // -----------------------------------------------------------------------------
-
   // input 태그 관리
   const handleEditClick = () => {
     setIsEditMode(true);
@@ -40,11 +35,6 @@ function Comment({ comment, onEdit, onDelete, memberId, commentId }) {
     setIsEditMode(false);
   };
 
-  const handleCancelClick = () => {
-    setEditedComment(comment);
-    setIsEditMode(false);
-  };
-  // -----------------------------------------------------------------------------
   return (
     <CommentContainer>
       {dec.member_id === memberId ? (
