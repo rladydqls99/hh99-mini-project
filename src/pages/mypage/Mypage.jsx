@@ -90,6 +90,7 @@ function Mypage() {
   const toggleModalSecond = () => {
     setSecondModal(!secondModal);
     setChangeNickname("");
+    setMessage("");
   };
 
   const modalButtonHandler = () => {
